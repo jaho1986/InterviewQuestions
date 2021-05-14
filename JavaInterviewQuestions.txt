@@ -1,0 +1,33 @@
+Object oriented programming.
+Is ma methodology or paradigm to design a program using Classes and Objects
+
+Object 
+Is a real world entity that has teir own properties an behaviours.
+
+Class
+Blueprint from wich objects properties a behaviours are decided.
+
+Polymorphism:
+Concept in wich a single action can be done in different ways.
+
+Static Polymorphism:
+Is the one that is resolved in compile time. Method overloading is an example of compile time polymorphism.
+
+Dynamic Polymorphism:
+Dynamic porlymorphism is a process in wich a call to an overridden methos is resolved at runtime. That's why it is called runtime polymorphism.
+
+Advantages:
+ - Support method overriding
+ - Common method specification.
+
+Example:
+Cass A has a method move()
+Cass B has a method move()
+You create instances of the to classes and you call the method move of each class.
+
+Characteristics of Polymorphism:
+ - Operator overloading. (Operator + sum, or concatenate).
+ - Polimorphic paarameters. (When you have local variables with the same name as the instance variables).
+ 
+Super Keyword:
+Super is a keyword. It is used inside a sub-class mehotd definition to call a  method in the superclass.
