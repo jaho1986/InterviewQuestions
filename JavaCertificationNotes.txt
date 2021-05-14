@@ -1,0 +1,52 @@
+Tips Java:
+ - Encapsulación: El proceso de empaquetar código y datos juntos en una sola unidad.
+ - Abstracción: El processo de mostrar únicamente datos relevantes y ocultar los detalles de implementación a los usuarios.
+ - Polimorfismo:  Concepto por el cual una sola acción se puede realizar de diferentes maneras.
+ - Herencia: Proceso en el que una clase adquiere campos y métodos de otra.
+ - Cada vez que se extiende de una clase abastracta, se deben de implementar todos los métodos abstractos.
+ - Un método estático no puede sobreescribir un método padre, a menos que este también sea estático.
+ - El valor de una variable estática es el mismo para todas las instancias de esa clase. Si lo modificas, se modifica para todas.
+ - Cuando una variable de un tipo genérico se declara con var y el inicializador no especifica un argumento de tipo, recurre a la clase Object.
+ - Todas las variables declaradas en una interfaz son públicas, estáticas y finales.
+ - Los métodos estáticos de una interfaz solo pueden ser invocados por la misma interfaz.
+ - Siempre se debe de especificar las dimenciones de los arreglos, al menos de la primera posición.
+ - Las listas son de dimención variable a pesar de que se le especifique una capacidad inicial.
+ - Comando para listar las dependencias de un módulo: jdeps --list-deps
+ - Los principales objetivos de un sistema de módulos de java son: configuraciones confiables y encapsulación fuerte.
+ - Sólo se puede especificar un paquete con las directivas export y requires.
+ - Las interfaces funcionales son aquellas que sólo tienen un método abstracto. (Los métodos de la clase Object no cuentan).
+ - Las clases internas no pueden definir miembros estáticos a excepción de variables constantes.
+ - Una anotación es un marcador que asocia información con la construcción de un programa, pero no tiene ningún efecto en tiempo de ejecución. 
+ - A partir de Java 9, se pueden cerrar recursos en los try siempre y cuando se haga referencia a estos inmediatamente después del try dentro de los paréntesis.
+ - Callable no puede utilizarse para construir un objeto de tipo thread.
+ - Una tarea Callable arroja una check exception, mientras que una tarea Runnable no.
+ - Las clases de instancia pueden tener cualquier tipo de modificador: public, protected, private, default.
+ - Una máquina virtual puede tener una o cero consolas.
+ - Las operaciones de lectura y escritura sobre consolas son síncronas.
+ - No se pueden tener métodos de tipo Deault y Abstract cuando las clases son de tipo final.
+ - Cuando una classe hereda 2 métodos con la misma firma, de una clase y una interfaz, el de la clase tiene precedencia.
+ - EL nombre del método abstracto de la interfaz DoubleToLongFunction es applyAsLong
+ - Los parámetros de tipo genérico (T) no se pueden utilizar en contextos estáticos.
+ - Las anotaciones @SupressWarnings y @Override son descartadas por el compilador.
+ - Las expresiones lambdas pueden ser usadas bajo los siguientes contextos: asignación, invocación y casteo.
+ - Para que un objeto pueda ser declarado dentro de los paréntesis de una sentencia Try este debe implementar la interfaz AutoCloseable.
+ - Un Stream no puede ser consumido después de ejecutar una operación terminal como ForEach.
+ - Transient se usa para indicar que un campo no debe ser parte del proceso de serialización.
+ - Si un servicio es invocado más de una vez en la declaración de un módulo genera errores en tiempo de compilacón.
+ - 2 maneras de proteger la información confidencial en Java:
+   - No registrar en el log información confidencial.
+   - Quitar información confidencial en las excepciones y memoria.
+ - Stream.filter toma un solo predicado como argumento y no acepta, colección, arrays u objetos.
+ - Las clases inmutables no deben permitir la herencia, deben declarar sus campos como finales y ocultar sus constructores.
+ - Las operaciones con streams sólo se ejecutan cuando se realiza una operación terminal (forEach).
+ - Para que ObjectInputStream funcione con objetos, estos y sus hijos deben implementar Serializable.
+ - El método Runnable.run no puede arrojar excepciones a menos que este lo especifique primero.
+ - DoS Atttaks, hacen consumo excesivo de recursos.
+ - Las variables locales (variables de método) no pueden ser utilizadas antes de ser declaradas.
+ - El método noneMatch() de Stream retorna Boolean, no Optional.
+ - EL método List.copyOf devuelve una lista no modificable de objetos, por lo que al aplicar add() o remove() arroja una UnsupportedOperationException
+ 
+ 
+ 
+
+ 
