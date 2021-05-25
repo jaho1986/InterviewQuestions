@@ -31,3 +31,45 @@ Characteristics of Polymorphism:
  
 Super Keyword:
 Super is a keyword. It is used inside a sub-class mehotd definition to call a  method in the superclass.
+
+Why do we need inheritance?
+ - To reduce code redundancy.
+ - To improve the readability.
+ 
+What is inheritance?
+Is pa procedure, in wich a sub class inherits all the properties and behaviours of a super class.
+
+Which types of inheritance ares supported in Java:
+ - Single inheritance.
+ - Multi-level inheritance.
+ - Hierarchical inheritance.
+ - Hybrid inheritance.
+ 
+Single inheritance:
+Is a process where a subclass inherits all properties and behaviour of a single super class.
+
+Multi-level inheritance:
+Is a process where a subclass inherits all the properties and behaviours of more than one super class at multiple levels.
+
+Hierarchical inheritance:
+Is a process where one or more subclasses inherits all the properties and beaviours of one super class.
+
+Hybrid inheritance:
+Is a combination of one or more inheritances.
+
+Overloading:
+Is a feature that allows a class to have more than one method having the same name, if their argument list are different.
+
+Three types of method overloading:
+ - Number of parameters.
+ - Data types of the parameters.
+ - Sequence of the data type of the parameters.
+
+Overriding:
+Is a feature that allows the parent class and the subclass to have a same method.
+
+Rules of method overriding:
+ - The argument list of the child should match the parent class.
+ - Access modifier of the child class should be less restrictive than the parent class.
+ - Local parameters cannot be overridden.
+ 
