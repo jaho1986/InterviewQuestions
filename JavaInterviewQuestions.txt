@@ -113,3 +113,43 @@ Solution to develop a successful application:
  - Design principles.
  - Design patterns.
  
+Generics in Java:
+Is a term that denotes a set of language features relatet to the definition and use of Generic types and methods.
+
+Types of generics:
+ - Generic Type Class.
+ - Generic Type Interface.
+ - Generic Type Method.
+ - Generic Type Constructor.
+ 
+Generic functions:
+We can also write generic functions that can be called with different types of arguments based of the type of aguments passed to the generic method and further the compiles handles this method.
+
+Advantages of Generics in Java:
+ - Code reusability.
+ - Type safety.
+ - Individual type casting not required.
+ - Implementing non generic algorithms.
+ 
+Collections in Java
+
+Arraylist:
+ - Is the implementation if List Interface.
+ - Array is size fixed, but Arraylist size can grow dynamically.
+ - ArrayList is used to store objects and perform operations on it.
+ - ArrayList is not Syncronized. Vector is similar to ArrayList wich is synchronized.
+ - If your applications does not require insertion or deletion of elements, the most efficient dasta structure is the array.
+ 
+ How to create elements of arraylist?
+  - For each loop.
+  - Iterator.
+  - List Iterator.
+  - Enumeration.
+  
+ Vector:
+ Vector is same as ArrayList. The only difference is that, Vector is syncronized but ArrayList is not. That means Vector is threadsafe.
+ 
+ Queue:
+ 
+ 
+ 
