@@ -150,6 +150,9 @@ Arraylist:
  Vector is same as ArrayList. The only difference is that, Vector is syncronized but ArrayList is not. That means Vector is threadsafe.
  
  Queue:
- 
+  - Is an interface.
+  - PriorityQueue is a class wich implements Queue iterface an sorts the data stored. DeQue satands for double ended queue.
+  - The Queue can be operated at both ends. Same holds for insertion and deletion too.
+  - Queue operates on the principle "First In First Out". 
  
  
