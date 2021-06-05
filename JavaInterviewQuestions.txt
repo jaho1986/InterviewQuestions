@@ -155,4 +155,14 @@ Arraylist:
   - The Queue can be operated at both ends. Same holds for insertion and deletion too.
   - Queue operates on the principle "First In First Out". 
  
+ PriorityQueue:
+ Is the one that sorts the data.
+ 
+ Set:
+  - Set is a collection interface. HashSet and TreeSet are implementations of set.
+  - Set cannot have duplicates.
+  - Class HashSet removes the duplicates and gives better performance over TreeSet. It doesn't guarantee to store the data in the same order it is inserted.
+  - Class TreeSet sorts the added data apart from removing the duplicates.
+  
+ 
  
