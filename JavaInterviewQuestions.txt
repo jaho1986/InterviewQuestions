@@ -164,5 +164,19 @@ Arraylist:
   - Class HashSet removes the duplicates and gives better performance over TreeSet. It doesn't guarantee to store the data in the same order it is inserted.
   - Class TreeSet sorts the added data apart from removing the duplicates.
   
- 
- 
+ Comparable VS Comparator Java
+  - Comparable is an interface used to compare objects by the comapreTo(Object o) method.
+    Example: class nameClass implements Comparable<Object> {...
+    ObjectClass > ObjectToCompare = +
+    ObjectClass < ObjectToCompare = -
+    ObjectClass = ObjectToCompare = 0
+  - Comparator. We use comparator in 2 situations:
+   - When the classes to compare don't implement the Comparable interface.
+   - When you want to compare objects with a different logic that the one implemented with the comparable Interface.
+     Example:
+     Comparator<Object> comparator = new Comparator<Laptop>() {
+       public int compare (Object o1, Object o2) {
+         //logic here...
+       }
+     };
+   
