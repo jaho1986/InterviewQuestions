@@ -179,4 +179,46 @@ Arraylist:
          //logic here...
        }
      };
+
+Thread:
+ - Thread is a lightweight sub process.
+ - It is the smallest independent unit of a program.
+ - Contains a separate path of execution.
+ - Every Java program contains at least one thread.
+ - A thread is created and controlled by the java.lang.Thread class
+
+Thread Lifecycle:
+ - New
+ - Runnable \
+ -           Waiting
+ - Running  /
+ - Terminated
+ 
+New:
+When you create a thread it begins with the state of 'new' until the program starts the thread.
+
+Runnable:
+Once the thread starts, it comes under runnable state and it stays in this state while is executing its task.
+
+Running:
+In this state a thread starts executing by entering the run() method. yield() method can send it to go back to the runnable state.
+
+Waiting:
+A thread enters this state when it is temporarilly in an incactive state. It's still alive, but is not elegible to run.
+
+Terminated:
+A thread enters in terminated state when it completes its tasks.
+
+Ways to create a thread:
+ - Implementing the Runnable Interface.
+   1. Create a Thread class implementing the Runnable Interface.
+   2. Override the run() method.
+   3. Create object of the Thread class.
+   4. Invoke the start() method using the object.
    
+ - Extending from the Thread Class.
+   1. Exends the Thread Class.
+   2. Override run() method.
+   3. Create object of the class.
+   4. Invoke the start() method, to execute the custom threads run().
+ 
