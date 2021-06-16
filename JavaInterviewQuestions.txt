@@ -222,3 +222,31 @@ Ways to create a thread:
    3. Create object of the class.
    4. Invoke the start() method, to execute the custom threads run().
  
+Thread Class:
+ - Each thread creates its unique object.
+ - More memory consumption.
+ - A class that extends the Thread class can't extend any other class.
+ - We extend the Thread class if there is a need of overriding other methods.
+
+Runnable Interface:
+ - Each Thread creates its unique object.
+ - More memory consumption.
+ - Along with runnable a class can implement ano other interface.
+ - We implement Runnable only if there is a need of special run method.
+ 
+Java Main Thread:
+ - Main Thread is the most important thread of a Java Program.
+ - It is excecuted whenever a Java program Starts.
+ - Every program must contain this thread for its execution to take place.
+ - Java Main Thread is needed because of the following reasons:
+   - From this other "child" threads are spawned.
+   - It must be the las thread to finish execution Eg. When the main thread stops, the program terminates.
+   
+Multi Threading:
+Multi Threading is the ability of a program to run two or more threads concurrently, where each thread can handle a different task at the same time making optimal use of the available resources.
+
+Synchronized methods are used to guarantee that a method can only be accessed by one thread at a time. 
+We use sincronized when multiples threads work on the same object.
+
+Thread Pool:
+Java Thread Pool manages the pool of worker threads and contains a queue that keep the tasks waiting to be executed.
