@@ -250,3 +250,26 @@ We use sincronized when multiples threads work on the same object.
 
 Thread Pool:
 Java Thread Pool manages the pool of worker threads and contains a queue that keep the tasks waiting to be executed.
+
+LinkedList:
+A linked list is a linear data structure wich is constituted by a chain of nodes in wich each node contains a value an a pointer to the next node in the chain.
+
+ - Implements Queue and Deque interfaces.
+ - Contain insertion Order.
+ - It's not synchronized.
+
+ArrayList:
+Arraylist is the implementation of the List interface where the elements can be dynamically added or removed from the list. We use arraylist when we want to have a dynamic collection of elements.
+
+Similairities between LinkkedList and ArrayList:
+ - They are implementations of the List interface.
+ - They maintain the insertion order of the elements.
+ - Their classes are not synchronized.
+
+LinkedList VS ArrayList:
+ - Insertion, deletion, and removal are faster in LinedList because thre is no need for resize like in an Arraylist.
+ - LinkedList is based on doubly linked listjimplementation whereas Arraylist is based on the concept of a dynamically resizable array.
+ - A LinkedList class can me used as a list and a queue because it implements List and Deque interfaces whereas Arraylist can only implement Lists.
+ - LinkedList consumes mora memory than an ArrayList because every node in a LinkedList stores two references, whereas ArrayList holds only data and its index.
+ 
+ 
