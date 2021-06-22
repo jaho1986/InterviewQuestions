@@ -272,4 +272,33 @@ LinkedList VS ArrayList:
  - A LinkedList class can me used as a list and a queue because it implements List and Deque interfaces whereas Arraylist can only implement Lists.
  - LinkedList consumes mora memory than an ArrayList because every node in a LinkedList stores two references, whereas ArrayList holds only data and its index.
  
- 
+
+HashTable:
+ - It's an implementation of the Map Interface.
+ - All methods are thread-safe.
+ - There is a "synchronized" keyword on each public method (put, get, remove, etc).
+ - Overhead in an environment where Map is initialized once and read by multiple threads.
+
+HashMap:
+ - Map implementation that satisfies most of the basic use cases.
+ - Not "thread-safe".
+ - Itaration not guaranteed in insertion order.
+ - We need to use the "synchronized" operation when is manipulated by multiple threads (concurrent adds, removes, iterations).
+ - Most of the enterprise applications populate the map once and then read it many times from many threads. Given this Hashmap suffices for all such scenarios, without any worries of performace overheads.
+
+LinkedHashMap:
+ - It's very similar to HashMap.
+ - Iteration is guaranteed in insertion order.
+ - Maintains separate doubly linked list of all entries that is kept in insertion order.
+ - It can be used in cases where hash map behavior is needed at the same time that the order of the insertion has to be preserved.
+
+TreeMap:
+ - Implementation of SortedMap and NavigableMap interfaces.
+ - Iteration is guranteed in"natural sorted" order of keys.
+ - The keys should implement "Comparable Interface" (ClassCastException is thrown if it's not implemented); in other case, we need to provide an explicit Comparator in the constructor.
+ - It's a Red-black tree based implementation. NavigableMap interface provides methods that can return closes match to the key (floorEntry()).
+
+IdentityHashMap:
+ - Uses identity to store and retrieve key values.
+ - It uses reference equality; meaning r1==r2 rather than r1.equals(r2). For hashing, System.identityHashCode(givenKey) is invoked rather than givenKey.hashCode().
+ - It's used in serialization/deep copying
