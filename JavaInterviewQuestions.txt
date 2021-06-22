@@ -302,3 +302,26 @@ IdentityHashMap:
  - Uses identity to store and retrieve key values.
  - It uses reference equality; meaning r1==r2 rather than r1.equals(r2). For hashing, System.identityHashCode(givenKey) is invoked rather than givenKey.hashCode().
  - It's used in serialization/deep copying
+
+EnumMap:
+ - EnumMap<K extends Enum<K>,V>
+ - It's used for enum type keys. All of the keys in an enum map must come from a single enum type that is specified, explicitly or implicitly when the map is created.
+ - Null Keys are not permited.
+ - It's not synchronnized.
+
+WeakHashMap:
+ - Elements in a WeakHasMap can be relaimed by the garbage collector inf there are no other strong references to hte object, this makes them useful for caches/lookup storage.
+ - Keys inserted gets wrapped in java.lang.ref.WeakReference.
+ - Useful only if the desired lifetime of cache entries is determined by external references to the key, not the value.
+
+Collections.synchronizedMap(aMap):
+ - A convenient "decorator" to create fully synchronized map.
+ - Return type is collections.SynchronizedMap Instance. It wraps around passsed map instance and marks all APIs as Synchronized, effectively making it similar to HashTable.
+
+ConcurrentHashMap:
+ - Supports full concurrency during retrieval. Means, retrieval operations do not block even if adds are running concurrently(mostly).
+ - Reads can happen fast, while writes require a lock. Write lock is acquired at granular level, the whole table is not locked only segments are locked. So, there is a rare chance of read waiting on write to complete.
+ - Iterations do not throw concurrent modification exception (within the same thread).
+ - It can be used in cases where a lot of concurrent addition happens followed no or concurrent reads later on.
+ - Null keys are not allowed. If map.get(null) returns null, it's not sure if null is not mapped or if null is mapped to a null value. In a non-concurrent map, we clould use contains() call, but in a concurrent map, values can change between API calls.
+ - Operations are not atomic.
