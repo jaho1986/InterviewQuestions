@@ -325,3 +325,8 @@ ConcurrentHashMap:
  - It can be used in cases where a lot of concurrent addition happens followed no or concurrent reads later on.
  - Null keys are not allowed. If map.get(null) returns null, it's not sure if null is not mapped or if null is mapped to a null value. In a non-concurrent map, we clould use contains() call, but in a concurrent map, values can change between API calls.
  - Operations are not atomic.
+
+ConcurrentSkipListMap:
+ - A scalable concurrent ConcurrentNavigableMap/SortedMap implementation.
+ - Guarantees average O(log(N)) performance on a wide variety of operations. ConcurrentHasMap does not guareantee operation time as a part of its contract.
+
