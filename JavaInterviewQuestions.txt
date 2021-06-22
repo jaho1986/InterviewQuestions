@@ -327,6 +327,7 @@ ConcurrentHashMap:
  - Operations are not atomic.
 
 ConcurrentSkipListMap:
+ - It's equivalent to TreeMap.
  - A scalable concurrent ConcurrentNavigableMap/SortedMap implementation.
  - Guarantees average O(log(N)) performance on a wide variety of operations. ConcurrentHasMap does not guareantee operation time as a part of its contract.
 
