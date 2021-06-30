@@ -38,3 +38,44 @@ Advantages of Spring Boot:
  - It helps monitoring multiples components.
  - It helps in the configuration of the components externally.
 
+Docker:
+Docker is a tool designed to make easier to create, deploy and run applications by using containers.
+Docker containers are lightweight alternatives to Virtual Machines and it uses the host OS.
+
+Docker Images:
+ - A docker image is a Read Only Template used to create Containers.
+ - Is build by Docker users.
+ - Is stored in Ducker Hub or your local registry.
+
+Docker Containers:
+ - A Docker Container is created by a Docker Image.
+ - It's an Isolated Application Platform.
+ - Contains everything needed to run the application..
+ - It's build from one or more images.
+
+Docker registry:
+ - Is a storage componentn for Docker Images.
+ - We can store the images in either Public / Private repositories.
+ - Docker Hub is Docker's Cloud Repository.
+
+Why we use Docker Registries?
+ - To control where your images are being stored.
+ - TO integrate image storage with your in-house development workflow.
+
+Docker Compose:
+It makes it easier to configure and run applications made up of multiple containers. 
+For the example: an image is being able to define three containers:
+ - One for running a web app.
+ - Another running postgres.
+ - And a third running Redis.
+All in one YAML files and then running those three connected containers with a single command.
+
+Advantages of Docker in Microservices:
+ - Packaging.
+ - Distribution.
+ - Runtime Isolation.
+ - Installation process.
+
+
+
+
