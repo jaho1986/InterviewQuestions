@@ -125,14 +125,27 @@ Developing and implementing API is costly at times and requires high maintenance
  - Security issues: 
 Using API adds another layer of surface which is then prone to attacks, and hence the security risk problem is common in API’s.
 
+
+Principles Used to Design Microservice Architecture:
+ - Independent & Autonomous Services
+ - Scalability
+ - Decentralization
+ - Resilient Services
+ - Real-Time Load Balancing
+ - Availability
+ - Continuous delivery through DevOps Integration
+ - Seamless API Integration and Continuous Monitoring
+ - Isolation from Failures
+ - Auto -Provisioning
+
 Design Patterns of Microservices:
  - Aggregator
--  API Gateway
--  Chained or Chain of Responsibility
--  Asynchronous Messaging
--  Database or Shared Data
--  Event Sourcing
--  Branch
+ - API Gateway
+ - Chained or Chain of Responsibility
+ - Asynchronous Messaging
+ - Database or Shared Data
+ - Event Sourcing
+ - Branch
  - Command Query Responsibility Segregator
  - Circuit Breaker
  - Decomposition
