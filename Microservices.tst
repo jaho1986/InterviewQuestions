@@ -150,9 +150,44 @@ Design Patterns of Microservices:
  - Circuit Breaker
  - Decomposition
 
+Tools for managing microservices:
+ - Postman:
+   - Provides features to design APIs.
+   - Works for small to big applications.
+   - Supports work collaboration.
+ 
+ - API Fortress:
+   - Simplifies API testing creation and execution.
+   - Simplifies end to end testing.
 
+Toos for messaging:
+ - Apache Kafka.
+ - Rabbit MQ.
 
+Tools for orchestation:
+ - Kubernetes:
+   - Deploy and update application configurations.
+   - Manages your batch workloads.
+   - Can scale up or scale down the containers.
+   - You can mount the storage system of your choice.
+ - Istio:
+   - Performs automatic tracing and monitoring.
+   - Secure services trough encyption.
+   - Controls the flow of traffic and API calls between services.
+   - Aplies policies and snsures that they're enforced.
+   
+Tools form Monitoring:
+ - Prometheus:
+   - Provides a flexible query language.
+   - Distributed storage and single server nodes.
+   - Discovers targets via service discovery.
+   - Provides dashboarding and graphic support.
 
+ - Logstash:
+   - Supports a variety of inputs.
+   - Transforms and prepares data.
+   - You can choose your own stash and transport data.
+   - A plugglable framework consisting over 200 plugins.
 
-
-
+Microservices security:
+ - 
