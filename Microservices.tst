@@ -32,6 +32,17 @@ Microservices Architecture Challenges:
  - Debugging. It's difficult to debug errors because there are multiple components inside.
  - Consistency. There is a need to have governance of the Languages, technologies and tools to implement.
  - Automating the concepts.
+
+What are the best practices to design microservices?
+ - To separate data store for each Microservice.
+ - Treat servers as stateless.
+ - Separate builds for each microservice.
+ - Deploy into Containers.
+ 
+What is Domain Driven Design?
+ - Focus in the core domain and domain logic.
+ - Find complex designs on models of the domain.
+ - Constantly collaborate with domain experts to improve the application model and to resolve any domain-related issues.
  
 Advantages of Spring Boot:
  - Spring boot has embedded server wich are ease to deploy with the containers.
@@ -190,4 +201,51 @@ Tools form Monitoring:
    - A plugglable framework consisting over 200 plugins.
 
 Microservices security:
- - 
+
+Tokens:
+Tokens are used to easily identify the user and are stored in the form of cookies. These are encrypted and use JSON Web Format.
+
+API Gateway:
+ - Add an extra element to secure services through token authentication.
+ - Acts an entry point to all the client request and efficiently hides the microservices from the client.
+ - So, the client has no direct acces to the microservices and thus there are non clients could exploit these services.
+ 
+Distributed Tracing.
+ - Distributed tracing is a method to pinpoint the failures and identify the reason behind it.
+ - Not only this, but you can also identify the place at wich failure us happening.
+ - It's very easy to track down, wich microservice is facing a security issue.
+
+Session Management
+A session can be handled in the folloing manner:
+ - Store the session data of a single user in a specific server.
+ - Store the complete session data in a single instance.
+ - Make the user data to be obtained from the shared session storage.
+
+First Session:
+ - Users need to login to the application once, and then they can access all the services in the application.
+ - Each user has to initially communicate with an authentication service.
+ - Result in a lot of traffic between all the services and might be cumbersome for the developers to figure out failures in such a scenario.
+
+Mutual SSL:
+ - Applications often face traffic from users, 3rd parties and microservides communicates with each other. But since these services are accessed by 3rd perties, there is allways a risk of attaks.
+ - With mutual SSL, the data transferred between the services will be encrypted.
+ - The only problem with this method is that, when the number o microservices increase, every single service will have its own TLS certificate, it will be very tough for the developers to update the certificate.
+
+Oauth
+ - The application prompts the user to authorize the 3rd party applications, to use the required information and generate a token for it.
+ - While mentioning the access token the client communicates with the authorization server, and this server authorizes the client to prevent others from forging the client's identity.
+ - Microservices act as a client in the OAuth architecture, to simplify the security issues.
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
