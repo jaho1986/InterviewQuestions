@@ -45,6 +45,24 @@ kubectl exec $POD_NAME -- env
 Next let’s start a bash session in the Pod’s container:
 kubectl exec -ti $POD_NAME -- bash
 
+Next, let’s scale the Deployment to 4 replicas. We’ll use the kubectl scale command, followed by the deployment type, name and desired number of instances:
+kubectl scale deployments/kubernetes-bootcamp --replicas=4
+
+Next, let’s check if the number of Pods changed:
+kubectl get pods -o wide
+
+The change was registered in the Deployment events log. To check that, use the describe command:
+kubectl describe deployments/kubernetes-bootcamp
+
+Let’s check that the Service is load-balancing the traffic. To find out the exposed IP and Port we can use the describe service as we learned in the previous Module:
+kubectl describe services/kubernetes-bootcamp
+
+To scale down the Service to 2 replicas, run again the scale command:
+kubectl scale deployments/kubernetes-bootcamp --replicas=2
+
+The number of replicas decreased to 2. List the number of Pods, with get pods:
+kubectl get pods -o wide
+
 Commands:
 minikube version
 minikube start
