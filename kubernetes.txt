@@ -85,7 +85,8 @@ kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=gcr.io/goo
 To roll back the deployment to your last working version, use the rollout undo command:
 kubectl rollout undo deployments/kubernetes-bootcamp
 
-
+kubectl create deployment -> create: deployment, replicaset & pod
+kubectl expose deployment -> create: service
 
 ----------------------------------------------------
 With GoogleCloud:
@@ -98,6 +99,15 @@ kubectl create deployment <name_of_deplyment> --image=<image_path>
 
 Expose deployment:
 kubectl expose deployment <name_of_deplyment> --type=LoadBalancer --port=8080
+
+Get lof of changes:
+kubectl get envets
+
+Set nodes to zero:
+gcloud container clusters resize --zone us-central1-c jaho-cluster-1 --num-nodes=0
+
+Set number of replicas:
+kubectl scale deployment hello-world-rest-api --replicas=3
 
 
 
