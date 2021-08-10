@@ -85,6 +85,22 @@ kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=gcr.io/goo
 To roll back the deployment to your last working version, use the rollout undo command:
 kubectl rollout undo deployments/kubernetes-bootcamp
 
+
+
+----------------------------------------------------
+With GoogleCloud:
+----------------------------------------------------
+Connect to the cluster:
+gcloud container clusters get-credentials <name_of_cluster> --zone us-central1-c --project <project_id>
+
+Create deployment:
+kubectl create deployment <name_of_deplyment> --image=<image_path>
+
+Expose deployment:
+kubectl expose deployment <name_of_deplyment> --type=LoadBalancer --port=8080
+
+
+
 Commands:
 minikube version
 minikube start
