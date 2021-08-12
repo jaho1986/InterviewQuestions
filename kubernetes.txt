@@ -101,7 +101,7 @@ Expose deployment:
 kubectl expose deployment <name_of_deplyment> --type=LoadBalancer --port=8080
 
 Get lof of changes:
-kubectl get envets
+kubectl get events --sort-by=.metadata.creationTimestamp
 
 Set nodes to zero:
 gcloud container clusters resize --zone us-central1-c jaho-cluster-1 --num-nodes=0
@@ -109,7 +109,11 @@ gcloud container clusters resize --zone us-central1-c jaho-cluster-1 --num-nodes
 Set number of replicas:
 kubectl scale deployment hello-world-rest-api --replicas=3
 
+How to deploy a new version:
+kubectl set image deployment <nameOfDeployment> <nameOfContainer>=<imageName>:version
 
+How to kill a pod:
+kubectl delete pod <podId>
 
 Commands:
 minikube version
