@@ -1,0 +1,20 @@
+Download an image in docker:
+docker pull [OPTIONS] NAME[:TAG]
+
+Run an image:
+docker run -p {hostPort}:{containerPort} -d NAME:TAG
+
+Get Logs:
+docker logs CONTAINERID
+
+Get Logs tail :
+docker logs -f CONTAINERID
+
+List running conatiners:
+docker conatainer ls 
+
+List running conatiners with status:
+docker conatainer ls -a
+
+Stop Container 
+docker container sopt CONTAINERID
