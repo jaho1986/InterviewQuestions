@@ -5,7 +5,7 @@ Run an image:
 docker run -p {hostPort}:{containerPort} -d NAME:TAG
 
 Get Logs:
-docker logs CONTAINERID
+docker logs -f CONTAINERID
 
 Get Logs tail :
 docker logs -f CONTAINERID
@@ -16,5 +16,48 @@ docker conatainer ls
 List running conatiners with status:
 docker conatainer ls -a
 
-Stop Container 
-docker container sopt CONTAINERID
+Stop Container:
+docker container stop CONTAINERID
+
+Tag images:
+docker tag NAME[:TAG] NAME[:NEWTAGNAME]
+
+Search an image:
+docker search NAME
+
+See image history:
+docker image history CONTAINERID
+
+Pause a container:
+docker container pause CONTAINERID
+
+Unpause a container:
+docker container unpause CONTAINERID
+
+Inspect a container:
+docker container inspect CONTAINERID
+
+Remove stoped containers:
+docker container prune
+
+Kill execution of a running container:
+docker container kill CONTAINERID
+
+Run an application when docker desktop starts:
+docker run -p {hostPort}:{containerPort} -d --restart=always NAME:TAG
+
+Get docker events log:
+docker events
+
+Top process running on an specific container:
+docker top CONTAINERID
+
+Get metrics of a container
+docker stats
+
+Specify maximum memory to a container and CPU (% x 1000):
+docker run -p {hostPort}:{containerPort} -m 512m --cpu-quota 5000 -d NAME:TAG
+
+Get resources managed by image:
+docker system df
+
