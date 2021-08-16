@@ -61,3 +61,7 @@ docker run -p {hostPort}:{containerPort} -m 512m --cpu-quota 5000 -d NAME:TAG
 Get resources managed by image:
 docker system df
 
+Push container to repository:
+docker login
+{userid} {password}
+docker push NAME:TAG
