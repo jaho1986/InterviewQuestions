@@ -65,3 +65,7 @@ Push container to repository:
 docker login
 {userid} {password}
 docker push NAME:TAG
+
+Process to upload a SringBoot App:
+mvn clean install
+docker push NAME:TAG
