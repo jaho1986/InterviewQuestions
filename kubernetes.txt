@@ -142,6 +142,10 @@ kubectl delete all -l app=<name_of_deplyment>
 Get difference between the existing deployment and the new one:
 kubectl diff -f deployment.yaml
 
+Get all namespaces from a pod:
+kubectl get pods --all-namespaces
+
+
 
 
 Commands:
