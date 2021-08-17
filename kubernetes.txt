@@ -100,7 +100,7 @@ kubectl create deployment <name_of_deplyment> --image=<image_path>
 Expose deployment:
 kubectl expose deployment <name_of_deplyment> --type=LoadBalancer --port=8080
 
-Get lof of changes:
+Get log of changes:
 kubectl get events --sort-by=.metadata.creationTimestamp
 
 Set nodes to zero:
@@ -114,6 +114,35 @@ kubectl set image deployment <nameOfDeployment> <nameOfContainer>=<imageName>:ve
 
 How to kill a pod:
 kubectl delete pod <podId>
+
+Deployment history:
+kubectl rollout history deployment <name_of_deplyment>
+
+Undo deployment:
+kubectl rollout undo deplyment <name_of_deplyment> --to-revision=<numberOfRevision>
+
+Get status of deployment:
+kubectl rollout status deployment <name_of_deplyment>
+
+Get logs:
+kubect logs <POD_ID> -f
+
+Get YAML configuration of deplyment:
+kubectl get deployment <name_of_deplyment> -o yaml
+
+Get YAML configuration of deplyment to file:
+kubectl get deployment <name_of_deplyment> -o yaml > deployment.yaml
+
+Apply YAML condiguration to deployment:
+kubectl apply -f deployment.yaml
+
+Delete deployment:
+kubectl delete all -l app=<name_of_deplyment>
+
+Get difference between the existing deployment and the new one:
+kubectl diff -f deployment.yaml
+
+
 
 Commands:
 minikube version
