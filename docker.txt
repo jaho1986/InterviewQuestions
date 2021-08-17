@@ -69,3 +69,19 @@ docker push NAME:TAG
 Process to upload a SringBoot App:
 mvn clean install
 docker push NAME:TAG
+
+Run an application linked to another container:
+docker run -p {hostPort}:{containerPort} --link=mysql --env RDS_HOSTNAME=mysql  NAME:TAG
+
+Run an application using docker compose:
+docker-compose up
+
+
+A better alternative to --link is to launch both the applications into a custom docker network.
+Here are the commands you can use:
+docker network ls
+docker network create web-application-mysql-network
+docker inspect web-application-mysql-network
+docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=todos-user --env MYSQL_PASSWORD=dummytodos --env MYSQL_DATABASE=todos --name mysql --publish 3306:3306 mysql:5.7
+docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=todos-user --env MYSQL_PASSWORD=dummytodos --env MYSQL_DATABASE=todos --name mysql --publish 3306:3306 --network=web-application-mysql-network mysql:5.7
+docker inspect web-application-mysql-network
