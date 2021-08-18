@@ -85,6 +85,13 @@ kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=gcr.io/goo
 To roll back the deployment to your last working version, use the rollout undo command:
 kubectl rollout undo deployments/kubernetes-bootcamp
 
+Persistent Volume:
+PV is how we map external storage into our cluster.
+
+
+Persistent Volume claim:
+It's how a pod ask for a persistent volume.
+
 kubectl create deployment -> create: deployment, replicaset & pod
 kubectl expose deployment -> create: service
 
@@ -145,7 +152,29 @@ kubectl diff -f deployment.yaml
 Get all namespaces from a pod:
 kubectl get pods --all-namespaces
 
+Get list of persistent volume configured:
+kubectl get pv
 
+Get list of persistent volume claims configured:
+kubectl get pvc
+
+Create a configmap:
+kubectl create configmap <NameOfConfigMap> --from-literal=RDS_DB_NAME=mysql
+
+Get configmap:
+kubectl get configmap <NameOfConfigMap>
+kubectl describe <NameOfConfigMap>
+
+Store a password in Kubernetes:
+kubectl create secret generic <secretName> --from-literal=RDS_PASSWORD=<yourPassword>
+
+Get passwords store:
+kubectl get <secretName>
+
+Delete a service:
+kubectl delete service <nserviceName>
+
+Create a ClusterIP Kubernetes Service for MySQL DB:
 
 
 Commands:
