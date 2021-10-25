@@ -5,6 +5,7 @@ Tips Java:
  - Herencia: Proceso en el que una clase adquiere campos y métodos de otra.
  - Cada vez que se extiende de una clase abastracta, se deben de implementar todos los métodos abstractos.
  - Un método estático no puede sobreescribir un método padre, a menos que este también sea estático.
+ - Cuando un método sobre escribe a otro, su tipo de retorno tiene que ser compatible.
  - El valor de una variable estática es el mismo para todas las instancias de esa clase. Si lo modificas, se modifica para todas.
  - Cuando una variable de un tipo genérico se declara con var y el inicializador no especifica un argumento de tipo, recurre a la clase Object.
  - Todas las variables declaradas en una interfaz son públicas, estáticas y finales.
