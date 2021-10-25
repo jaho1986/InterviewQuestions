@@ -13,6 +13,8 @@ Tips Java:
  - Siempre se debe de especificar las dimenciones de los arreglos, al menos de la primera posición.
  - Las listas son de dimención variable a pesar de que se le especifique una capacidad inicial.
  - Comando para listar las dependencias de un módulo: jdeps --list-deps
+ - jdeps --check: Imprime la descripción del módulo.
+ - java --list-modules: Lista todos los módulos observables dentro del sistema.
  - Los principales objetivos de un sistema de módulos de java son: configuraciones confiables y encapsulación fuerte.
  - Sólo se puede especificar un paquete con las directivas export y requires.
  - Las interfaces funcionales son aquellas que sólo tienen un método abstracto. (Los métodos de la clase Object no cuentan).
@@ -22,6 +24,7 @@ Tips Java:
  - Callable no puede utilizarse para construir un objeto de tipo thread.
  - Una tarea Callable arroja una check exception, mientras que una tarea Runnable no.
  - Las clases de instancia pueden tener cualquier tipo de modificador: public, protected, private, default.
+ - La primera línea de un constructor debe de ser super()
  - Una máquina virtual puede tener una o cero consolas.
  - Las operaciones de lectura y escritura sobre consolas son síncronas.
  - No se pueden tener métodos de tipo Deault y Abstract cuando las clases son de tipo final.
@@ -45,7 +48,7 @@ Tips Java:
  - DoS Atttaks, hacen consumo excesivo de recursos.
  - Las variables locales (variables de método) no pueden ser utilizadas antes de ser declaradas.
  - El método noneMatch() de Stream retorna Boolean, no Optional.
- - EL método List.copyOf devuelve una lista no modificable de objetos, por lo que al aplicar add() o remove() arroja una UnsupportedOperationException
+ - EL método List.copyOf devuelve una lista no modificable de objetos, por lo que al aplicar add() o remove() arroja una UnsupportedOperationException. Si hay elementos nulos dentro de la lista, arroja un NullPointerExeption.
  
  
  
