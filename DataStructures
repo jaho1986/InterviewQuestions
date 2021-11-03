@@ -1,0 +1,511 @@
+Data Structures
+
+Why to use data structures?
+ - To store data in an eficient way.
+ - Make every calculations as fast as possible.
+ - Algorithms can be boosted up by proper data structures.
+ - Data structures make sure the running time will be the better.
+ - Avoid nested for loops.
+
+
+Arrays
+
+Is a collection of elements / values each identified by an array index.
+ - index starts at zero.
+ - Because of the indexes: random access is posible.
+ - Are data structures in order to store items of the same type.
+ - We use indices as keys.
+ - Arrays have as many dimensions as we want.
+ - The size of the array change dynamically.
+ - Applications: lookup tables / hashtables, heaps.
+
+Advantages:
+ - We can use random access because of the keys  - 
+ - Easy to implement and use.
+ - Very fast data structure.
+ - We should rays in applications when we wasn’t to add items over and over again and we want to take items with given indexes.
+
+Disadvantages:
+ - We have to know the size of the array at compile-time: so it’s not so dynamic data structure.
+ - It it is full: we have to create a bigger array and have to copy the values one by one O(n).
+ - It’s not able to store items with different types.
+
+Operations
+ - Add. O(1) We can keep adding values to the array as far as the array is not full.
+ - Insert. O(n) we can insert a given value with a given index. If we want to insert a value on an occupied index we have to move the others.
+ - Remove
+   - Removing last item O(1).
+   - Removing f.e. Middle item O(n).
+
+
+Linked lists
+
+Linked list are composed of nodes and references / pointers pointing from one node to the other. Last reference is pointing to a null.
+ - Simple and very common data structure.
+ - They can be used to implement several other common data types: stacks, queues.
+ - Simple linked list by themselves do not allow random aceces to the data.
+ - Many basic operations such as obtaining the last node of the list or finding a node that contains a given data or locating the place where a node should be inserted - require sequential scanning of most or all the list elements.
+
+Single node:
+ - Contains data.
+ - Contains reference pointing to the next node in the linked list.
+
+Advantages:
+ - Linked list are dynamic data structures.
+ - It can allocate the needed memory in run-time.
+ - Very efficient if we want to manipulate the first elements.
+ - Easy implementation.
+ - Can store items with different sizes: an array assumes every element to be exactly the same.
+ - It’s easier for a linked list to grow organically. An array’s size needs to be known ahead of time, or re-created when it needs to grow.
+ 
+Disadvantages 
+ - Waste memory because of the references.
+ - Nodes in a linked list in order from the beginning as linked lists have sequential access array items can be reached via indexes in O(1) time).
+ - Difficulties arise in linked list when it comes to reverse traversing. Singly linked list are extremely difficult to navigate backwards.
+ - Solution: doubly linked list  are easier to read. But memory is wasted in allocating space for a back pointer.
+
+Operations
+ - Inserting items at the beginning: Very Simple, we just have to update the references O(1) Complexity. We just have to set de pointer to to point the next node.
+ - Inserting items at the and of the linked list: not that simple, we have to traverse the while linked list to find the las node. How to find the last node? The last node is pointing to null. We have to update the references when we get there O(n) complexity.
+ - Remove item at the beggining of the list: (very fast) We do not have to serch the item, we just have to update the references accordingly O(1).
+ - Remove item at a given point of the list: (not very fast) we have to search for the given item wich make take a lot of time if the item is at the end of the list O(n).
+
+
+Double Linked lists
+
+Node class has two references, one pointing to the next node, one pointing to the previous node.
+
+
+Linked lists VS Arrays
+Search:
+ - Search operation is pretty fast compared to the Linkedlist search operation.
+ - We can use random access with arrays. getItem(int Index) is O(1).
+ - LinkedList performance is O(n).
+ - Arraylist are better for this operation.
+Deletion:
+ - LinkedList remove operation takes O(1) if we remove items from the beginning.
+ - ArrayList: removing the first element (at the beginnning takes O(n) complexity. Removing the last item takes O(1).
+ - ArrayList: We have to reconstruct the array when removing.
+ - LinkedList are better for this operation. Removal only requires change the pointer location wich can be done very fast.
+
+Stacks
+ - It´s an abstract data type (Interface).
+ - Basic operations: pop(), push(), pick().
+ - LIFO Structure.
+ - In most high level languages, a stack can be easily implemented by either by arrays or linked lists.
+ - A number of programming languages are stack-oriented, meaning they define most basic operations (adding two numbers, printing a character) as tasking they arguments from the stack and placing any return values from the stack.
+
+Push operation:
+Put the given item to the top of the stack O(1).
+
+Pop operation:
+We the take the las item inserted to the top of the stack LIFO O(1).
+
+Peek operation:
+It's going to return the las item of the stack without removing it O(1).
+
+Applications
+ - In stack-oriented programming languages.
+ - Graph algorithms: depth-first search can be implemented with stacks (or with recursion).
+ - Finding Euler-cycles a graph.
+ - Finding strongly connected components in a graph.
+
+Differences between stack and heap memory:
+
+Stack "call stack"
+ - Most important applications of stacks: stack memory.
+ - Fast access. It is a special region of memory (in the RAM).
+ - Limited size.
+ - (Store variables) A call stack is an abstrac data type  that stores information about the active subroutines / methods / functions of a computer program.
+ - The ditails are normally hidden and automatic in high-level programming languages.
+ - Space is mannaged efficiently by the CPU.
+
+Why is good?
+ - It keeps track of the point wich each active subroutine should return control when it finishes executing.
+ - Store temporary variables created by each function.
+
+ - Every time a function declares a new variable it is pushed onto the stack.
+ - Every time a function exists all of the variables - pushed onto the stacks by that function - are freed -> all of  it's variables are pop off the stack // and lost forever!
+ - Local variables: they are on the stack, after function returns they are lost.
+ - Stack memory is limited!
+ - Variables cannot be resized.
+
+Heap Memory:
+ - Slow access. The heap is a region of memory that it is not managed automatically for you.
+ - No size limits. This is a large region of memory //unlike a stack memory.
+ - (Store objects) In java reference types and objects are on the heap.
+ - Memory may be fragmanted. We have to deallocate this memory chuncks: because it is not maganed automatically.
+ - If not, memory leaks! (is the situation where there are dead objects on the heap memory).
+ - It is slower because of the pointers.
+ - Variables can be resized // realloc().
+
+Stack and recursion
+ - There are several situations where recursive methods are quite handy.
+ - For example: DFS, traversing a binary search tree, looking for an item in a linked list.
+ - Recursive algorithms can be transformed into a simple method with stacks.
+ - Important: If we use recursion, the OS will use stacks anyways!
+
+Real-world applications of stacks:
+ - Back button in web browsers.
+ - Undo operation in software.
+ - Stack memory stores local variables and function calls.
+
+
+Queues
+
+ - It is an abstract data type - and it can be implemented either with arrays or with linked lists.
+ - It has a so-called FIFO structure - The first item we inserted is the first item we take out.
+ - Basic operations are enqueue(), dequeue() and peek().
+ - Has several applications in operting systems and thread management (multithreading).
+
+Applications
+ - Queues are useful when a resource is shared with several customers (for example threads).
+ - Threads are stored in queues.
+ - Queues are important in CPU scheduling.
+ - When a data is transferred asynchronously (data not necessarily received at same rate as sent) between two processes.
+ - Graph alcorithms rely heavily on queues: breadth-first search use queue as underlying astract data type.
+
+
+Binary Search Trees
+
+ - A tree is a G(Vertice,Edge) undirected graph in wich any two vertices are connected by exactly one path or equivalently a connected acyclic undirected graph.
+ - We can search for an arbitrary item in O(logN) logarithmic time complexity. Compared with arrays and linked lists, searching for an abitrary item (or removing an arbitrary item) takes O(n) linear running time for both data structures.
+ - Every node in the tree can have at most 2 children (left child and right  child).
+ - Left child is smaller than the parent node.
+ - Right child is greater than the parent node.
+ - We can access the root node exclusively and all other nodes can be accessed via the root node.
+ - The height of a tree is the nomber of edges on the longest downward path between the root node and the leaf node. Is the nomber of layers that contains the tree.
+ - The logarithmic O(logN)  runnin time is valid only when the tree structure is balanced.
+ - We should keep the height of a tree at a minimum wich is h=logN.
+ - The tree structure may become imbalanced which means the number of nodes significantly differ in the subtrees. In an imbalanced tree the running time of operations can be reduced to even O(n) linear Running time complexity.
+ - If the tree is imbalanced so the h=logN relation is no more valid then the operations running time is no more O(logN) logarithmic.
+ - Binary search trees are data structures so the aim is to be able to store items efficiently.
+ - It keeps the keys in sorted order so that lookup and other operations can use the principle of binary searxh sith O(logN) running time.
+ - Each comparison allows the operations to skip over half of the three, so tahat each operations takes time proportional to the logarithm of the number of items stored in the tree.
+ - This is much better than O(N) the linear time required to find items by the key in an unsorted array but slower than the corresponding operations on hash tables with O(1).
+
+How many N nodes are there in a complete binary search tree with h height?
+2  exp(h-1) = N
+
+Root node: 
+It is the first node of the data stucture.
+
+Leaf node:
+Are the nodes tah don't have childrens at all.
+
+Binary Search Tree Traversal
+Tree traversal meas visiting every node of the binary search tree exactly once in O(N) linear running time.
+ - Pre-order traversal.
+ - In-order traversal.
+ - Post-order traversal.
+
+Pre-order traversal
+We visit the root node of the binary tree then left subtree and finally the right subtree in a recursive manner.
+
+Post-order traversal
+We visit the left subtree of the binary tree, then the right subtree and finally the root node in a recursive manner.
+
+In-order traversal
+We visit the left subtree of the binary tree, then the root node and finally the right subtree.
+
+
+AVL trees (balanced trees)
+
+ - It's a balanced data structure invented back in 1962 by Adelson, Velsy and Landis (AVL).
+ - This data structure has a guaranteed O(logN) running time.
+ - The running time of binary search trees depends on the h height of the bynary search tree.
+ - In an AVL tree the heights of the two child subtrees of any node difffer by at most one.
+ - AVL trees are faster than red-back trees because they are more rididly balanced but needs more work.
+ - Operating systems relies heaviy on these data structures.
+
+AVL trees vs Red-black trees
+ - AVL trees are rigidly balanced this is why O(logN) running time is guaranteed (it is as fast as a binary search tree can be).
+ - Red-black trees are faster to construct because they are not as balance as AVL trees (but is not as fast as AVL trees).
+
+Operations
+ - All the operations are the same as we have seen with binary search trees (insertion and removal).
+ - After every insertion and removal operations we have to check whether the tree has become imbalanced or not.
+ - if the tree is imbalanced then we have to make rotations.
+
+The height of a tree is the number of edges on the longest downward path between the root and a leaf node. the number of layers the tree contains.
+
+How to calculate height?
+height = max (left child's height, right child's height) + 1
+
+The height of a node:
+Is the longest path from the actual node to a leaf node. The height of a null node is -1 to be consistent (this is why leaf nodes have height 0).
+
+ - AVL trees are exactly the same as binary search trees.
+ - The only difference is that we track the height parameter of the nodes in the tree.
+ - height = |h(left) - h(right)| > 1 
+ - All subtrees height parameter can not difeer more than 1 (otherwise the tree is imbalanced).
+ - We have to update the binary search tree and make rotations if it gets imbalanced.
+ - This is why we have the h height parameters - we just have to check the differences in height parameters after every operation.
+
+AVL Trees Rotations
+ - We have to track the h height parameters for all the nodes in the binary search tree.
+ - We can calculate the balance factors for the nodes.
+ - Have to take rotations if neccesary to rebalance search trees.
+ - Rotations are extremely fast - we just have to update the references in O(1) constant running time.
+ - This operation does not change the properties of the three.
+ - The in-order traversal remains the same as well as the parent-child relationships in the tree.
+ - There may be other issues because of rotations.
+ - We have to check up to the root node whether to make further rotations or not - it takes O(logN) running time.
+
+Left rotation:
+Negative balance factors means right heavy situation, so we have to make a left rotation to rebalance the tree.
+
+Right rotation:
+Positive balance factors means left heavy situation, so we have to make a right rotation to rebalance the tree.
+
+
+Red-Black Trees
+
+ - It is a balanced data structure invented back ina1978 by Leonidas Guibas and Robert Sedwick.
+ - This data structure has guaranteed O(logN) running time.
+ - The ruuning time of binary search trees depends on the h height of the binary search tree.
+ - AVL trees are faster than red-black trees because they are more rigidly balanced but needs more work.
+ - Bit it is fastore to consructo a red-black tree.
+ - Operating systems relies heavily on these data strucutres.
+
+Red-back trees (properties)
+ - Each node is either red or black.
+ - The root node is always black.
+ - All lead nodes (null pointers) are black.
+ - Every red node must have two black child nodes and no ohter children - it must have a black parent.
+ - Every path from a given node to any of its descendant NULL nodes contains the same number of black nodes.
+
+Operations
+ - Left Rotation: Negative balance factors means right heavy situation, so we have to make a left rotation to rebalance the tree.
+ - Right Rotation: Positive balance factores means left heavy situation, so we have to make a right rotation to rebalance the tree.
+
+The logic behind the red-black trees
+ - Every node must have two black children.
+ - Every path from a given node to any of its descendant NULL nodes contains the same m number of black nodes.
+ - Lets assume that the shortest path from the root to any leaf node contains m black nodes.
+ - If we want to construct longer path: we have to insert new red nodes, but we can not just insert red nodes because of (1).
+ - So, the longest path contains 2m nodes (alternating red and black) beacuse of (2) every maximal path have the same number of black nodes.
+
+Cases when we have to recoloring:
+ - The uncle of x has color red.
+   - This is a relatively simple case when we just have to recolor some nodes. 
+   - Then, the x node will be the root node. 
+   - So, with the recoloring operation we may violate the red-black properties in other part of the binary search tree. 
+   - We have to check the properties recursively starting with the node we have manipulated up to the root node in O(logN) running time.
+ - The parent of x has a red node and the uncle is black
+   - We have to make a left rotation on the parent of node x. 
+   - So, with the rotation operation we may violate the red-black properties in other part of the binary search tree.
+   - We have to check the properties recursively starting with the node x up to the root node in O(logN) running time.
+ - The parent of x is a red node and the uncle is black.
+   - The left node is a child in this case.
+   - We have to rotate the grandparent of node x to the right + Recoloring!
+   - We have to check the peroperties recursively starting with x up to the root node in O(logN) running time.
+ - The parent of x is a red node and the uncle is red.
+
+
+Splay trees
+
+ - Are types of binary search trees with the additional property that recently accessed elements are quick to access again.
+ - Was invented back in 1985 by Daniel Sleator and Robert Tarjan.
+ - Most of the operations have O(logN) time complexity - but some are very slow O(N) running times.
+ - Splay trees are not strictly balanced - that is why it is faster and it is easy to implement.
+ - Splay trees are kept balanced with the help of rotations.
+ - Fast acces to elements accessed recently.
+
+Main feature of splay trees:
+Recently manipulated nodes are located near the root node of the splay tree - the topology is maintained by rotations.
+
+Search Operation
+ - It is like stardart binary search tree.
+ - We make rotations when we find the given element we are looking for - it is going to be the root node.
+ - This operation is called splaying.
+ - The aim of rotations (splaying) is not to rebalance the tree.
+ - In the next search it can be accessed very fast even O(1) time becasuse it is in the root node.
+
+The splaying operation can be acheived by 3 methods (relies heavily on standad subtree rotations).
+
+Zig-Zag situation:
+ - The node x is a right child of a left child or the node x is a left child of a right child.
+ - Basically this is the left-right heavy (or right-left heavy) case.
+ - Here we have symmetric cases again.
+ - We have to make 2 rotations (left and right rotations).
+
+Zig-Zig situation:
+ - The node x is a left child of a left child or the node x is a right child of a right child.
+ - This is the double left or right heavy cases.
+ - Here we have symmetric access again.
+ - We have to make 2 rotations (left and right rotations).
+
+Zig situation:
+ - We have to repeat the previous steps (zig-zig and zig-zag cases) over and over again until we get to the root node.
+ - Sometimes we endup at situations when just a single (left or right) rotation is needed to make sure node x will become the root node.
+ - Here node x is just the child of the root..
+
+
+Priority Queues
+
+ - It is a abstract data type such as queue.
+ - Every item has an additional property - the so - callled priority value.
+ - In a priority queue are usually implemented with a heap data structure but it can be implemented with self balancing trees as well.
+ - It is very similar to queues with some modification: the highest priority element is retieved first.
+
+Heapsort:
+ - The concept of priority queues naturally suggest a sorting algorithm were we have to insert all the elements to be sorted into a priority queue.
+   - Remove the items one by one from the priority queue and it yields the sorted order.
+   - If we take out a given item it will be the one with the highest priority value.
+   - This is exactly how heapsort works.
+
+Heaps:
+ - Heaps are basically binary trees.
+ - Heaps types: min heap and max heap.
+ - It was firs constructed back in 1964 by W.J. Williams.
+ - It is complete, so it can not be inbalanced.
+ - We insert every new item to the next available place.
+ - APPLICATIONS: Dijkstra's algorithm, Prim's algorithm.
+
+Max Heap:
+In a max Heap the keys of parent nodes are allways greater than or equal to those of the children. The highest key (max value) is in the root node.
+
+Min heap:
+In a min heap the keys of a parent nodes are less than or equal to those of the children and the lowest key (min item) is in the root node.
+
+Heap properties:
+ - Completeness: We construct the heap from left to right across each row - of course the last row may note be fully complete.
+ - Heap property: Every node can have 2 children so heaps are almost-complete binary trees.
+   - Min heap: The parent node is allways smaller than the cihld nodes (left and right nodes).
+   - Max heap: The parent node is allways greater than the child nodes (left and right nodes).
+
+Remove operation:
+ - Removing the root node (and usually this is the case) can be done in O8logN) running time.
+ - What if we want to remove an arbitrary item?
+   - First, we have to find it in the array with O(N) linear search and then we can remove it in O(logN).
+   - Removing an arbitrary item takes O(N) time.
+ - This is the same if we want to find an item in a heap.
+ - Heaps came to be to find and manipulate the root node (max or min item) in an efficient manner.
+
+
+Heapsort
+
+ - It was constructed back in 1964 by J.W.J. Williams
+ - Heapsort is a comparison-based sorting algorithm.
+ - Uses heap data structure rather than linear-time search to find the maximum.
+ - It is a bit slower in practice on most machines than well-implemented quicksort.
+ - But has the advantage of a more favorable O(logN) worst-case running time complexity.
+ - Heapsort is an in-place algorithm.
+ - Does not need additional memory - of course we have to store the N items.
+ - But it is not a stable sort - wich means it does not keep the relative order of items with same values.
+ - First we have to construct the heap data strucutre from the numbers we want to sort.
+ - We have to consider the items one by one in O(N) and we have to insert them into the heap in O(logN) so the total running time will be O(NlogN).
+
+
+Binomial Heaps
+
+ - It is similar to a binary heap but also supports quick merging of two heaps.
+ - It is important as an implementations of the mergeable heap abstract data type (meldeable heap).
+ - Wich is a priority queue basically + supporting merge operation.
+ - A binomial heap is implemented as a collection of trees.
+ - The O(logN) logaritmic insertion time complexity can be reduced to O(1) constant time complexity with the hwlp of binomial heaps.
+
+
+Fibonacci Heaps
+
+ - Fibonacci heaps are faster than the classic binary heap.
+ - Dijkstra's shortest path algorithm and Prim's spanning tree algorithm run faster if they rely on Fibonacci heap instead of binary heaps.
+ - But very hard to implement efficiently so usually does not worth the effort.
+ - Unlike binary heaps it can have several children - the number of children are usually kept low.
+ - We can achieve O(1) running time for insertion operation insteado of O(logN) logaritmic running time for insertion operation instead of O(logN) logaritmic running time.
+ - Every node has degree at most O(logN) and the size of a subtree rooted in a node of degree K is at least F(sub k+2) where F(k) is the k-th Fibonacci number.
+
+
+B-Trees
+
+ - It was first constructed in 1971 by rudolf Bayer and Ed McCreight.
+ - B-Trees are self balancing tree like data structures.
+ - Supports operations such as insertion, deletion, sequential acces and searching O(logN) time complexity.
+ - The nodes may have more than 2 children + multiple keys.
+ - B-Tree data structures are optimized for systems that read and write large blocks of data.
+ - B-Trees are good example of data structure for external memory .
+ - Commonly used in databases and filesystems.
+
+B-Trees propeties
+ - All the nodes of the tree structure can contain m keys - so it may have m+1 children (branching fator).
+ - Every node is at least half full - so contain at least m/2 items.
+ - If the N number of items in a node is less than m/2 then we merge it with another node and if N>m then we split the node.
+ - All the leaf nodes are the same level (balanced).
+
+B-Tree removal
+ - We remove an item from the node and does not violate the B-Tree properties so the number of items remains in the range [m/2, m].
+ - We remove an item from the node and the B-Tree properties are violated as ther will be less than m/2 items in the given node. We can take an item from the left sibiling making a left rotation.
+ - We remove an item from the node and the B-Tree properties are violated as ther will be less than m/2 items in the given node. We can take an item from the right sibiling making a right rotation (this is when is no left sibiling available).
+ - We remove an item from the node and the B-Tree properties are violated as ther will be less than m/2 items in the given node. There is no additional items in the sibilings so we have no other option ut to merge nodes. In this case we delete de empty node and we down le left item of the parent node to the left child.
+
+
+B-Trees Advantages and Disadvantages
+ - There are several advantages of B-trees:
+   - There is a guaranteed O(logN) logarithmic running time.
+ - Disadvantages:
+   - There may be several empty cells.
+
+
+Associative Arrays
+
+ - Associative arrays (maps or dictionaries) are abstract data tpes.
+ - Composed of a collection of key-value pairs where each key appears at most once in the collection.
+ - Most of the times we implement associative arrays with hashtables but binary search trees can be used as well.
+ - The aim is to reach O(1) time complexity for most of the operations.
+ - The key and value pairs unordered - this is why associative arrays do not support sorting as an operation.
+
+
+Hashtables
+
+ - The motivation is that we want to store (key,value) pairs efficiently - so that the insert and remove operations take O(1) running time.
+ - Key must be unique to avoid using the same indexes.
+ - h(x) hash-function transforms the key into an index in the range [0,m-1].
+
+Hashtable collisions
+ - Collisions occur when h(x) hash-function maps two keys to the same array slot (bucket).
+ - The h(x) hash-function defines the relationshits between the keys ande array indexes (buckets).
+ - If the hash-function is perfect then there are no collitions.
+ - In real-world there will be conllisions because there are no perfect hash functions.
+
+There are several approches to deal with collisions:
+
+Chaining: We store items in the same bucket (with same indexes) in a linked list data structure.
+ - In worst-case scenario the h(x) hash function puts all the items into the same bucket (array slot).
+ - We end up with a linked list with O(N) linear running time for most of the operations.
+
+Open addressing: If we come to the conclusion that there is a collision then we generate a new index for the item (try to find another bucket).
+
+Linear probing: if collision happend at array index k then we try index k+1, k+2, k+3... until we find an empty bucket.
+ - Not allways the best option possible because there will be clusters in the underlying array.
+ - But it has better cache performace than other approaches.
+
+Cuadratic probing: if collision happend at array index k then we try succesive values of an arbitrary quadratic polinomial (array slots 1, 4, 9, 16... steps aways from the collision).
+ - There will be no clusters (unlike linear probing).
+ - But no cache advantage (items are far away in memory).
+
+Rehashing: If collision happend at array index k then we use the h(x) hash-functiion again to generate a new index.
+
+Load Factor
+ - The p(x) probability of collision is not constant.
+ - The more items are there in the hashtable the higher the p(x) probability of collision.
+ - THis is why we have to define a new parameter of the hashtable - tht so-called load factor.
+
+Small load factor (arround 0)
+ - The hashtable is nearly empty wich means low p(x) probability of collisions.
+ - But of course a lot of memory is wasted.
+
+High load factor (arround 1)
+ - The hashtable is nearly full wich means high p(x) probability of collisions.
+ - No memory is wasted but the running time me be reduced to O(N) linear running time.
+
+Load factor and dinamyc resizing:
+Performance relies heavily on the load factor. Sometimes it is better to use memory to acheive faster running times.
+ - When the load factor is > 0.75 the Jave rezise the hashtable automatically to avoid too many collisions.
+ - Python does the same when the load factor > 0.66.
+
+Dynamic rezising
+ - Sometimes is better to rezise and change the size of the underlying array data structure.
+ - But the problem is that the has values are dependeing on the size of underlying array data structure.
+ - So we have to consider all the items in the old hashtable and insert them into the new one with the h(x) hash-function.
+ - It takes O(N) linear running time - this fact may take dynamic-sized hash tables inappropiate fore real-time applications.
