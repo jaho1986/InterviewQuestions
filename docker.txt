@@ -76,6 +76,17 @@ docker run -p {hostPort}:{containerPort} --link=mysql --env RDS_HOSTNAME=mysql  
 Run an application using docker compose:
 docker-compose up
 
+Copy any element into a container:
+docker container cp {nameOfElementToBeCopied} {nameOfContainer}:/{path}
+docker container exec {nameOfContainer}  ls /{directory}
+
+Execute a JAR into a container (creating an image manually):
+docker container commit {nameOfContainer} {nameOfTheJAR}:{tagName}
+docker commit --change='CMD ["java","-jar","{path}/{nameOfTheJAR}.jar"]' {containerNameInWichIsStored}/nameOfTheJAR}:{tagName}
+docker run -p {hostPort}:{containerPort} {nameOfTheJAR}:{tagName}
+
+Build an image from Dockerfile:
+docker build -t {nameOfRepository}/{nameOfTheImage}:{nameOfTheTag} .
 
 A better alternative to --link is to launch both the applications into a custom docker network.
 Here are the commands you can use:
@@ -85,3 +96,9 @@ docker inspect web-application-mysql-network
 docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=todos-user --env MYSQL_PASSWORD=dummytodos --env MYSQL_DATABASE=todos --name mysql --publish 3306:3306 mysql:5.7
 docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=todos-user --env MYSQL_PASSWORD=dummytodos --env MYSQL_DATABASE=todos --name mysql --publish 3306:3306 --network=web-application-mysql-network mysql:5.7
 docker inspect web-application-mysql-network
+
+Build a Docker image from a simple springboot app:
+ - Build a Jar.
+ - Setup the prerequisites for running the jar (- openjdk:8-jdk-alpine)
+ - Copy the jar
+ - Run the JAR
