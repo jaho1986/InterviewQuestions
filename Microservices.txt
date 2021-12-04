@@ -136,6 +136,11 @@ Developing and implementing API is costly at times and requires high maintenance
  - Security issues: 
 Using API adds another layer of surface which is then prone to attacks, and hence the security risk problem is common in API’s.
 
+Use of API Gateways:
+ - Authentication, authorization and security.
+ - Rate limits.
+ - Fault tolerance.
+ - Service aggregation.
 
 Principles Used to Design Microservice Architecture:
  - Independent & Autonomous Services
