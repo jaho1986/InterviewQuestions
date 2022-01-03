@@ -1,4 +1,4 @@
-# Kubernetes commands
+# Kubernetes on GCP
 
 This file, will help you to do some basic operations with kubernetes. This commands were run and tested on Google Cloud Platform.
 
@@ -33,3 +33,29 @@ Update the image of a deployment:
 Check the status of the deployment:
 
     kubectl rollout status deployment [deployment_name]
+
+Check the history of the deployment (if necesary):
+
+    kubectl rollout history deployment [deployment_name]
+
+## Update a deployment (using a YAML file)
+
+    kubectl apply -f filename.yaml
+
+## Get information about a deployment
+
+How to see the logs:
+
+    Kubectl logs [pod_name] -f
+
+Get info about deployment:
+
+    kubect get deployment [deployment_name] -o wide
+
+Get YAML configuration about deployment and save it:
+
+    kubect get deployment <deployment_name> -o yaml > filename.yaml  
+
+Geet YAML configuration of a service:
+
+    kubectl get service <name> -o yaml > filename.yaml
