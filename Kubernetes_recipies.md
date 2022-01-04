@@ -39,6 +39,31 @@ Check the history of the deployment (if necesary):
     kubectl rollout history deployment [deployment_name]
 
 ## Update a deployment (using a YAML file)
+We can start by exporting the configuration of the deployment by exporting the configuration of the service and the deployment with the following commands:
+
+    kubectl get deployment [deployment_name] -o yaml > filename.yaml
+    kubectl get service [service_name] -o yaml > filename.yaml
+
+But we need to remove the unnecessary properties of the YAML files:
+ - annotations 
+ - creationTimestamp 
+ - generation 
+ - resourceVersion 
+ - selfLink 
+ - uid
+ - clusterIp 
+ - progressDeadlineSeconds 
+ - revisionhistroyLimit 
+ - resources
+ - terminationMessagePath 
+ - terminationMessagePolicy 
+ - dnsPolicy
+ - schedulerName 
+ - securityContext 
+ - status (general property)
+ - externalTrafficPolicy
+
+And then, apply all changes by using the following command:
 
     kubectl apply -f filename.yaml
 
@@ -54,8 +79,8 @@ Get info about deployment:
 
 Get YAML configuration about deployment and save it:
 
-    kubect get deployment <deployment_name> -o yaml > filename.yaml  
+    kubect get deployment [deployment_name] -o yaml > filename.yaml  
 
 Geet YAML configuration of a service:
 
-    kubectl get service <name> -o yaml > filename.yaml
+    kubectl get service [service_name] -o yaml > filename.yaml
