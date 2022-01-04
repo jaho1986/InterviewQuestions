@@ -19,13 +19,14 @@ Create a deployment:
     kubectl create deployment [deployment_name] --image=[image_name]:[tagname]
 Expose the deployment:
 
-    kubectl expose deployment [deployment_name] --type=LoadBalancer  --port=[number]
+    kubectl expose deployment [deployment_name] --type=LoadBalancer --port=[number]
 
 ## Update a deployment
 
 Connect to Google Cloud:
 
     gcloud container clusters get-credentials cluster-1 --zone [zone_name] --project [project_name]
+
 Update the image of a deployment:
 
     kubectl set image deployment [deployment_name] [container_name]=[image_name]:[tagname] —record=true
@@ -39,10 +40,10 @@ Check the history of the deployment (if necesary):
     kubectl rollout history deployment [deployment_name]
 
 ## Update a deployment (using a YAML file)
-We can start by exporting the configuration of the deployment by exporting the configuration of the service and the deployment with the following commands:
+We can start by exporting the configuration of the deployment and exporting the configuration of the service and the deployment with the following commands:
 
-    kubectl get deployment [deployment_name] -o yaml > filename.yaml
-    kubectl get service [service_name] -o yaml > filename.yaml
+    kubectl get deployment [deployment_name] -o yaml > deployment_filename.yaml
+    kubectl get service [service_name] -o yaml > service_filename.yaml
 
 But we need to remove the unnecessary properties of the YAML files:
  - annotations 
@@ -63,6 +64,9 @@ But we need to remove the unnecessary properties of the YAML files:
  - status (general property)
  - externalTrafficPolicy
 
+Verify if there are differences between the new deplyment and the actual deployment:
+
+    kubectl diff -f deployment.yaml
 And then, apply all changes by using the following command:
 
     kubectl apply -f filename.yaml
@@ -79,8 +83,31 @@ Get info about deployment:
 
 Get YAML configuration about deployment and save it:
 
-    kubect get deployment [deployment_name] -o yaml > filename.yaml  
+    kubect get deployment [deployment_name] -o yaml > deployment_filename.yaml  
 
 Geet YAML configuration of a service:
 
-    kubectl get service [service_name] -o yaml > filename.yaml
+    kubectl get service [service_name] -o yaml > service_filename.yaml
+
+## Delete everything related to a deployment
+
+    kubectl delte all -l app=[app_name]
+
+Get all resources:
+
+    kubectl get all
+
+## Aditional commands to get information
+
+    kubectl get pods -o wide
+    kubectl get pods --all-namespaces
+    kubectl get pods -l app=[app_name]
+    kubectl get services
+    kubectl get services --sort-by=.spec.type
+    kubectl cluster-info
+    kubectl top node
+    kubectl top pod
+    kubectl get rs
+    kubectl get namespaces
+    kubectl get nodes
+    
