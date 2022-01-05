@@ -12,7 +12,7 @@ This file, will help you to do some basic operations with kubernetes. This comma
 
 Connect to Google Cloud:
 
-    gcloud container clusters get-credentials cluster-1 --zone [zone_name] --project [project_name]
+    gcloud container clusters get-credentials [cluster_name] --zone [zone_name] --project [project_name]
     
 Create a deployment:
 
@@ -25,7 +25,7 @@ Expose the deployment:
 
 Connect to Google Cloud:
 
-    gcloud container clusters get-credentials cluster-1 --zone [zone_name] --project [project_name]
+    gcloud container clusters get-credentials [cluster_name] --zone [zone_name] --project [project_name]
 
 Update the image of a deployment:
 
@@ -110,4 +110,8 @@ Get all resources:
     kubectl get rs
     kubectl get namespaces
     kubectl get nodes
-    
+
+## Create deployment files using Kompose
+Command needed to create deployment files:
+
+    kompose create
