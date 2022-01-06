@@ -110,8 +110,60 @@ Get all resources:
     kubectl get rs
     kubectl get namespaces
     kubectl get nodes
+    kubectl get pv
+    kubectl get pvc
+    kubectl logs [pod_name] -f
 
-## Create deployment files using Kompose
-Command needed to create deployment files:
+## Create a new deployment using Docker-Compose files
+Verify if yur docker-compos config is working:
 
-    kompose create
+    docker-compose up
+Create deployments and services by docker-compose YAML:
+
+    kompose convert
+All YAML files related to services need to be modified to be of type LoadBalancer:
+
+    spec:
+      type: LoadBalancer   
+If is a MySQL deployment, we need to modify te YAML file adding the following lines bellow "image":
+
+    args: 
+    - "--ignore-db-dir=lost+found" #CHANGE
+
+And then, apply all changes by using the following command:
+
+    kubectl apply -f file1.yaml,file2.yaml,file3.yaml,....
+Verify changes:
+
+    kubectl get all
+
+## Centralized configuration with Kubernetes
+Create a configmap:
+
+    kubectl create configmap [configmap_name] --from-literal=[var1]=[value1]
+Get the information of a configmap:
+
+    kubectl describe configmap/[configmap_name]
+Get the configuration from a configmap in YAML file:
+
+    *** Instead of having this:
+    value: value1
+    *** We need to change it by this:
+    valueFrom:
+      configMapKeyRef:
+        key: [configmap_name]
+        value: [var1]
+ Scale deployment to zero and to the original number of replicas to update changes:
+
+    kubectl scale deployment [app_name] --replicas=[number_replicas]
+ Edit configuration of a configmap:
+
+     kubectl edit configmap/[configmap_name]
+
+## Store passwords with Kubernetes
+Create a secret:
+
+    kubectl create secret generic [secret_name] --from-literal=[secret_name]=[value1]
+Get secret: 
+
+    kubectl get secret/[secret_name]
