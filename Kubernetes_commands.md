@@ -137,7 +137,7 @@ Verify changes:
 
     kubectl get all
 
-## Centralized configuration with Kubernetes
+## Centralize configuration with Kubernetes
 Create a configmap:
 
     kubectl create configmap [configmap_name] --from-literal=[var1]=[value1]
@@ -167,3 +167,15 @@ Create a secret:
 Get secret: 
 
     kubectl get secret/[secret_name]
+Describe configuration of a secret:
+
+    kubect describe secret/[secret_name]
+Get the configuration from a configmap in YAML file:
+
+    *** Instead of having this:
+    value: value1
+    *** We need to change it by this:
+    valueFrom:
+      secretKeyRef:
+        key: [secret_name]
+        value: [var1]
