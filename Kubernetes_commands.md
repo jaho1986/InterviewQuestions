@@ -137,7 +137,7 @@ Verify changes:
 
     kubectl get all
 
-## Centralize configuration with Kubernetes
+## Centralized configuration with Kubernetes
 Create a configmap:
 
     kubectl create configmap [configmap_name] --from-literal=[var1]=[value1]
@@ -179,3 +179,95 @@ Get the configuration from a configmap in YAML file:
       secretKeyRef:
         key: [secret_name]
         value: [var1]
+
+## Service Discovery in Kubernetes
+It is used in Feign Clients and we have to add a environment variable in the deployment file like follows:
+```
+spec:  
+  ...
+  template:  
+    ...
+    spec:  
+      containers:  
+      ...
+        env:  
+          - name: [ENV_VAR_NAME]  
+            value: http://[service_name]
+
+```
+And modify the Feign Class like this:
+
+    @FeignClient(name = "service_name", url = "${ENV_VAR_NAME:http://localhost}:PORT")
+## Using Ingress to create services
+
+Add the following dependencies in our project:
+```
+<dependency>
+  <groupId>org.springframework.cloud</groupId>  
+   <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>  
+</dependency>  
+  
+<dependency>
+  <groupId>org.springframework.cloud</groupId>  
+   <artifactId>spring-cloud-starter-kubernetes-all</artifactId>  
+</dependency>
+```
+Modify REST clients using RIbbon:
+
+    @FeignClient(name = "[service_name]") //Kubernetes Service Name  
+    @RibbonClient(name = "[service_name]")
+
+Create a yaml configuration file to create the Ingress service:
+``` 
+apiVersion: extensions/v1beta1  
+kind: Ingress  
+metadata:  
+  name: gateway-ingress  
+  annotations:  
+    nginx.ingress.kubernetes.io/rewrite-target: /  
+spec:  
+  rules:  
+  - http:  
+      paths:  
+      - path: /[path1]/*  
+        backend:  
+          serviceName: [name_service1]  
+          servicePort: [port1]            
+      - path: /[path2]/*  
+        backend:  
+          serviceName: [name_service2]  
+          servicePort: [port2] 
+```
+Modify the Deployment Configuration of the application in the Service Definition (instead of `LoadBalancer`) like follows:
+
+    spec:  
+      type: NodePort
+
+Apply changes:
+
+    kubectl apply -f file1.yaml,file2.yaml,file3.yaml,....
+
+## Use ARBC to allow Ribbon to access Service Discovery APIs:
+Validate the actual service account:
+
+    kubectl get serviceaccount
+Create a YAML file with the ARBC definition:
+```
+apiVersion: rbac.authorization.k8s.io/v1beta1  
+kind: ClusterRoleBinding  
+metadata:  
+  name: fabric8-rbac  
+subjects:  
+  - kind: ServiceAccount  
+    # Reference to upper's `metadata.name`  
+  name: default  
+    # Reference to upper's `metadata.namespace`  
+  namespace: default  
+roleRef:  
+  kind: ClusterRole  
+  name: view  
+  apiGroup: rbac.authorization.k8s.io
+```
+Apply changes:
+
+    kubectl apply -f file1.yaml,file2.yaml,file3.yaml,....
