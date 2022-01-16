@@ -315,9 +315,12 @@ spec:
   
 Get VPA reccommendations:
 
-    kubectl get vpa currency-exchange-vpa --output yaml  
+    kubectl get vpa [vpa_name] --output yaml  
 
   
 Configure Horizontal Pod Auto Scaling:
 
-    kubectl autoscale deployment [service_name] --max=3 --min=1 --cpu-percent=50 
+    kubectl autoscale deployment [deployment_name] --max=3 --min=1 --cpu-percent=50 
+Get Horizontal Pod Autoscaler:
+
+    kubectl get hpa [service_name] -o yaml > hpa.yaml
