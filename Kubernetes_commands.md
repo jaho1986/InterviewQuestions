@@ -281,3 +281,43 @@ Verify information:
 
     kubectl describe configmap/[configmap_name]
 
+## Auto Scaling  
+  
+Cluster Auto Scaling :
+```  
+gcloud container clusters create [cluster_name] \  
+--zone us-central1-a \  
+--node-locations [zone_name] \  
+--num-nodes 2 --enable-autoscaling --min-nodes 1 --max-nodes 4  
+```
+  
+Enable on Cluster :
+```  
+gcloud container clusters create [CLUSTER_NAME] --enable-vertical-pod-autoscaling 
+gcloud container clusters update [CLUSTER_NAME] --enable-vertical-pod-autoscaling  
+```  
+  
+Configure VPA (Vertical Pod Autoscaler) :
+  
+```  
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: [vpa_name]
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind:       Deployment
+    name:       [deployment_name]
+  updatePolicy:
+    updateMode: "Off"
+ ```
+  
+Get VPA reccommendations:
+
+    kubectl get vpa currency-exchange-vpa --output yaml  
+
+  
+Configure Horizontal Pod Auto Scaling:
+
+    kubectl autoscale deployment [service_name] --max=3 --min=1 --cpu-percent=50 
