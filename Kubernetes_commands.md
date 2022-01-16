@@ -125,7 +125,7 @@ All YAML files related to services need to be modified to be of type LoadBalance
 
     spec:
       type: LoadBalancer   
-If is a MySQL deployment, we need to modify te YAML file adding the following lines bellow "image":
+If is a MySQL deployment, we need to modify the YAML file adding the following lines bellow "image":
 
     args: 
     - "--ignore-db-dir=lost+found" #CHANGE
@@ -217,7 +217,7 @@ Modify REST clients using RIbbon:
     @FeignClient(name = "[service_name]") //Kubernetes Service Name  
     @RibbonClient(name = "[service_name]")
 
-Create a yaml configuration file to create the Ingress service:
+Create a YAML configuration file to create the Ingress service:
 ``` 
 apiVersion: extensions/v1beta1  
 kind: Ingress  
@@ -271,3 +271,13 @@ roleRef:
 Apply changes:
 
     kubectl apply -f file1.yaml,file2.yaml,file3.yaml,....
+
+## Using Spring Cloud Kubernetes Config to load Configmaps
+Config a configmap:
+
+    kubectl create configmap [configmap_name] --from-literal=[PROPERTY_NAME1]=[value1] --from-literal=[PROPERTY_NAME2]=[value2]
+
+Verify information:
+
+    kubectl describe configmap/[configmap_name]
+
