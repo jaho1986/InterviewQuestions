@@ -148,6 +148,8 @@ CQRS is a software design pattern that stands for Command Query Responsibility S
 -   Commands: Operations that alters the state of an object or entity.
 -   Queries: Operations that return the state of an object or entity.
 
+![enter image description here](https://github.com/jaho1986/InterviewQuestions/blob/main/cqrs.png)
+
 #### Why do we need CQRS?
 
 -   Generally, data is more frequently queried than altered.
@@ -159,6 +161,8 @@ CQRS is a software design pattern that stands for Command Query Responsibility S
 #### What is Event Sourcing?
 
 Defines an approach where all the changes that are made to an object or entity are stored as a sequence of immutable events to an event store, as opposed to storing just the current state.
+
+![enter image description here](https://github.com/jaho1986/InterviewQuestions/blob/main/cqrs_event.png)
 
 #### Benefits of Event-Sourcing?
 
@@ -183,6 +187,11 @@ The saga pattern is a design pattern that provides a solution for implementing t
 A saga can be defined as a sequence of local transactions. Where each participating microservice executes one or more local transactions, and the publish an event than is used to trigger the next transaction in a saga that resides in another participating microservice.
 
 When one of the transacitons in the sequence fails, the saga executes a series of compensating transactions to undo the changes that where made by the preceding transactions.
+
+![enter image description here](https://github.com/jaho1986/InterviewQuestions/blob/main/saga_o1.png)
+![enter image description here](https://github.com/jaho1986/InterviewQuestions/blob/main/saga_o2.png)
+![enter image description here](https://github.com/jaho1986/InterviewQuestions/blob/main/saga_c1.png)
+![enter image description here](https://github.com/jaho1986/InterviewQuestions/blob/main/saga_c2.png)
 
 
 ### Success factors
