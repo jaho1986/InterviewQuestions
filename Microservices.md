@@ -191,7 +191,7 @@ A saga can be defined as a sequence of local transactions. Where each participat
 
 When one of the transacitons in the sequence fails, the saga executes a series of compensating transactions to undo the changes that where made by the preceding transactions.
 
-Ways to implement Saga Pattern:
+#### Ways to implement Saga Pattern:
 -   Choreography-Based
 -   Orchestration-Based
 
