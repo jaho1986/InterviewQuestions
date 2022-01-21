@@ -3,6 +3,8 @@
 
 Microservices are a software develpment technique - a variant of the Service-Oriented Architecture (SOA) architectural style - that structures an application as a collection of loosely coupled services. 
 
+They could be seen as small services responsible for one thing, they can be configured to work in the Cloud and they are also easily scalable.
+
 In a microservices architecture, services are fine grained.
 
   
@@ -13,7 +15,6 @@ In a microservices architecture, services are fine grained.
 -   Each Microservice should be responsible for a single systgem function or process.
 -   Microservices are not allowed to communicate directly with each other, they should make use of an event/message bus to communicate with one another.
 
-  
 
 #### Benefits of Microservices:
 
