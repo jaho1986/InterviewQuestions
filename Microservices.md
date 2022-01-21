@@ -1,7 +1,9 @@
 
 # Microservices
 
-Microservices are small, loosely coupled applications of services that can fail independently from each other. Only a single function or process in the system should become unavailable, while the rest of the system remains unaffected.
+Microservices are a software develpment technique - a variant of the Sowftware Develpment Architecture (SOA) architectural style - that structures an application as a collection of loosely coupled services. 
+
+In a microservices architecture, services are fine grained.
 
   
 #### Principles of Microservices:
