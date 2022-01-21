@@ -1,7 +1,7 @@
 
 # Microservices
 
-Microservices are a software develpment technique - a variant of the Sowftware Develpment Architecture (SOA) architectural style - that structures an application as a collection of loosely coupled services. 
+Microservices are a software develpment technique - a variant of the Service-Oriented Architecture (SOA) architectural style - that structures an application as a collection of loosely coupled services. 
 
 In a microservices architecture, services are fine grained.
 
