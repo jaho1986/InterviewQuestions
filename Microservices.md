@@ -134,6 +134,8 @@ A JSON Web Token consists of a set of claims, wich refers to information in the 
 
 JSON Web Tokens are trusted since they are digitally signed using a HMAC (hash-based message authentication code) algorithm or a RSA (Rivest-Shamir-Adleman) signature with SHA-256 (RS256).
 
+![Security Diagram using JWT](https://github.com/jaho1986/InterviewQuestions/blob/main/jwt.png)
+
 ## Microservices Data Management Patterns
 
   
