@@ -59,3 +59,6 @@ Enables you to define your cloud infrastructure as code
 
 #### AWS Tools for PowerShell
 Enables you to control AWS services from the command line
+
+## Amazon MQ
+
