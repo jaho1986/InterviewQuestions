@@ -303,7 +303,7 @@ Container orchestration refers to the automation of tasks that relates to the sc
 
 -   Grafana.
 -   Prometheus
--		Datadog
+-   Datadog
 
 #### Documentation Tools:
 
