@@ -297,11 +297,13 @@ Container orchestration refers to the automation of tasks that relates to the sc
 -   Fluentd
 -   Kibana
 -   Logstash
+-   Splunk
 
 #### Monitoring Tools:
 
 -   Grafana.
 -   Prometheus
+-		Datadog
 
 #### Documentation Tools:
 
