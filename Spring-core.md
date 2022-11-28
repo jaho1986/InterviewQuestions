@@ -1,6 +1,7 @@
 # Guía de estudio de Spring Core
 
 **¿Qué es Spring?**
+
 Es un Framework que se utiliza para hacer aplicaciones Java con el fin de tener bajo acoplamiento entre los componentes implementando la inyección de dependencias.
 
 **Características de Spring**
@@ -17,12 +18,14 @@ Es un Framework que se utiliza para hacer aplicaciones Java con el fin de tener 
  - Es compatible con la mayoría de las características de Java EE.
 
 **¿Qué es la inyección de dependencias?**
+
 Es la manera en la que inyectamos propiedades a los objetos y es responsable de inicializar todos los objetos dentro del sistema. Incluso, cuando los objetos dependen de otros objetos, (esto es: le asigna la referencia a cada uno de ellos).
 
 *Ejemplo:*
 Si una clase “A” depende de “B”, la inyección de dependencias inicializa “A”, inicializa “B” y asigna una referencia de “B” a “A” (así podemos decir que B ha sido inyectado a “A”).
 
 **¿Cómo se implementa la inyección de dependencias en Spring?**
+
 Podemos utilizar Spring XML o las anotaciones.
 
 **Tipos de inyección de dependencias:**
@@ -43,12 +46,15 @@ Podemos utilizar Spring XML o las anotaciones.
  - Spring Test
     
 **¿Qué es la programación orientada a aspectos?**
+
 Es un paradigma de programación cuya intención es la de quitar la dependencia de tareas que son comunes entre distintas clases (transversales) y facilitar el desacoplamiento. Por ejemplo: verificar que constantemente un usuario esté registrado, que tenga permisos de sistema, etc.
 
 **¿Qué es IoC?**
+
 Es un mecanismo que se encarga de administrar las instancias de los objetos en vez de crearlas dentro de las clases con el operador new.
 
 **¿Qué es un Spring bean?**
+
 Es cualquier clase normal de Java que se inicializa con el contenedor Spring IoC el cual gestiona el ciclo de vida del mismo.
 
 **¿Cuáles son las diferentes formas de configurar una clase como Spring Bean?**
@@ -74,6 +80,7 @@ public class MyConfiguration {
 -   **Global-session**: esto se usa para crear beans de sesión global para aplicaciones de portlet.
 
 **¿Cuál es el ciclo de vida de Spring Bean?**
+
 Spring Beans inicializa Spring Beans y todas las dependencias también se inyectan. Cuando se destruye el contexto, también destruye todos los beans inicializados.
 
 ¿Cómo obtener el objeto ServletContext y ServletConfig en un Spring Bean?
@@ -82,6 +89,7 @@ Spring Beans inicializa Spring Beans y todas las dependencias también se inyect
 ServletContext servletContext;
 ```
 **¿Qué es el cableado de un bean?**
+
 Es el proceso de inyección de dependencias de los beans cuando se inicializa el contexto de Spring.
 
 **¿Cuales son los tipos de cableados de Spring?**
@@ -90,9 +98,11 @@ Es el proceso de inyección de dependencias de los beans cuando se inicializa el
  - autowire by constructor
 
 **¿Cómo proporcioa Spring seguridad en lo hilos?**
+
 Al cambiar el scope de un bean a prototype o session para lograr la seguridad de hilos a costa del rendimiento. En caso contrario al utilizar Singleton, todas las variables de instancia de una clase pueden ser modificadas por cualquier hilo y esto conduce a datos inconsistentes.
 
 **¿Qué es un @Controller en Spring MVC?**
+
 Es la clase que se encarga de atender todas las solicitudes de los clientes y les envía los recursos configurados.
 
 **¿Cuál es la diferencia entre las anotaciones de @Component, @Controller, @Repository y @Service en Spring?**
@@ -101,12 +111,15 @@ Es la clase que se encarga de atender todas las solicitudes de los clientes y le
  - **@Service** se usa para indicar que una clase es un Servicio. Por lo general, las clases de facade de negocios que brindan algunos servicios se anotan con esto.
     
 **¿Qué es el DispatcherServlet?**
+
 Es el controlador en una aplicación Spring MVC, carga el archivo de configuración de los bean e inicializa todos los beans configurados.
 
 **¿Qué es el ContextLoaderListener?**
+
 Es el oyente que inicia y cierra el WebApplicationContext. Se encarga de vincular el ciclo de vida de ApplicationContext con el ciclo de vida de ServletContext y automatizar la creación de ApplicationContext.
 
 **¿Qué es ViewResolver en Spring?**
+
 Se usan para resolver las páginas de vista por su nombre.
 ```
 <beans:bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -115,6 +128,7 @@ Se usan para resolver las páginas de vista por su nombre.
 </beans:bean>
 ```
 **¿Qué es un MultipartResolver?**
+
 Es una interfaz que se usa para cargar archivos.
 
 **¿Cómo manejar excepciones en Spring MVC?**
@@ -128,6 +142,7 @@ Es una interfaz que se usa para cargar archivos.
  - FileSystemXmlApplicationContext: Es similar a ClassPathXmlApplicationContext, excepto que el archivo de configuración xml se puede cargar desde cualquier lugar del sistema de archivos.
 
 **¿Podemos tener múltiples archivos de configuración en Spring?**
+
 Para las aplicaciones Spring MVC, podemos definir múltiples archivos de configuración de contexto de primavera a través de contextConfigLocation.
 ```
 <context-param>
@@ -136,11 +151,13 @@ Para las aplicaciones Spring MVC, podemos definir múltiples archivos de configu
 </ context-param>
 ```
 **¿Podemos tener múltiples archivos de configuración en Spring?**
+
 Para las aplicaciones Spring MVC, podemos definir múltiples archivos de configuración de contexto de primavera a través de contextConfigLocation
 ```
 <beans: import resource = "spring-jdbc.xml" />
 ```
 **¿Qué es ContextLoaderListener?**
+
 ContextLoaderListener es la clase de escucha utilizada para cargar el contexto raíz y definir configuraciones de los bean de Spring. Se configura dentro del web.xml
 
 **¿Cuáles son las configuraciones mínimas necesarias para crear la aplicación Spring MVC?**
@@ -150,6 +167,7 @@ ContextLoaderListener es la clase de escucha utilizada para cargar el contexto r
  - Agregar un controller para atender las solicitudes.
     
 **¿Cómo podemos usar Spring para crear Restful Web Service devolviendo la respuesta JSON?**
+
 Utilizando la dependencia de jackson.
 
 **¿Cuáles son algunas de las anotaciones importantes de Spring que ha utilizado?**
@@ -167,4 +185,5 @@ Utilizando la dependencia de jackson.
 Anotaciones AspectJ para configurar aspectos y consejos, @Aspect , @Before , @After , @Around , @Pointcut , etc.
 
 **¿Qué es Spring Security?**
+
 El marco de seguridad de Spring se centra en proporcionar autenticación y autorización en aplicaciones Java.
