@@ -39,8 +39,8 @@ Spring AOP está basada en proxy. Un proxy AOP es un objeto creado por el framew
 Por defecto Spring AOP usa proxies dinámicos de JDK para proxies AOP. Esto habilita que cualquier interfaz (o conjunto de inerfaces) sea un proxy.
 
 **¿Qué es Introduction en Spring AOP?**
-```
 Introductions dan capacidad a los aspectos de implementar la funcionalidad de interfaces y elegir la clase de implentación, al declarar aquellos objetos que dispararán la ejecución de un aspecto. Utiliza la anotación @DeclareParents.
+```
 @Aspect
 public class UsageTracking {
 @DeclareParents(value="com.xzy.myapp.service.*+", defaultImpl=DefaultUsageTracked.class)
