@@ -1,0 +1,86 @@
+
+SOLID Principles
+
+Design principles encourage us to create more maintainable, understandable, and flexible software. 
+Consequently, as our applications grow in size, we can reduce their complexity and save ourselves a lot of headaches further down the road!
+
+Single Responsibility - A class should only have one responsibility. Furthermore, it should only have one reason to change.
+Testing – A class with one responsibility will have far fewer test cases.
+Lower coupling – Less functionality in a single class will have fewer dependencies.
+Organization – Smaller, well-organized classes are easier to search than monolithic ones.
+
+Open for Extension, Closed for Modification - Classes should be open for extension but closed for modification. 
+In doing so, we stop ourselves from modifying existing code and causing potential new bugs
+
+Liskov Substitution - If class A is a subtype of class B, we should be able to replace B with A without disrupting the behavior of our program.	
+
+Interface Segregation - Larger interfaces should be split into smaller ones. By doing so, we can ensure that implementing classes only need to be concerned about the methods that are of interest to them.
+
+Dependency Inversion - The principle of dependency inversion refers to the decoupling of software modules. This way, instead of high-level modules depending on low-level modules, both will depend on abstractions.
+
+
+
+Springboot CLI
+
+The Spring Boot CLI is a command line tool that you can use to bootstrap a new project from start.spring.io or encode a password.
+
+The init command lets you create a new project by using start.spring.io without leaving the shell, as shown in the following example:
+
+	$ spring init --dependencies=web,data-jpa my-project
+	Using service at https://start.spring.io
+	Project extracted to '/Users/developer/example/my-project'
+
+Spring Boot includes command-line completion scripts for the BASH and zsh shells. If you do not use either of these shells (perhaps you are a Windows user), you can use the shell command to launch an integrated shell, as shown in the following example:
+
+	$ spring shell
+	Spring Boot (v3.0.0)
+	Hit TAB to complete. Type \'help' and hit RETURN for help, and \'exit' to quit.
+	
+
+@Component vs @Service (Springboot)
+
+	We can use @Component across the application to mark the beans as Spring's managed components. 
+	Spring will only pick up and register beans with @Component, and doesn't look for @Service and @Repository in general.
+	They are registered in ApplicationContext because they are annotated with @Component,
+	@Service and @Repository are special cases of @Component. They are technically the same, but we use them for the different purposes.
+	
+	@Repository’s job is to catch persistence-specific exceptions and re-throw them as one of Spring’s unified unchecked exceptions.
+	For this, Spring provides PersistenceExceptionTranslationPostProcessor, which we are required to add in our application context (already included if we're using Spring Boot).
+	This bean post processor adds an advisor to any bean that’s annotated with @Repository.
+	
+	@Service
+	We mark beans with @Service to indicate that they're holding the business logic. 
+	Besides being used in the service layer, there isn't any other special use for this annotation.
+	
+	In conclusion, it's always a good idea to choose the annotation based on their layer conventions.
+	
+
+
+
+Open API (Swagger - REST)
+
+The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both 
+humans and computers to discover and understand the capabilities of the service without access to source code, documentation, 
+or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service 
+with a minimal amount of implementation logic.
+An OpenAPI definition can then be used by documentation generation tools to display the API, code generation tools to generate servers and 
+clients in various programming languages, testing tools, and many other use cases.
+
+API-First development
+To start working on an integration between components or systems, a team needs a contract. In our case, the contract is the API specification. 
+API-first helps teams to communicate with each other, without implementing a thing. It also enables teams to work in parallel.
+
+Steps to implement Api-first service:
+- Create the specification openapi.yml of the service (can be helpful Swagger Editor https://editor.swagger.io/) and put the yml file into the resources folder in the project.
+- Generate the code from within a Maven build with the OpenAPI Maven plugin.
+- run maven install
+- now you can implement the created interface in the controller layer.
+
+For more details check https://reflectoring.io/spring-boot-openapi/
+
+
+
+
+
+
+
