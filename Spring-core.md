@@ -153,18 +153,18 @@ ContextLoaderListener es la clase de escucha utilizada para cargar el contexto r
 Utilizando la dependencia de jackson.
 
 **¿Cuáles son algunas de las anotaciones importantes de Spring que ha utilizado?**
-**@Controller** - para las clases de controlador en el proyecto Spring MVC.
-**@RequestMapping** - para configurar la asignación de URI en los métodos del controlador. Esta es una anotación muy importante, por lo que debe ir a Spring MVC RequestMapping Annotation Examples
-**@ResponseBody** - para enviar Object como respuesta, generalmente para enviar datos XML o JSON como respuesta.
-**@PathVariable** - para asignar valores dinámicos desde el URI a los argumentos del método del manejador.
-**@Autowired** - para autocablear dependencias en beans de Spring.
-**@Qualifier** - con anotación @Autowired para evitar confusiones cuando hay varias instancias de tipo de bean.
-**@Service** - para clases de servicio.
-**@Scope** - para configurar el alcance del bean de Spring.
-**@Configuration**, **@ComponentScan** y **@Bean** - para configuraciones basadas en Java.
+
+ - **@Controller** - para las clases de controlador en el proyecto Spring MVC.
+ - **@RequestMapping** - para configurar la asignación de URI en los métodos del controlador. Esta es una anotación muy importante, por lo que debe ir a Spring MVC RequestMapping Annotation Examples
+ - **@ResponseBody** - para enviar Object como respuesta, generalmente para enviar datos XML o JSON como respuesta.
+ - **@PathVariable** - para asignar valores dinámicos desde el URI a los argumentos del método del manejador.
+ - **@Autowired** - para autocablear dependencias en beans de Spring.
+ - **@Qualifier** - con anotación @Autowired para evitar confusiones cuando hay varias instancias de tipo de bean.
+ - **@Service** - para clases de servicio.
+ - **@Scope** - para configurar el alcance del bean de Spring.
+ - **@Configuration**, **@ComponentScan** y **@Bean** - para configuraciones basadas en Java.
 
 Anotaciones AspectJ para configurar aspectos y consejos, @Aspect , @Before , @After , @Around , @Pointcut , etc.
 
 **¿Qué es Spring Security?**
 El marco de seguridad de Spring se centra en proporcionar autenticación y autorización en aplicaciones Java.
-
