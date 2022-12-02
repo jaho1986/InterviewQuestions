@@ -47,7 +47,7 @@ An anti-pattern is an ineffective solution to a common recurring problem that is
 ## APIs
 #### What is a RESTful API?
 
-A RESTful API is a web API (Application Programming Interface) or service that is based on an architectural style known as REpresentational State Transfer. REST defines hw client applications can communicate with a RESTful API over HTTP. Client request generally consists of a URI (Uniform Resource Identifier), an HTTP verb, a request header and optional request body. The most commonly used HTTP verbes include POST, GET, PUT, PATCH and DELETE, wich corresponds to the CRUD (Create, Read, Update and Delete) Operations.
+A RESTful API is a web API (Application Programming Interface) or service that is based on an architectural style known as REpresentational State Transfer. REST defines how client applications can communicate with a RESTful API over HTTP. Client request generally consists of a URI (Uniform Resource Identifier) and a HTTP verb, a request header and optional request body. The most commonly used HTTP verbes include POST, GET, PUT, PATCH and DELETE, wich corresponds to the CRUD (Create, Read, Update and Delete) Operations.
 
 ### GET vs POST:
 
@@ -64,7 +64,7 @@ A RESTful API is a web API (Application Programming Interface) or service that i
 
 #### Why RESTful APIs are ideal for Microservices?
 
--   Simplicity - t is easy to understand since HTTP verbs are based on CRUD.
+-   Simplicity - It's easy to understand since HTTP verbs are based on CRUD.
 -   REST is designed to be stateless and separates the concerns of the clientt and the server.
 -   REST reads can be cached for better formance and scalability.
 -   REST supports many data formats, but the predominant use of JSON allows for better support by browser clients.
@@ -322,7 +322,7 @@ Container orchestration refers to the automation of tasks that relates to the sc
 
 -   Start by identifying all the features in your existing monolithic application.
 -   With microservices principles in mind, use the feature list to define each microservice that will collectively replace the existing functionality.
--   Select a non-critical microservice for your first implementation that you can use as your prove of concept.
+-   Select a non-critical microservice for your first implementation that you can use as your proof of concept.
 -   Focus on the RESTful API side of the microservices first before implementing an event-bus.
 -   Implement an API gateway between your user interfaces and your RESTful APIs.
 -   If you have a single database, you can keep using the single database until all the functions have been converted into small independent RESTful APIs.
