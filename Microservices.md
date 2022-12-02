@@ -9,10 +9,10 @@ In a microservices architecture, services are fine grained.
 
   
 #### Principles of Microservices:
--   Microservices should not care code or data.
+-   Microservices should not share code or data.
 -   Avoid unnecesary coupling between services and software components.
 -   Independence and autonomy are more important than code re-usability.
--   Each Microservice should be responsible for a single systgem function or process.
+-   Each Microservice should be responsible for a single system function or process.
 -   Microservices are not allowed to communicate directly with each other, they should make use of an event/message bus to communicate with one another.
 
 
@@ -20,21 +20,21 @@ In a microservices architecture, services are fine grained.
 
 -   Improves modularity by making it easier to understand, develop and test the system.
 -   Reduces complexity by having smaller code-base per microservice.
--   Allows you to update functionality with no or minimal affect on the rest of the system.
--   Greatly reduces the chande of braking something in an unrelated part of the system.
+-   Allows you to update functionality with no or minimal effect on the rest of the system.
+-   Greatly reduces the chance of braking something in an unrelated part of the system.
 -   Allows for a more controlled collaboration in a team of developers that are working in the system at the same time.
 -   Enables continous delivery and deployment of large, complex applications y applying the principle of “divide and conquer”.
 -   Can be deployed independently without having to wait for the entire system to be published.
 -   It creates an architecture that is highly scalable.
 -   Allows for deployments to multiple cloud and on-premise infra-structure environments.
 -   Take advantage of emerging technologies (frameworks, programming languages, etc) while envolving an existing system.
--   Allow new team members to become productive qicker since they can start developing new functionality without having to learn the entire system.
+-   Allow new team members to become productive and quicker since they can start developing new functionality without having to learn the entire system.
 
   
 
 #### Anti-pattern:
 
-An anti-pattern is an inefective solution to a common recurring problem that is usually very counterproductive.
+An anti-pattern is an ineffective solution to a common recurring problem that is usually very counterproductive.
 
 #### Anti-patterns of Microservices:  
 
