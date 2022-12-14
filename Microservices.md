@@ -143,8 +143,6 @@ JSON Web Tokens are trusted since they are digitally signed using a HMAC (hash-b
 
 ## Microservices Data Management Patterns
 
-  
-
 ### CQRS & Event-Sourcing
 
 #### What is CQRS?
@@ -177,7 +175,8 @@ Defines an approach where all the changes that are made to an object or entity a
 -   An event store can feed dato into multiple read databases.
 -   In case of failure, the envet store can be used to restore read databases.
 
-  
+See also: [Different Ways to Establish Communication Between Spring Microservices]([https://link-url-here.org](https://www.geeksforgeeks.org/different-ways-to-establish-communication-between-spring-microservices/))
+-   ([Introduction to Spring Cloud OpenFeign](https://www.baeldung.com/spring-cloud-openfeign))
 
 ### Saga Pattern
 
