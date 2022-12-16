@@ -197,11 +197,30 @@ When one of the transacitons in the sequence fails, the saga executes a series o
 -   Choreography-Based
 -   Orchestration-Based
 
+#### Orchestration
+Orchestration is a way to centralize the workflow of logic for a business process. It coordinates the workflow by sending commands to the appropriate service, consuming the resulting events. In contrast to choreography, Orchestration tells other services what action/command to perform rather than those services being reactive to other events in the system.
 ![enter image description here](https://github.com/jaho1986/InterviewQuestions/blob/main/saga_o1.png)
 ![enter image description here](https://github.com/jaho1986/InterviewQuestions/blob/main/saga_o2.png)
+
+#### Event Choreography
+Choreography is driven by events from the various services within a system. Each service consumes events, performs an action, and publishes events. There is no centralized coordination or logic.
+Because there is no centralized coordination, it can be difficult to conceptualize the actual workflow.
 ![enter image description here](https://github.com/jaho1986/InterviewQuestions/blob/main/saga_c1.png)
 ![enter image description here](https://github.com/jaho1986/InterviewQuestions/blob/main/saga_c2.png)
 
+To see a detailed example click in this [link](https://codeopinion.com/event-choreography-orchestration-sagas/)
+
+#### Benefits & drawbacks of Choreography
+-   No centralized logic: this can be good and bad
+-   Useful for small/simple workflows
+-   Difficult to conceptualize if a lot of services are involved.
+-   Hader to debug & test if a lot of services are involved
+#### Benefits & drawbacks of Orchestration
+-   Centralized logic: this can be good and bad
+-   Easier to understand the workflow since its defined in a central location
+-   Full control over the workflow steps via commands
+-   Point of failure
+-   Easier to debug and test
 
 ### Success factors
 
