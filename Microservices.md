@@ -215,12 +215,15 @@ To see a detailed example click in this [link](https://codeopinion.com/event-cho
 -   Useful for small/simple workflows
 -   Difficult to conceptualize if a lot of services are involved.
 -   Hader to debug & test if a lot of services are involved
+
 #### Benefits & drawbacks of Orchestration
 -   Centralized logic: this can be good and bad
 -   Easier to understand the workflow since its defined in a central location
 -   Full control over the workflow steps via commands
 -   Point of failure
 -   Easier to debug and test
+
+See also: [Orchestration vs Choreography, which one should you use? The pros and cons](https://blog.sparkfabrik.com/en/orchestration-vs-choreography)
 
 ### Success factors
 
