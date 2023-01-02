@@ -179,6 +179,24 @@ Defines an approach where all the changes that are made to an object or entity a
 -   [Introduction to Spring Cloud OpenFeign](https://www.baeldung.com/spring-cloud-openfeign)
 -   [Open Feign - official documentation](https://www.baeldung.com/spring-cloud-openfeign)
 
+#### Domain model
+A domain model describes certain aspects of a system domain that can be used to solve problems with that domain.
+
+#### Aggregate 
+An aggregate is an entity or group of entities that is always kept in a consistent state (with a single ACID transaction). An aggregate is a cluster of associated objects that we treat as a unit for the purpose of data changes.
+An **aggregate root** is the entity within the aggregate that is responsible for maintaining thist consistent state. This makes the aggregate the prime building block for implementing a command model in any CQRS based application.
+
+#### Commands
+A command is a combination of express intent (wich describes what you want to be done) as well as the information required to undertake action based on that intent.
+Commands are named with a verb in the imperative mood, for example RegisterUserCommand or DepositFoundsCommand.
+
+#### Events
+Events are objects that describe something that has occured in the application. A typical source of events is the aggregate. When something important has occured withing the aggregate, it will raise an event.
+Events are always named with a past-particle verb, for example UserRegisteredEvent or FoundsDepositedEvent.
+
+#### Queries
+Queries express the desire of information, generally an especific representation of the state of the system.
+
 ### Saga Pattern
 
 #### What is a distributed transaction?
