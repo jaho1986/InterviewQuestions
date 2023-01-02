@@ -146,7 +146,7 @@ JSON Web Tokens are trusted since they are digitally signed using a HMAC (hash-b
 ### CQRS & Event-Sourcing
 
 #### What is CQRS?
-CQRS is a software design pattern that stands for Command Query Responsibility Segregation.
+CQRS is a software design pattern that stands for Command Query Responsibility Segregation. CQRS suggests that applications should be divided in a **command** and a **query** part. 
 
 -   Commands: Operations that alters the state of an object or entity.
 -   Queries: Operations that return the state of an object or entity.
