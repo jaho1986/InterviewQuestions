@@ -130,6 +130,17 @@ In this way, microservices that publish events to the event bus, does not have t
 -   Adding an authentication layer in the API gateway.
 -   Creating your own authentication microservice.
 
+#### Spring Security
+Spring Security is a powerful and highly customizable authentication & access-control framework. It is the de-facto standard for securing Spring-based applications.
+
+#### Spring Security Features
+-   Comprenhensive and extensible support for Authentication & Authorization.
+-   Protection agains attacks line session fixation, clickjacking, cross site request forgery, etc.
+-   Servlet API integration.
+-   Optional integration with Spring Web MVC.
+
+#### The OAuth 2.0 authorization framework 
+Enables third-party application to obtain limited access to an HTTP service, either on behalf of a resource owner by orchestrating an approval interaction between the resource owner and the HTTP service, or by allowing the third-party appplication to obtain acces on its own behalf. This specification repaces and obsoletes the OAuth 1.0 protocol.
   
 #### JSON Web Tokens (JWT):
 
