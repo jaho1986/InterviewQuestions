@@ -99,6 +99,11 @@ An API gateway creates a unified entrypoint that client applications can use to 
 
 API gateways can also perform other important functions such as client authentication, load balancing and SSL termination.
 
+#### Spring Cloud Gateway
+Provides a library for building an API Gateway on top of Spring MVC. It provides a simple and effective way to route incoming requests to the appropiate destination using Gateway Handler Mapping.
+
+![Spring Gateway Diagram](https://github.com/jaho1986/InterviewQuestions/blob/main/SpringGateWayDiagram.png)
+
 #### Problem with direct client access:
 
 -   Increases complexity of client integration if clients have to keep track of numerous microservice endpoints.
