@@ -102,7 +102,7 @@ API gateways can also perform other important functions such as client authentic
 #### Spring Cloud Gateway
 Provides a library for building an API Gateway on top of Spring MVC. It provides a simple and effective way to route incoming requests to the appropiate destination using Gateway Handler Mapping.
 
-![Spring Gateway Diagram](https://github.com/jaho1986/InterviewQuestions/blob/main/SpringGateWayDiagram.png)
+![Spring Gateway Diagram](https://github.com/jaho1986/InterviewQuestions/blob/main/SpringGatewayDiagram.png)
 
 #### Problem with direct client access:
 
