@@ -258,25 +258,7 @@ The suffle() method of the java collections framework is used to destroy any kin
 Is part if the collections in java.
 - frequency() - returns the count of the number of times an element is present.
 - disjoint() - Checks if two collections contain some common element.
-  
-### Comparable VS Comparator Java
-- Comparable is an interface used to compare objects by the comapreTo(Object o) method.
-    Example: class nameClass implements Comparable<Object> {...
-    ObjectClass > ObjectToCompare = +
-    ObjectClass < ObjectToCompare = -
-    ObjectClass = ObjectToCompare = 0
-- Comparator. We use comparator in 2 situations:
-    - When the classes to compare don't implement the Comparable interface.
-    - When you want to compare objects with a different logic that the one implemented with the comparable Interface.
-     Example:
-```
-     Comparator<Object> comparator = new Comparator<Laptop>() {
-       public int compare (Object o1, Object o2) {
-         //logic here...
-       }
-     };
-```
-
+ 
 ## Threading
 
 #### Thread
@@ -349,3 +331,22 @@ We use sincronized when multiples threads work on the same object.
 
 #### Thread Pool:
 Java Thread Pool manages the pool of worker threads and contains a queue that keep the tasks waiting to be executed.
+ 
+## Comparable VS Comparator Java
+- Comparable is an interface used to compare objects by the comapreTo(Object o) method.
+    Example: class nameClass implements Comparable<Object> {...
+    ObjectClass > ObjectToCompare = +
+    ObjectClass < ObjectToCompare = -
+    ObjectClass = ObjectToCompare = 0
+- Comparator. We use comparator in 2 situations:
+    - When the classes to compare don't implement the Comparable interface.
+    - When you want to compare objects with a different logic that the one implemented with the comparable Interface.
+
+Example:
+```
+     Comparator<Object> comparator = new Comparator<Laptop>() {
+       public int compare (Object o1, Object o2) {
+         //logic here...
+       }
+     };
+```
