@@ -1,5 +1,5 @@
 ## Object Oriented Programming 
-Is ma methodology or paradigm to design a program using Classes and Objects
+Is a methodology or paradigm to design a program using Classes and Objects
 
 #### Object 
 Is a real world entity that has its own properties an behaviours.
