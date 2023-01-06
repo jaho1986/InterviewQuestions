@@ -98,7 +98,7 @@ We can also write generic functions that can be called with different types of a
 - Array is size fixed, but Arraylist size can grow dynamically.
 - ArrayList is used to store objects and perform operations on it.
 - ArrayList is not Syncronized. Vector is similar to ArrayList wich is synchronized.
-- If your applications does not require insertion or deletion of elements, the most efficient dasta structure is the array.
+- If your application does not require insertion or deletion of elements, the most efficient data structure is the array.
  
 #### How to create elements of arraylist?
 - For each loop.
