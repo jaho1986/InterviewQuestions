@@ -1,19 +1,19 @@
 ## Object Oriented Programming 
 Is a methodology or paradigm to design a program using Classes and Objects
 
-#### Object 
+#### Object: 
 Is a real world entity that has its own properties an behaviours.
 
-#### Class
+#### Class:
 It's a blueprint where the properties and behavior of objects are decided.
 
-#### Polymorphism
+#### Polymorphism:
 Concept in wich a single action can be done in different ways.
 
-#### Static Polymorphism
+#### Static Polymorphism:
 Is the one that is resolved in compile time. Method overloading is an example of compile time polymorphism.
 
-#### Dynamic Polymorphism
+#### Dynamic Polymorphism:
 Dynamic porlymorphism is a process in wich a call to an overridden method is resolved at runtime. That's why it is called runtime polymorphism.
 
 #### Advantages:
@@ -25,11 +25,11 @@ Cass A has a method move()
 Cass B has a method move()
 You create instances of the to classes and you call the method move of each class.
 
-#### Characteristics of Polymorphism
+#### Characteristics of Polymorphism:
 - Operator overloading. (Operator + sum, or concatenate).
 - Polimorphic parameters. (When you have local variables with the same name as the instance variables).
  
-#### Super Keyword
+#### Super Keyword:
 Super is a keyword. It is used inside a sub-class mehotd definition to call a method or variable in the superclass.
  
 #### What is inheritance?
@@ -39,7 +39,7 @@ Is a procedure, in wich a sub class inherits all the properties and behaviours o
 - To reduce code redundancy.
 - To improve the readability.
 
-#### Which types of inheritance ares supported in Java:
+#### Which types of inheritance are supported in Java:
 - Single inheritance.
 - Multi-level inheritance.
 - Hierarchical inheritance.
