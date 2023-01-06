@@ -271,12 +271,13 @@ Is part if the collections in java.
    - When the classes to compare don't implement the Comparable interface.
    - When you want to compare objects with a different logic that the one implemented with the comparable Interface.
      Example:
+```
      Comparator<Object> comparator = new Comparator<Laptop>() {
        public int compare (Object o1, Object o2) {
          //logic here...
        }
      };
-
+```
 ## Threading
 
 #### Thread
