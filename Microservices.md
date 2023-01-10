@@ -95,7 +95,7 @@ JSON is an abbreviation that stands for JavaScript Object Notation. JSON is ligh
 
 #### What is an API Gateway?
 
-An API gateway creates a unified entrypoint that client applications can use to access Microservices. It acts as a reverse proxy that routes the HTTP request that are made by clients to the desired backend microservices.
+An API gateway creates a unified entrypoint that client applications can use to access Microservices. It acts as a reverse proxy that routes the HTTP request that are made by clients to the desired backend microservices. 
 
 API gateways can also perform other important functions such as client authentication, load balancing and SSL termination.
 
@@ -179,7 +179,7 @@ CQRS is a software design pattern that stands for Command Query Responsibility S
 
 #### What is Event Sourcing?
 
-Defines an approach where all the changes that are made to an object or entity are stored as a sequence of immutable events to an event store, as opposed to storing just the current state. In CQRS and Event Sourcing once a command is handled and Event is raised, it's stored to the Event Store and published to an Event Bus.
+Defines an approach where all the changes that are made to an object or entity are stored as a sequence of immutable events to an event store, as opposed to storing just the current state. In CQRS and Event Sourcing once a command is handled and Event is raised, it's stored to the Event Store and published to an Event Bus. Therefore is needed to create an Event Object for each of the command objects we’ve created.
 
 ![enter image description here](https://github.com/jaho1986/InterviewQuestions/blob/main/cqrs_event.png)
 
