@@ -199,7 +199,7 @@ Defines an approach where all the changes that are made to an object or entity a
 A domain model describes certain aspects of a system domain that can be used to solve problems with that domain.
 
 #### Aggregate 
-An aggregate is an entity or group of entities that is always kept in a consistent state (with a single ACID transaction). An aggregate is a cluster of associated objects that we treat as a unit for the purpose of data changes.
+An aggregate is defined as a cluster of associated objects that we treat as a unit for the purpose of data changes. The aggregate is the primary component in a Command API. It is where the Commands are handled, the Events are raised, the state of the aggregate is altered and the events are stored to the Events Store and published to the Event Bus.
 An **aggregate root** is the entity within the aggregate that is responsible for maintaining thist consistent state. This makes the aggregate the prime building block for implementing a command model in any CQRS based application.
 
 #### Commands
