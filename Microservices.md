@@ -179,7 +179,7 @@ CQRS is a software design pattern that stands for Command Query Responsibility S
 
 #### What is Event Sourcing?
 
-Defines an approach where all the changes that are made to an object or entity are stored as a sequence of immutable events to an event store, as opposed to storing just the current state.
+Defines an approach where all the changes that are made to an object or entity are stored as a sequence of immutable events to an event store, as opposed to storing just the current state. In CQRS and Event Sourcing once a command is handled and Event is raised, it's stored to the Event Store and published to an Event Bus.
 
 ![enter image description here](https://github.com/jaho1986/InterviewQuestions/blob/main/cqrs_event.png)
 
