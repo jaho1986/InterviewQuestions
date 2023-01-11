@@ -206,6 +206,9 @@ An **aggregate root** is the entity within the aggregate that is responsible for
 A command is a combination of express intent (wich describes what you want to be done) as well as the information required to undertake action based on that intent.
 Commands are named with a verb in the imperative mood, for example RegisterUserCommand or DepositFoundsCommand.
 
+#### What is the purpose of the CommandGateway?
+The CommandGateWay is the mechanism that is used to dispatch a command message from a controller method when a command request is received over HTTP.
+
 #### Events
 Events are objects that describe something that has occured in the application. A typical source of events is the aggregate. When something important has occured withing the aggregate, it will raise an event.
 Events are always named with a past-particle verb, for example UserRegisteredEvent or FoundsDepositedEvent.
