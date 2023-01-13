@@ -200,11 +200,16 @@ A domain model describes certain aspects of a system domain that can be used to 
 
 #### Aggregate 
 An aggregate is defined as a cluster of associated objects that we treat as a unit for the purpose of data changes. The aggregate is the primary component in a Command API. It is where the Commands are handled, the Events are raised, the state of the aggregate is altered and the events are stored to the Events Store and published to the Event Bus.
-An **aggregate root** is the entity within the aggregate that is responsible for maintaining thist consistent state. This makes the aggregate the prime building block for implementing a command model in any CQRS based application.
+
+#### Aggregate root
+-   Is the entity within the aggregate that is responsible for maintaining thist consistent state. This makes the aggregate the prime building block for implementing a command model in any CQRS based application.
+-   The Aggregate Root maintains the list of uncommitted changes in the form of events, that needs to be applied to the Aggregate and be persisted to the event store and contains a method that can be invoked to commit the changes  that have been applied to the Aggregate.
+-   The command that "creates" an instance of the Aggregate should always be handled in the constructor of the Aggregate.
 
 #### Commands
 A command is a combination of express intent (wich describes what you want to be done) as well as the information required to undertake action based on that intent.
 Commands are named with a verb in the imperative mood, for example RegisterUserCommand or DepositFoundsCommand.
+The fields of a command object should always be validated before the Aggregate raises an event, because a client might pass incorrect information which we do not want to affect the state of the Aggregate. Once an event has been raised it will be applied to the Aggregate and be persisted to the event store.
 
 #### What is the purpose of the CommandGateway?
 The CommandGateWay is the mechanism that is used to dispatch a command message from a controller method when a command request is received over HTTP.
