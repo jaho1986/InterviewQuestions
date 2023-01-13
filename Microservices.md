@@ -209,6 +209,7 @@ An aggregate is defined as a cluster of associated objects that we treat as a un
 #### Commands
 A command is a combination of express intent (wich describes what you want to be done) as well as the information required to undertake action based on that intent.
 Commands are named with a verb in the imperative mood, for example RegisterUserCommand or DepositFoundsCommand.
+
 The fields of a command object should always be validated before the Aggregate raises an event, because a client might pass incorrect information which we do not want to affect the state of the Aggregate. Once an event has been raised it will be applied to the Aggregate and be persisted to the event store.
 
 #### What is the purpose of the CommandGateway?
@@ -223,6 +224,7 @@ Events are always named with a past-particle verb, for example UserRegisteredEve
 -   Each event that is saved should represent the **version or state of an aggregate** at any given point in time.
 -   Events should be **stored in chronological order**, and new events should be appended to the previous event.
 -   The **state of the aggregate** should be **recreatable by replaying the event store**.
+-   Implement optimistic concurrency control.
 
 #### Queries
 Queries express the desire of information, generally an especific representation of the state of the system.
