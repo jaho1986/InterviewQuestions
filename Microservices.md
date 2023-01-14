@@ -232,6 +232,9 @@ An Event Store is a database that is used to store data as a sequence of innmuta
 #### Queries
 Queries express the desire of information, generally an especific representation of the state of the system.
 
+#### Why do we have to enforce optimistic concurrency control?
+Event sourcing is based on building the state of the aggregate based on the order of the sequence events. For the state to be correct, it is important that the ordering or events enforce by implementing event versioning. Optimistic concurrency control is then used to ensure that only the expected event versions can alter the state of the aggregate at any given point of time. This is especially important when two or more clients requests are made at the same time to alter the state of the aggregate.
+
 ### Saga Pattern
 
 #### What is a distributed transaction?
