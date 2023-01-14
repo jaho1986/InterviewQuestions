@@ -219,6 +219,9 @@ The CommandGateWay is the mechanism that is used to dispatch a command message f
 Events are objects that describe something that has occured in the application. A typical source of events is the aggregate. When something important has occured withing the aggregate, it will raise an event.
 Events are always named with a past-particle verb, for example UserRegisteredEvent or FoundsDepositedEvent.
 
+#### Event Store
+An Event Store is a database that is used to store data as a sequence of innmutable events over time.
+
 #### Event Store - Key Considerations
 -   An Event Store must be an **append only store**, no update or delete operations should be allowed.
 -   Each event that is saved should represent the **version or state of an aggregate** at any given point in time.
