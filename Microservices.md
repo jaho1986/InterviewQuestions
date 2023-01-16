@@ -235,6 +235,17 @@ Queries express the desire of information, generally an especific representation
 #### Why do we have to enforce optimistic concurrency control?
 Event sourcing is based on building the state of the aggregate based on the order of the sequence events. For the state to be correct, it is important that the ordering or events enforce by implementing event versioning. Optimistic concurrency control is then used to ensure that only the expected event versions can alter the state of the aggregate at any given point of time. This is especially important when two or more clients requests are made at the same time to alter the state of the aggregate.
 
+### Domain Driven Design (DDD)
+-   Is an approach to structure and model software in a way that matches the business domain.
+-   It places the primary focus of a software project on the core area of the business (the core domain).
+-   Refers to problems as domains and aims to establish a common language to talk about these problems.
+-   Describes independent problem areas as Bounded Contexts.
+
+#### Bounded Context
+-   It is a indenpendent problem area.
+-   Describes a loginal boundary within wich a particulare model is defined and applicable.
+-   Each bounded context correlates to a microservice (e.g., Bank Account Microservice).
+
 ### Saga Pattern
 
 #### What is a distributed transaction?
