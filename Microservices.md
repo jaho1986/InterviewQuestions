@@ -230,7 +230,7 @@ An Event Store is a database that is used to store data as a sequence of innmuta
 -   Implement optimistic concurrency control.
 
 #### Event Handler
-The event handler resides on the query side of CQRS and affects the read database. Its purpose is to handle each event and by doing so, populate or alter the read database.
+The event handler resides on the Query side of CQRS and it is responsible to update the read database. Its purpose is to handle each event and by doing so, populate or alter the read database. Once the EventConsumer consumes an event, it will invoke the relevent handler (.on()) method which will use the event message to build or alter the database object entity, and update that record in the read database.
 
 #### Event Sourcing Handler
 It resides con the Command side of CQRS and impacts the write database or event store. It is also responsibile for retrieving all events for a given aggregate from the Event Store and to invoke the replayEvents method on the AggregateRoot to recreate the latest state of the aggregate.
