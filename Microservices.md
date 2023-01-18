@@ -236,7 +236,10 @@ The event handler resides on the Query side of CQRS and it is responsible to upd
 It resides con the Command side of CQRS and impacts the write database or event store. It is also responsibile for retrieving all events for a given aggregate from the Event Store and to invoke the replayEvents method on the AggregateRoot to recreate the latest state of the aggregate.
 
 #### Queries
-Queries express the desire of information, generally an especific representation of the state of the system.
+Queries express the desire of information, generally an especific representation of the state of the system. Query objects are often classes with no fields, yet the name of a query object should always clearly express its intent, for example, FindAllAccountsQuery.
+
+#### Query Dispatcher
+Is the mediator (a Java interface) that manages the distribution of queries to the relevant query handler methods.
 
 #### Why do we have to enforce optimistic concurrency control?
 Event sourcing is based on building the state of the aggregate based on the order of the sequence events. For the state to be correct, it is important that the ordering or events enforce by implementing event versioning. Optimistic concurrency control is then used to ensure that only the expected event versions can alter the state of the aggregate at any given point of time. This is especially important when two or more clients requests are made at the same time to alter the state of the aggregate.
