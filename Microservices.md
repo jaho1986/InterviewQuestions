@@ -112,20 +112,6 @@ Provides a library for building an API Gateway on top of Spring MVC. It provides
 -   If clients want to acces multiple services publicly, then all these services have to handle their own security concenrs, including SSL termination and authentication.
 -   Publicly exposed services face the risk of suffering attacks.
 -   You can implement restrictions in API gateways.
-  
-
-#### What is an Event Bus?
-
-An event bus can be classified as the backbone of a decoupled microservices architecure. It allows microservices to communicate with each other without to know about each other.
-
-This type of communication is based on the Publish/Subscribe pattern, wich is similar to the Observer Pattern. However, with the Observer Pattern the publisher or observable broadcasts changes directly to its subscribers or observers. Whereas with the Publish/Subscribe pattern, the Event Bus takes up the role of the middleman and sits between the publisher and subscriber.
-
-#### Types of messsages:
--   Command: Express the intent to cange the application's state. Ex. CreateProductCommand, DeleteProductCommand.
--   Query: Express the desire for information. Ex. FindProductQuery, GetUserQuery.
--   Event: Represent a notification that something relevant has happend. Ex. ProductCreatedEvent, ProductUpdatedEvent.
-
-In this way, microservices that publish events to the event bus, does not have to know what other microservices want to do with the published events, it only need to make sure the it is available on the event bus for consumption.
 
 ### Securing Microservices
 
@@ -190,6 +176,19 @@ Defines an approach where all the changes that are made to an object or entity a
 -   It removes the need to map relational tables to Objects.
 -   An event store can feed dato into multiple read databases.
 -   In case of failure, the envet store can be used to restore read databases.
+
+#### What is an Event Bus?
+
+An event bus can be classified as the backbone of a decoupled microservices architecure. It allows microservices to communicate with each other without to know about each other.
+
+This type of communication is based on the Publish/Subscribe pattern, wich is similar to the Observer Pattern. However, with the Observer Pattern the publisher or observable broadcasts changes directly to its subscribers or observers. Whereas with the Publish/Subscribe pattern, the Event Bus takes up the role of the middleman and sits between the publisher and subscriber.
+
+#### Types of messsages:
+-   Command: Express the intent to cange the application's state. Ex. CreateProductCommand, DeleteProductCommand.
+-   Query: Express the desire for information. Ex. FindProductQuery, GetUserQuery.
+-   Event: Represent a notification that something relevant has happend. Ex. ProductCreatedEvent, ProductUpdatedEvent.
+
+In this way, microservices that publish events to the event bus, does not have to know what other microservices want to do with the published events, it only need to make sure the it is available on the event bus for consumption.
 
 **See also:** [Different Ways to Establish Communication Between Spring Microservices](https://www.geeksforgeeks.org/different-ways-to-establish-communication-between-spring-microservices/)
 -   [Introduction to Spring Cloud OpenFeign](https://www.baeldung.com/spring-cloud-openfeign)
