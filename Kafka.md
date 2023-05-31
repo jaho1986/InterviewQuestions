@@ -12,12 +12,12 @@
 
 ### Partitions:
 - Topics are split in partitions (example: 100 partitions).
-  - Messages within each partition are ordered.
-  - Each message with a partition gets an incremental Id and it's called offset. 
-  - Once the data is written to a partition, it cannot be changed (inmmutability).
-  - Data is kept only for a limited time (default is one week - configurable).
-  - Offset only have a meaning foar a specific partition.
-   - E.g. offset 3 in partition 0 doesn't represent the same data as offset 3 in partition 1.
-   - Offsets are not re-used even if previous messages have been deleted.
-  - Order is guaranteed only within a partition (not across partitions).
-  - Data is assigned randomly to a partition unless a key is provided.
+- Messages within each partition are ordered.
+- Each message with a partition gets an incremental Id and it's called offset. 
+- Once the data is written to a partition, it cannot be changed (inmmutability).
+- Data is kept only for a limited time (default is one week - configurable).
+- Offset only have a meaning foar a specific partition.
+  - E.g. offset 3 in partition 0 doesn't represent the same data as offset 3 in partition 1.
+  - Offsets are not re-used even if previous messages have been deleted.
+- Order is guaranteed only within a partition (not across partitions).
+- Data is assigned randomly to a partition unless a key is provided.
