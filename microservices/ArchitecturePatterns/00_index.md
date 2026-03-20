@@ -20,9 +20,9 @@
 7. [Event Sourcing Pattern](12_performance-event-sourcing.md)
 
 ## Section 4: Software Extensibility Architecture Patterns
-1. [Sidecar & Ambassador Pattern]()
-2. [Anti-Corruption Adapter Pattern]()
-3. [Backends for Frontends Pattern]()
+1. [Sidecar & Ambassador Pattern](21_extensibility-sidecar-ambassador.md)
+2. [Anti-Corruption Adapter Pattern](22_extensibility-anti-corruption-adapter.md)
+3. [Backends for Frontends Pattern](23_extensibility-backends-for-frontends.md)
 
 ## Section 5: Reliability, Error Handling and Recovery Software Architecture Patterns
 1. [Throttling and Rate Limiting Pattern](13_reliability-throttling-rate-limiting.md)
