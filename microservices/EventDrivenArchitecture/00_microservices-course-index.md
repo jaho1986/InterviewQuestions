@@ -1,4 +1,4 @@
-# Microservices and Event-Driven Architecture – Course Index
+# Microservices Fundamentals
 
 ## Section 1: Migration to Microservices Architecture
 1. [Microservices Boundaries - Core Principles](01_MicroservicesBoundaries_CorePrinciples.md)
