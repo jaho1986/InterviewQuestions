@@ -1,189 +1,290 @@
-# Guía de estudio de Spring Core
+# Spring Core Study Guide
 
-**¿Qué es Spring?**
+## What is Spring?
 
-Es un Framework que se utiliza para hacer aplicaciones Java con el fin de tener bajo acoplamiento entre los componentes implementando la inyección de dependencias.
+Spring is a framework used to build Java applications with the goal of achieving **low coupling** between components by implementing dependency injection.
 
-**Características de Spring**
+---
 
- - Ligero.
- - Utiliza inyección de dependencias.
- - Administra el ciclo de vida de los beans.
- - Soporta transacciones.
+## Spring Features
 
-**Ventajas de usar Spring**
- - Reduce las dependencias entre los componentes de la aplicación.
- - Facilita las pruebas unitarias debido a la inyección de dependencias.
- - Es modular, por lo que no es necesario cargar dependencias que no se utilizan dentro del proyecto.
- - Es compatible con la mayoría de las características de Java EE.
+- Lightweight
+- Uses dependency injection
+- Manages the lifecycle of beans
+- Supports transactions
 
-**¿Qué es la inyección de dependencias?**
+---
 
-Es la manera en la que inyectamos propiedades a los objetos y es responsable de inicializar todos los objetos dentro del sistema. Incluso, cuando los objetos dependen de otros objetos, (esto es: le asigna la referencia a cada uno de ellos).
+## Advantages of Using Spring
 
-*Ejemplo:*
-Si una clase “A” depende de “B”, la inyección de dependencias inicializa “A”, inicializa “B” y asigna una referencia de “B” a “A” (así podemos decir que B ha sido inyectado a “A”).
+- Reduces dependencies between application components
+- Facilitates unit testing due to dependency injection
+- Modular — no need to load unused dependencies in a project
+- Compatible with most Java EE features
 
-**¿Cómo se implementa la inyección de dependencias en Spring?**
+---
 
-Podemos utilizar Spring XML o las anotaciones.
+## What is Dependency Injection?
 
-**Tipos de inyección de dependencias:**
- - Inyección por constructor.
- - Inyección por getter y setter.
- - Inyección por interfaz.
-    
-**Nombra algunos módulos importantes de Spring:**
- - Spring JDBC
- - Spring ORM
- - Spring JMS
- - Spring Transactions
- - Spring Web
- - Spring AOP
- - Spring Beans
- - Spring Core
- - Spring Context
- - Spring Test
-    
-**¿Qué es la programación orientada a aspectos?**
+Dependency injection is the mechanism by which properties are injected into objects, handling the initialization of all objects within the system — including when objects depend on other objects (i.e., it assigns a reference from one object to another).
 
-Es un paradigma de programación cuya intención es la de quitar la dependencia de tareas que son comunes entre distintas clases (transversales) y facilitar el desacoplamiento. Por ejemplo: verificar que constantemente un usuario esté registrado, que tenga permisos de sistema, etc.
+**Example:**  
+If class `A` depends on class `B`, dependency injection initializes `A`, initializes `B`, and assigns a reference of `B` to `A` (meaning `B` has been injected into `A`).
 
-**¿Qué es IoC?**
+---
 
-Es un mecanismo que se encarga de administrar las instancias de los objetos en vez de crearlas dentro de las clases con el operador new.
+## How is Dependency Injection Implemented in Spring?
 
-**¿Qué es un Spring bean?**
+You can use either **Spring XML** or **annotations**.
 
-Es cualquier clase normal de Java que se inicializa con el contenedor Spring IoC el cual gestiona el ciclo de vida del mismo.
+### Types of Dependency Injection
 
-**¿Cuáles son las diferentes formas de configurar una clase como Spring Bean?**
-*Configuración basada en XML:*
+- Constructor injection
+- Getter and setter injection
+- Interface injection
 
-    <bean name="myBean"class="com.journaldev.spring.beans.MyBean" />
-*Configuración basada en Java:*
+---
+
+## Important Spring Modules
+
+| Module               | Purpose                              |
+|----------------------|--------------------------------------|
+| Spring Core          | Core container functionality         |
+| Spring Beans         | Bean factory and lifecycle           |
+| Spring Context       | Application context                  |
+| Spring AOP           | Aspect-oriented programming          |
+| Spring JDBC          | JDBC abstraction layer               |
+| Spring ORM           | ORM integration (Hibernate, JPA)     |
+| Spring JMS           | Java Message Service                 |
+| Spring Transactions  | Transaction management               |
+| Spring Web           | Web application support              |
+| Spring Test          | Testing support                      |
+
+---
+
+## What is Aspect-Oriented Programming (AOP)?
+
+AOP is a programming paradigm intended to remove dependencies on tasks that are common across different classes (cross-cutting concerns), facilitating decoupling.
+
+**Examples of cross-cutting concerns:** verifying that a user is authenticated, checking system permissions, logging, etc.
+
+---
+
+## What is IoC (Inversion of Control)?
+
+IoC is a mechanism that manages object instantiation instead of creating objects inside classes using the `new` operator.
+
+---
+
+## What is a Spring Bean?
+
+A Spring Bean is any regular Java class that is initialized by the Spring IoC container, which also manages its lifecycle.
+
+---
+
+## Ways to Configure a Class as a Spring Bean
+
+**XML-based configuration:**
+
+```xml
+<bean name="myBean" class="com.journaldev.spring.beans.MyBean" />
 ```
+
+**Java-based configuration:**
+
+```java
 @Configuration
-@ComponentScan(value="com.journaldev.spring.main")
+@ComponentScan(value = "com.journaldev.spring.main")
 public class MyConfiguration {
-  @Bean
-  public MyService getService(){
-    return new MyService();
-  }
+
+    @Bean
+    public MyService getService() {
+        return new MyService();
+    }
 }
 ```
-**¿Cuáles son los diferentes Scopes de un bean de Spring?**
--   **Singleton**: Solo se creará una instancia del bean para cada contenedor.
--   **Prototype**: se creará una nueva instancia cada vez que se solicite el bean.
--   **Request**: Esto es lo mismo que el alcance prototype, sin embargo, está destinado a ser utilizado para aplicaciones web.
--   **Session**: el contenedor creará un nuevo bean para cada sesión HTTP.
--   **Global-session**: esto se usa para crear beans de sesión global para aplicaciones de portlet.
 
-**¿Cuál es el ciclo de vida de Spring Bean?**
+---
 
-Spring Beans inicializa Spring Beans y todas las dependencias también se inyectan. Cuando se destruye el contexto, también destruye todos los beans inicializados.
+## Spring Bean Scopes
 
-¿Cómo obtener el objeto ServletContext y ServletConfig en un Spring Bean?
-```
+| Scope          | Description                                                                 |
+|----------------|-----------------------------------------------------------------------------|
+| `singleton`    | Only one instance of the bean per container (default)                       |
+| `prototype`    | A new instance is created every time the bean is requested                  |
+| `request`      | Same as prototype, but intended for web applications (per HTTP request)     |
+| `session`      | A new bean is created for each HTTP session                                 |
+| `global-session` | Used for global session beans in portlet applications                     |
+
+---
+
+## Spring Bean Lifecycle
+
+Spring initializes all beans and injects their dependencies when the application context starts. When the context is destroyed, all initialized beans are also destroyed.
+
+---
+
+## Obtaining `ServletContext` and `ServletConfig` in a Spring Bean
+
+```java
 @Autowired
 ServletContext servletContext;
 ```
-**¿Qué es el cableado de un bean?**
 
-Es el proceso de inyección de dependencias de los beans cuando se inicializa el contexto de Spring.
+---
 
-**¿Cuales son los tipos de cableados de Spring?**
- - autowire by name
- - autowire by type
- - autowire by constructor
+## What is Bean Wiring?
 
-**¿Cómo proporcioa Spring seguridad en lo hilos?**
+Bean wiring is the process of injecting bean dependencies when the Spring context is initialized.
 
-Al cambiar el scope de un bean a prototype o session para lograr la seguridad de hilos a costa del rendimiento. En caso contrario al utilizar Singleton, todas las variables de instancia de una clase pueden ser modificadas por cualquier hilo y esto conduce a datos inconsistentes.
+### Types of Autowiring
 
-**¿Qué es un @Controller en Spring MVC?**
+- `autowire by name`
+- `autowire by type`
+- `autowire by constructor`
 
-Es la clase que se encarga de atender todas las solicitudes de los clientes y les envía los recursos configurados.
+---
 
-**¿Cuál es la diferencia entre las anotaciones de @Component, @Controller, @Repository y @Service en Spring?**
- - **@Component** se utiliza para indicar que una clase es un componente. Estas clases se usan para detección automática y se configuran como bean, cuando se utilizan configuraciones basadas en anotaciones.
- - **@Repository** se usa para indicar que un componente se usa como repositorio y un mecanismo para almacenar / recuperar / buscar datos.
- - **@Service** se usa para indicar que una clase es un Servicio. Por lo general, las clases de facade de negocios que brindan algunos servicios se anotan con esto.
-    
-**¿Qué es el DispatcherServlet?**
+## How Does Spring Provide Thread Safety?
 
-Es el controlador en una aplicación Spring MVC, carga el archivo de configuración de los bean e inicializa todos los beans configurados.
+By changing a bean's scope to `prototype` or `session`, thread safety is achieved at the cost of performance.  
+Using `singleton`, all instance variables of a class can be modified by any thread, leading to inconsistent data.
 
-**¿Qué es el ContextLoaderListener?**
+---
 
-Es el oyente que inicia y cierra el WebApplicationContext. Se encarga de vincular el ciclo de vida de ApplicationContext con el ciclo de vida de ServletContext y automatizar la creación de ApplicationContext.
+## Spring MVC
 
-**¿Qué es ViewResolver en Spring?**
+### What is `@Controller`?
 
-Se usan para resolver las páginas de vista por su nombre.
-```
-<beans:bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <beans: property name = "prefix" value = "/WEB-INF/views/" />
-    <beans: property name = "suffix" value = ".jsp" />
+`@Controller` marks a class responsible for handling all client requests and sending back the configured resources.
+
+---
+
+### Differences Between `@Component`, `@Controller`, `@Repository`, and `@Service`
+
+| Annotation    | Purpose                                                                                     |
+|---------------|---------------------------------------------------------------------------------------------|
+| `@Component`  | Generic component; enables auto-detection and registers the class as a Spring bean          |
+| `@Repository` | Marks a class as a data repository (storage, retrieval, and search operations)              |
+| `@Service`    | Marks a class as a business-layer service (business facade)                                 |
+| `@Controller` | Marks a class as a web controller in Spring MVC                                             |
+
+---
+
+### What is `DispatcherServlet`?
+
+The `DispatcherServlet` is the front controller in a Spring MVC application. It loads the bean configuration file and initializes all configured beans.
+
+---
+
+### What is `ContextLoaderListener`?
+
+`ContextLoaderListener` is a listener class that starts and shuts down the `WebApplicationContext`. It binds the `ApplicationContext` lifecycle to the `ServletContext` lifecycle and automates the creation of `ApplicationContext`. It is configured in `web.xml`.
+
+---
+
+### What is `ViewResolver` in Spring?
+
+A `ViewResolver` resolves view pages by name.
+
+```xml
+<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <beans:property name="prefix" value="/WEB-INF/views/" />
+    <beans:property name="suffix" value=".jsp" />
 </beans:bean>
 ```
-**¿Qué es un MultipartResolver?**
 
-Es una interfaz que se usa para cargar archivos.
+---
 
-**¿Cómo manejar excepciones en Spring MVC?**
- - Basado en controlador: podemos definir métodos de controlador de excepción en nuestras clases de controlador. Todo lo que necesitamos es anotar estos métodos con la anotación @ExceptionHandler.
- - Global Exception Handler: el manejo de excepciones es una preocupación transversal y Spring proporciona la anotación @ControllerAdvice que podemos usar con cualquier clase para definir nuestro manejador global de excepciones.
- - HandlerExceptionResolver implementation: para excepciones genéricas.
+### What is `MultipartResolver`?
 
-**¿Cómo crear ApplicationContext en un programa Java?**
- - AnnotationConfigApplicationContext: si estamos utilizando Spring en aplicaciones java independientes y usando anotaciones para Configuration.
- - ClassPathXmlApplicationContext: si tenemos un archivo xml de configuración.
- - FileSystemXmlApplicationContext: Es similar a ClassPathXmlApplicationContext, excepto que el archivo de configuración xml se puede cargar desde cualquier lugar del sistema de archivos.
+`MultipartResolver` is an interface used to handle file uploads.
 
-**¿Podemos tener múltiples archivos de configuración en Spring?**
+---
 
-Para las aplicaciones Spring MVC, podemos definir múltiples archivos de configuración de contexto de primavera a través de contextConfigLocation.
-```
+### How to Handle Exceptions in Spring MVC
+
+1. **Controller-based:** Define exception handler methods in controller classes, annotated with `@ExceptionHandler`.
+2. **Global Exception Handler:** Use `@ControllerAdvice` on any class to define a global exception handler.
+3. **`HandlerExceptionResolver` implementation:** Used for generic exceptions.
+
+---
+
+## Creating ApplicationContext in a Java Application
+
+| Class                            | When to Use                                                              |
+|----------------------------------|--------------------------------------------------------------------------|
+| `AnnotationConfigApplicationContext` | Standalone Java apps using annotation-based configuration            |
+| `ClassPathXmlApplicationContext`     | When using an XML configuration file on the classpath                |
+| `FileSystemXmlApplicationContext`    | When the XML configuration file can be loaded from anywhere in the filesystem |
+
+---
+
+## Can We Have Multiple Configuration Files in Spring?
+
+Yes. For Spring MVC applications, multiple configuration files can be defined via `contextConfigLocation`:
+
+```xml
 <context-param>
-<param-name> contextConfigLocation </ param-name>
-<param-value> /WEB-INF/spring/root-context.xml /WEB-INF/spring/root-security.xml </ param-value>
-</ context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+        /WEB-INF/spring/root-context.xml
+        /WEB-INF/spring/root-security.xml
+    </param-value>
+</context-param>
 ```
-**¿Podemos tener múltiples archivos de configuración en Spring?**
 
-Para las aplicaciones Spring MVC, podemos definir múltiples archivos de configuración de contexto de primavera a través de contextConfigLocation
+Or by importing inside a configuration file:
+
+```xml
+<beans:import resource="spring-jdbc.xml" />
 ```
-<beans: import resource = "spring-jdbc.xml" />
-```
-**¿Qué es ContextLoaderListener?**
 
-ContextLoaderListener es la clase de escucha utilizada para cargar el contexto raíz y definir configuraciones de los bean de Spring. Se configura dentro del web.xml
+---
 
-**¿Cuáles son las configuraciones mínimas necesarias para crear la aplicación Spring MVC?**
- - Agregar spring-context
- - Configurar DispatcherServlet
- - Agregar el archivo de configuración.
- - Agregar un controller para atender las solicitudes.
-    
-**¿Cómo podemos usar Spring para crear Restful Web Service devolviendo la respuesta JSON?**
+## Minimum Configuration for a Spring MVC Application
 
-Utilizando la dependencia de jackson.
+1. Add `spring-context` dependency
+2. Configure `DispatcherServlet`
+3. Add a configuration file
+4. Add a controller to handle requests
 
-**¿Cuáles son algunas de las anotaciones importantes de Spring que ha utilizado?**
+---
 
- - **@Controller** - para las clases de controlador en el proyecto Spring MVC.
- - **@RequestMapping** - para configurar la asignación de URI en los métodos del controlador. Esta es una anotación muy importante, por lo que debe ir a Spring MVC RequestMapping Annotation Examples
- - **@ResponseBody** - para enviar Object como respuesta, generalmente para enviar datos XML o JSON como respuesta.
- - **@PathVariable** - para asignar valores dinámicos desde el URI a los argumentos del método del manejador.
- - **@Autowired** - para autocablear dependencias en beans de Spring.
- - **@Qualifier** - con anotación @Autowired para evitar confusiones cuando hay varias instancias de tipo de bean.
- - **@Service** - para clases de servicio.
- - **@Scope** - para configurar el alcance del bean de Spring.
- - **@Configuration**, **@ComponentScan** y **@Bean** - para configuraciones basadas en Java.
+## Returning JSON from a RESTful Web Service
 
-Anotaciones AspectJ para configurar aspectos y consejos, @Aspect , @Before , @After , @Around , @Pointcut , etc.
+Use the **Jackson** dependency to automatically serialize Java objects to JSON.
 
-**¿Qué es Spring Security?**
+---
 
-El marco de seguridad de Spring se centra en proporcionar autenticación y autorización en aplicaciones Java.
+## Important Spring Annotations
+
+| Annotation          | Purpose                                                                          |
+|---------------------|----------------------------------------------------------------------------------|
+| `@Controller`       | Marks a class as a Spring MVC controller                                         |
+| `@RequestMapping`   | Maps URI paths to controller methods                                             |
+| `@ResponseBody`     | Sends an object as a response (XML or JSON)                                      |
+| `@PathVariable`     | Maps dynamic URI values to method arguments                                      |
+| `@Autowired`        | Auto-wires dependencies in Spring beans                                          |
+| `@Qualifier`        | Used with `@Autowired` to avoid ambiguity when multiple beans of the same type exist |
+| `@Service`          | Marks a class as a service component                                             |
+| `@Scope`            | Configures the scope of a Spring bean                                            |
+| `@Configuration`    | Marks a class as a source of bean definitions                                    |
+| `@ComponentScan`    | Enables component scanning in a given package                                    |
+| `@Bean`             | Declares a method as a bean producer                                             |
+
+### AspectJ Annotations (for AOP)
+
+| Annotation   | Purpose                        |
+|--------------|--------------------------------|
+| `@Aspect`    | Marks a class as an aspect     |
+| `@Before`    | Runs advice before a method    |
+| `@After`     | Runs advice after a method     |
+| `@Around`    | Wraps advice around a method   |
+| `@Pointcut`  | Defines a pointcut expression  |
+
+---
+
+## What is Spring Security?
+
+The Spring Security framework focuses on providing **authentication** and **authorization** in Java applications.
