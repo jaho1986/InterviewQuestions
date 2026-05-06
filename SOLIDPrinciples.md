@@ -6,9 +6,7 @@ SOLID is an acronym for five object-oriented design principles that help develop
 
 ## S — Single Responsibility Principle (SRP)
 
-> *"A class should have only one reason to change."*
-
-A class or method should do **one thing** and do it well. If a class or method handles multiple responsibilities, changes to one may break the other.
+This principle states that "A class should have only one reason to change" which means every class should have a single responsibility or single job or single purpose. In other words, a class should have only one job or purpose within the software system.
 
 ### ❌ Wrong
 ```java
@@ -38,9 +36,7 @@ class UserRepository {
 
 ## O — Open/Closed Principle (OCP)
 
-> *"Software entities should be open for extension, but closed for modification."*
-
-You should be able to **add new behavior** without changing existing code. Use abstraction (interfaces/abstract classes) to achieve this.
+This principle states that "Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification" which means you should be able to extend a class behavior, without modifying it.
 
 ### ❌ Wrong
 ```java
@@ -78,9 +74,7 @@ class DiscountCalculator {
 
 ## L — Liskov Substitution Principle (LSP)
 
-> *"Objects of a subclass should be replaceable with objects of the superclass without breaking the application."*
-
-In other words: if class `B` extends class `A`, you should be able to use `B` anywhere `A` is expected and the program must still behave correctly. A subclass must **honor the contract** of its parent — same expected inputs, same expected behavior.
+According to this principle, "child classes must be able to replace their parent classes". This ensures that any subclass can be used in place of its parent class without causing unexpected behavior in the program.
 
 ### Classic example: Rectangle and Square
 
@@ -192,9 +186,7 @@ class Penguin implements Bird {
 
 ## I — Interface Segregation Principle (ISP)
 
-> *"Clients should not be forced to depend on interfaces they do not use."*
-
-It's better to have **small, specific interfaces** over large, general-purpose ones. No class should be forced to implement methods it doesn't need.
+This principle states that "Clients should not be forced to depend on interfaces they do not use." It's better to have **small, specific interfaces** over large, general-purpose ones. No class should be forced to implement methods it doesn't need.
 
 ### ❌ Wrong
 ```java
