@@ -74,7 +74,7 @@ class DiscountCalculator {
 
 ## L — Liskov Substitution Principle (LSP)
 
-According to this principle, "child classes must be able to replace their parent classes". This ensures that any subclass can be used in place of its parent class without causing unexpected behavior in the program.
+According to this principle, "a child class should be able to replace its parent class without breaking the program". This ensures that any subclass can be used in place of its parent class without causing unexpected behavior in the program.
 
 ### Classic example: Rectangle and Square
 
