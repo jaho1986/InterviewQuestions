@@ -159,10 +159,10 @@ Arraylist is the implementation of the List interface where the elements can be 
 - Most of the enterprise applications populate the map once and then read it many times from many threads. Given this Hashmap suffices for all such scenarios, without any worries of performace overheads.
 
 #### LinkedHashMap
-- It's very similar to HashMap.
-- Iteration is guaranteed in insertion order.
-- Maintains separate doubly linked list of all entries that is kept in insertion order.
-- It can be used in cases where hash map behavior is needed at the same time that the order of the insertion has to be preserved.
+It's very similar to HashMap. It combines two strucures over the same data:
+1. **Hash Table** (same as `HashMap`): allows searching, inserting and deleting by key in `O(1)` on average.
+2. **Double Liked List** each entry also stores 2 references: `before` () and `after` (next node) which form a chain in the order in which the entries were inserted.
+
 
 #### TreeMap
 - Is the implementation of SortedMap and NavigableMap interfaces.
@@ -224,10 +224,7 @@ Is part if the collections in java.
 ## Threading
 
 #### Thread
- - Thread is a lightweight sub process.
- - It is the smallest independent unit of a program.
- - Contains a separate path of execution.
- - Every Java program contains at least one thread.
+ - Thread is a lightweight sub process. Every Java program contains at least one thread.
  - A thread is created and controlled by the java.lang.Thread class
 
 #### Thread Lifecycle:
@@ -236,54 +233,73 @@ Is part if the collections in java.
  -           Waiting
  - Running  /
  - Terminated
- 
-#### New:
-When you create a thread it begins with the state of 'new' until the program starts the thread.
 
-#### Runnable:
-Once the thread starts, it comes under runnable state and it stays in this state while is executing its task.
+Java defines six states in the `Thread.State` enum: 
+ - **NEW:** A thread is in this state when you create the object with `new Thread()`, but you have not called `start()` yet. Nothing is running at this point.
+ - **RUNNABLE:** When you call `start()`, the thread becomes runnable. This means it is either running right now or ready to run and waiting for the CPU to give it time.
+ - **BLOCKED:** A thread enters this state when it tries to enter a `synchronized` block or method, but another thread already holds the lock. It stays blocked until the lock is released.
+ - **WAITING:** A thread goes here when it waits without any time limit, for example by calling `object.wait()`, `thread.join()`, or `LockSupport.park()`. It only continues when another thread wakes it up, for example with `notify()`, or when the joined thread finishes.
+ - **TIMED_WAITING:** This is similar to waiting, but with a time limit. It happens when you call methods like `Thread.sleep(1000)`, `wait(1000)`, or `join(1000)`. The thread goes back to runnable when the time ends or when it is woken up earlier.
+ - **TERMINATED:** A thread reaches this state when its `run()` method finishes normally or stops because of an uncaught exception. A terminated thread cannot be started again.
 
-#### Running:
-In this state a thread starts executing by entering the run() method. yield() method can send it to go back to the runnable state.
+#### Ways to create a thread in Java
 
-#### Waiting:
-A thread enters this state when it is temporarilly in an incactive state. It's still alive, but is not elegible to run.
+1. Extend the `Thread` class:
 
-#### Terminated:
-A thread enters in terminated state when it completes its tasks.
+```java
+class MyThread extends Thread {
+    @Override
+    public void run() {
+        System.out.println("Hello from the thread");
+    }
+}
 
-#### Ways to create a thread:
- - Implementing the Runnable Interface.
-   1. Create a Thread class implementing the Runnable Interface.
-   2. Override the run() method.
-   3. Create object of the Thread class.
-   4. Invoke the start() method using the object.
-   
- - Extending from the Thread Class.
-   1. Exends the Thread Class.
-   2. Override run() method.
-   3. Create object of the class.
-   4. Invoke the start() method, to execute the custom threads run().
- 
-#### Thread Class:
- - Each thread creates its unique object.
- - More memory consumption.
- - A class that extends the Thread class can't extend any other class.
- - We extend the Thread class if there is a need of overriding other methods.
+new MyThread().start();
+```
 
-#### Runnable Interface:
- - Each Thread creates its unique object.
- - More memory consumption.
- - Along with runnable a class can implement ano other interface.
- - We implement Runnable only if there is a need of special run method.
- 
-#### Java Main Thread:
- - Main Thread is the most important thread of a Java Program.
- - It is excecuted whenever a Java program Starts.
- - Every program must contain this thread for its execution to take place.
- - Java Main Thread is needed because of the following reasons:
-   - From this other "child" threads are spawned.
-   - It must be the las thread to finish execution Eg. When the main thread stops, the program terminates.
+2. Implement the `Runnable` interface:
+
+```java
+class MyTask implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Hello from Runnable");
+    }
+}
+
+new Thread(new MyTask()).start();
+```
+
+3. Use a lambda expression:
+
+```java
+new Thread(() -> System.out.println("Hello from lambda")).start();
+```
+
+4. Use `ExecutorService`:
+
+```java
+ExecutorService executor = Executors.newFixedThreadPool(2);
+executor.submit(() -> System.out.println("Hello from the executor"));
+executor.shutdown();
+```
+
+With `Callable`, you can also return a result through a `Future`.
+
+5. Use `CompletableFuture`:
+
+```java
+CompletableFuture.runAsync(() -> System.out.println("Hello async"));
+```
+
+6. Use virtual threads (Java 21+):
+
+```java
+Thread.startVirtualThread(() -> System.out.println("Hello virtual"));
+```
+
+**Important note**:
+Always call `start()`, not `run()`. If you call `run()` directly, the code runs in the current thread and no new thread is created.
    
 #### Multi Threading:
 Multi Threading is the ability of a program to run two or more threads concurrently, where each thread can handle a different task at the same time making optimal use of the available resources.
