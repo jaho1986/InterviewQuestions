@@ -80,7 +80,7 @@ public class Main {
 ## 2. Bridge
 
 ### What is it?
-The Bridge pattern **separates an abstraction from its implementation** so that both can change independently. Instead of building a big hierarchy of subclasses, you split the idea into two separate hierarchies connected by a "bridge".
+The Bridge pattern separates an abstraction from its implementation so that both can change independently. Instead of building a big hierarchy of subclasses, you decouple the core concept into two separate hierarchies linked by a "bridge".
 
 ### What problem does it solve?
 When you have a class that can vary in two independent dimensions, and you try to cover every combination with subclasses, the number of classes explodes. For example: `RedCircle`, `BlueCircle`, `RedSquare`, `BlueSquare` — adding a new color or shape doubles the number of classes.
