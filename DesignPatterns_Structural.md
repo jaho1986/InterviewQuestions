@@ -389,7 +389,7 @@ public class Main {
 ## 6. Proxy
 
 ### What is it?
-The Proxy pattern provides a **substitute or placeholder for another object**. The proxy controls access to the original object — it can add extra logic before or after forwarding the call.
+The proxy pattern uses a substitute to control access to an object and add extra logic before or after calls.
 
 ### What problem does it solve?
 When you need to control access to an object — for example, to delay its creation until it's really needed (lazy loading), to add security checks, to log calls, or to cache results.
