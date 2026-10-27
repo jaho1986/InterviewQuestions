@@ -314,7 +314,7 @@ public class Main {
 ## 5. Facade
 
 ### What is it?
-The Facade pattern provides a **simple, unified interface to a complex system** of classes. It hides all the complexity behind a single easy-to-use class.
+The Facade pattern encapsulates a complex subsystem behind a simple interface. It hides much of the complexity and makes the subsystem easy to use.
 
 ### What problem does it solve?
 When a system has many classes that must interact in a specific order or way, and making client code deal with all of them makes the code messy and hard to understand. The facade takes care of all that complexity so clients only need to call one simple method.
