@@ -93,134 +93,134 @@ We can also write generic functions that can be called with different types of a
  
 ## Collections in Java
 
-#### Arraylist
-- Is the implementation of List Interface.
-- Array is size fixed, but Arraylist size can grow dynamically.
-- ArrayList is used to store objects and perform operations on it.
-- ArrayList is not Syncronized. Vector is similar to ArrayList wich is synchronized.
-- If your application does not require insertion or deletion of elements, the most efficient data structure is the array.
- 
-#### How to create elements of arraylist?
-- For each loop.
-- Iterator.
-- List Iterator.
-- Enumeration.
-  
-#### Vector
-Vector is same as ArrayList. The only difference is that, Vector is syncronized but ArrayList is not. That means Vector is threadsafe.
- 
+#### ArrayList
+- Is an implementation of the `List` interface.
+- An array has a fixed size, but an `ArrayList` can grow dynamically.
+- `ArrayList` is used to store objects and perform operations on them.
+- `ArrayList` is not synchronized. 
+- If your application does not require dynamic resizing, an array can be more efficient.
+
+#### How to Iterate Over an ArrayList?
+- Enhanced `for` loop.
+- `Iterator`.
+- `ListIterator`.
+- `forEach()`.
+
+#### CopyOnWriteArrayList
+`CopyOnWriteArrayList` is a thread-safe implementation of the `List` interface. It creates a new copy of its underlying array whenever the list is modified, making it suitable for frequent reads and infrequent modifications.
+
 #### Queue
 - Is an interface.
-- PriorityQueue is a class wich implements Queue iterface and sorts the data stored. DeQue satands for double ended queue.
-- The Queue can be operated at both ends. Same holds for insertion and deletion too.
-- Queue operates on the principle "First In First Out". 
- 
+- `Deque` stands for double-ended queue. A `Deque` can be operated at both ends, allowing insertion and deletion at either end.
+- A typical queue operates on the principle of "First In, First Out" (FIFO).
+
 #### PriorityQueue
- Is the one that sorts the data.
- 
+It is a class that orders elements according to their natural ordering or a provided `Comparator`. By default, the head is the least element. Iteration does not guarantee sorted order.
+
 #### Set
-- Set is a collection interface. HashSet and TreeSet are implementations of set.
-- Set cannot have duplicates.
-- Class HashSet removes the duplicates and gives better performance over TreeSet. It doesn't guarantee to store the data in the same order it is inserted.
-- Class TreeSet sorts the added data apart from removing the duplicates.
-  
+- `Set` is an interface. `HashSet` and `TreeSet` are implementations of `Set`.
+- `Set` does not allow duplicate elements.
+- `HashSet` prevents duplicates and generally offers better performance than `TreeSet`. It does not guarantee insertion order.
+- `TreeSet` sorts the added elements and does not allow duplicates.
+
 #### LinkedList
-A linked list is a linear data structure wich is constituted by a chain of nodes in wich each node contains a value an a pointer to the next node in the chain.
+A linked list is a linear data structure consisting of a chain of nodes, where each node contains a value and references to the previous and next nodes.
 
-- Implements Queue and Deque interfaces.
-- Contain insertion Order.
-- It's not synchronized.
+- Implements the `List` and `Deque` interfaces.
+- Maintains insertion order when used as a list.
+- It is not synchronized.
 
-#### ArrayList
-Arraylist is the implementation of the List interface where the elements can be dynamically added or removed from the list. We use arraylist when we want to have a dynamic collection of elements.
-
-#### Similairities between LinkkedList and ArrayList:
-- They are implementations of the List interface.
+#### Similarities Between LinkedList and ArrayList
+- They are implementations of the `List` interface.
 - They maintain the insertion order of the elements.
-- Their classes are not synchronized.
+- Their classes are not synchronized by default.
 
-#### LinkedList VS ArrayList:
-- Insertion, deletion, and removal are faster in LinkedList because thre is no need for resize like in an Arraylist.
-- LinkedList is based on doubly linked list implementation whereas Arraylist is based on the concept of a dynamically resizable array.
-- A LinkedList class can be used as a list and a queue because it implements List and Deque interfaces whereas Arraylist can only implement Lists.
-- LinkedList consumes more memory than an ArrayList because every node in a LinkedList stores two references, whereas ArrayList holds only data and its index.
- 
-#### HashTable
-- It's an implementation of the Map Interface.
-- All methods are thread-safe.
-- There is a "synchronized" keyword on each public method (put, get, remove, etc).
-- Overhead in an environment where Map is initialized once and read by multiple threads.
+#### LinkedList VS ArrayList
+- Insertion and deletion can be faster in `LinkedList` when the position is already known. Finding the position still takes time. `ArrayList` may need to shift elements when inserting or removing elements in the middle.
+- `LinkedList` is based on a doubly linked list, whereas `ArrayList` is based on a dynamically resizable array.
+- The `LinkedList` class can be used as a list and a queue because it implements the `List` and `Deque` interfaces, whereas `ArrayList` implements `List`.
+- `LinkedList` consumes more memory than `ArrayList` because every node stores references to the previous and next nodes.
+
+#### Hashtable (Legacy Class)
+- It is a legacy implementation of the `Map` interface.
+- Its methods are synchronized.
+- It does not allow `null` keys or values.
+- It introduces synchronization overhead.
+- **Modern alternative: `ConcurrentHashMap`** — a thread-safe map designed for concurrent access by multiple threads.
 
 #### HashMap
-- It's a Map implementation that satisfies most of the basic use cases.
-- Is not "thread-safe".
-- Iteration is not guaranteed in insertion order.
-- We need to use the "synchronized" operation when is manipulated by multiple threads (concurrent adds, removes, iterations).
-- Most of the enterprise applications populate the map once and then read it many times from many threads. Given this Hashmap suffices for all such scenarios, without any worries of performace overheads.
+- It is a `Map` implementation that satisfies most basic use cases.
+- It is not thread-safe.
+- Iteration order is not guaranteed.
+- When a map is manipulated by multiple threads, concurrent modifications require synchronization or a suitable concurrent implementation.
+- Most applications can use `HashMap` when a map is populated once and then safely shared for read-only access among multiple threads, provided it is safely published and not subsequently modified.
 
 #### LinkedHashMap
-It's very similar to HashMap. It combines two strucures over the same data:
-1. **Hash Table** (same as `HashMap`): allows searching, inserting and deleting by key in `O(1)` on average.
-2. **Double Liked List** each entry also stores 2 references: `before` () and `after` (next node) which form a chain in the order in which the entries were inserted.
+It is very similar to `HashMap`. It combines two structures over the same data:
 
+1. **Hash table** (similar to `HashMap`): allows searching, inserting, and deleting by key in average O(1) time.
+2. **Doubly linked list:** each entry stores references to the previous and next entries, maintaining insertion order by default.
 
 #### TreeMap
-- Is the implementation of SortedMap and NavigableMap interfaces.
-- Iteration is guranteed in "natural sorted" order of keys.
-- The keys should implement "Comparable Interface" (ClassCastException is thrown if it's not implemented); in other case, we need to provide an explicit Comparator in the constructor.
-- It's a Red-black tree based implementation. NavigableMap interface provides methods that can return closest match to the key (floorEntry()).
+- It implements the `SortedMap` and `NavigableMap` interfaces.
+- Iteration is guaranteed in sorted key order.
+- The keys must be mutually comparable when using natural ordering. Otherwise, a `ClassCastException` may be thrown. Alternatively, a `Comparator` can be provided in the constructor.
+- It is based on a red-black tree. The `NavigableMap` interface provides methods that return entries matching or closest to a key, such as `floorEntry()`.
 
 #### IdentityHashMap
-- Uses identity to store and retrieve key values.
-- It uses reference equality; meaning r1==r2 rather than r1.equals(r2). For hashing, System.identityHashCode(givenKey) is invoked rather than givenKey.hashCode().
-- It's used in serialization/deep copying
+- Uses object identity to store and retrieve keys.
+- It uses reference equality (`r1 == r2`) rather than logical equality (`r1.equals(r2)`). For hashing, `System.identityHashCode(key)` is used instead of `key.hashCode()`.
+- It is used in specialized cases such as serialization and deep-copying object graphs.
 
 #### EnumMap
-- EnumMap<K extends Enum<K>,V>
-- It's used for enum type keys. All of the keys in an enum map must come from a single enum type that is specified, explicitly or implicitly when the map is created.
-- Null Keys are not permited.
-- It's not synchronnized.
+- `EnumMap<K extends Enum<K>, V>`.
+- It is used for enum-type keys. All keys in an enum map must come from a single enum type specified when the map is created.
+- `null` keys are not permitted, but `null` values are allowed.
+- It is not synchronized by default.
 
 #### WeakHashMap
-- Elements in a WeakHasMap can be reclaimed by the garbage collector if there are no other strong references to the object, this makes them useful for caches/lookup storage.
-- Keys inserted gets wrapped in java.lang.ref.WeakReference.
-- Useful only if the desired lifetime of cache entries is determined by external references to the key, not the value.
+- Elements in a `WeakHashMap` can be reclaimed by the garbage collector if their keys are no longer strongly referenced elsewhere. This makes it useful for certain lookup tables and caches.
+- Keys are stored using weak references.
+- It is useful when the desired lifetime of cache entries depends on external references to the keys. However, values that reference their own keys can prevent those keys from being collected.
 
-#### Collections.synchronizedMap(aMap):
-- A convenient "decorator" to create fully synchronized map.
-- Return type is collections.SynchronizedMap Instance. It wraps around passsed map instance and marks all APIs as Synchronized, effectively making it similar to HashTable.
+#### Collections.synchronizedMap(aMap)
+- A convenient wrapper to create a synchronized map.
+- It wraps the passed map and synchronizes individual method calls. Iteration requires manually synchronizing on the returned map.
 
 #### ConcurrentHashMap
-- Supports full concurrency during retrieval. Means, retrieval operations do not block even if adds are running concurrently(mostly).
-- Reads can happen fast, while writes require a lock. Write lock is acquired at granular level, the whole table is not locked only segments are locked. So, there is a rare chance of read waiting on write to complete.
-- Iterations do not throw concurrent modification exception (within the same thread).
-- It can be used in cases where a lot of concurrent addition happens followed no or concurrent reads later on.
-- Null keys are not allowed. If map.get(null) returns null, it's not sure if null is not mapped or if null is mapped to a null value. In a non-concurrent map, we clould use contains() call, but in a concurrent map, values can change between API calls.
-- Operations are not atomic.
+- Supports concurrent retrieval and updates. Retrieval operations generally do not block, even when updates are running concurrently.
+- It uses fine-grained synchronization and other concurrency techniques rather than locking the entire table for every update.
+- Iterators do not throw `ConcurrentModificationException` due to concurrent modifications; they are weakly consistent.
+- It can be used when multiple threads perform concurrent additions, updates, and reads.
+- `null` keys and values are not allowed. This avoids ambiguity when `get()` returns `null`, since it means that no mapping exists for the key.
+- Individual operations are thread-safe, but multiple operations are not automatically atomic as a group. Methods such as `putIfAbsent()`, `compute()`, and `merge()` support atomic operations.
 
 #### ConcurrentSkipListMap
-- It's equivalent to TreeMap.
-- A scalable concurrent ConcurrentNavigableMap/SortedMap implementation.
-- Guarantees average O(log(N)) performance on a wide variety of operations. ConcurrentHasMap does not guareantee operation time as a part of its contract.
+- It is similar to `TreeMap`, but supports concurrent access.
+- It is a scalable, concurrent implementation of `ConcurrentNavigableMap` and `SortedMap`.
+- It guarantees average O(log N) performance for basic operations.
+- Unlike `ConcurrentHashMap`, it maintains keys in sorted order.
 
 #### Graphs
-A Graph is a non-linear data structure consisting of nodes and edges. The nodes are sometimes also referred to as vertices and the edges are lines or arcs that connect any two nodes in the graph. Graphs are used to represent networks. The networks may include paths in a city or telephone network or circuit network. Graphs are also used in social networks like linkedIn, Facebook. 
+A graph is a non-linear data structure consisting of nodes and edges. The nodes are also referred to as vertices, and the edges connect vertices. Graphs are used to represent networks, such as roads, telephone networks, circuit networks, and social networks like LinkedIn and Facebook.
 
-#### Suffle()
-The suffle() method of the java collections framework is used to destroy any kinkd of order present in the data structure. it does just the opposite of sorting.
+#### shuffle()
+The `Collections.shuffle()` method is used to randomly rearrange the elements in a list. It changes their order without sorting them.
 
-#### Methods for Data Manipulation in Java:
-- Reverse() - reverses the order of the elements.
-- fill() - replace every element in a collection with the specified value.
-- copy() - creates a copy of elements from the specified source.
-- swap() - swaps the position of two elements in a collection.
-- addAll() - adds all the elements of a collection to other collection.
- 
+#### Methods for Data Manipulation in Java
+- `Collections.reverse()` — reverses the order of the elements in a list.
+- `Collections.fill()` — replaces every element in a list with the specified value.
+- `Collections.copy()` — copies elements from a source list to a destination list. The destination list must be at least as large as the source list.
+- `Collections.swap()` — swaps the positions of two elements in a list.
+- `addAll()` — adds all elements of a collection to another collection.
+
 #### Composition
-Is part if the collections in java.
-- frequency() - returns the count of the number of times an element is present.
-- disjoint() - Checks if two collections contain some common element.
- 
+Composition is an object-oriented programming concept, not part of the Java Collections Framework.
+
+- `Collections.frequency()` — returns the number of times an element appears in a collection.
+- `Collections.disjoint()` — checks whether two collections have no elements in common.
+
+
 ## Threading
 
 #### Thread
