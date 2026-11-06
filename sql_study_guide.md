@@ -20,7 +20,8 @@
 13. [Views and Materialized Views](#13-views-and-materialized-views)
 14. [Concurrency: Same Record at the Same Time](#14-concurrency)
 15. [CASE Statement](#15-case-statement)
-16. [Quick Vocabulary](#16-quick-vocabulary)
+16. [OVER Clause](#16-over-clause)
+17. [Quick Vocabulary](#17-quick-vocabulary)
 
 ---
 
@@ -102,7 +103,17 @@ Let's say **A = left table** and **B = right table**.
 | `CROSS JOIN`       | Every row of A with every row of B (all combinations)        |
 | `SELF JOIN`        | A table joined with **itself**                               |
 
+**Mini example data** (used in the short examples below):
+
+| table_a (id) | table_b (id) |
+|:------------:|:------------:|
+| 1            | 2            |
+| 2            | 3            |
+| 3            | 4            |
+
 ### INNER JOIN
+
+**What it does:** Keeps only the rows that have a match in **both** tables. Rows without a match are removed.
 
 ```sql
 SELECT p.name, s.quantity
@@ -110,9 +121,22 @@ FROM products p
 INNER JOIN sales s ON s.product_id = p.product_id;
 ```
 
+**Short example:**
+
+```sql
+SELECT a.id AS a_id, b.id AS b_id
+FROM table_a a
+INNER JOIN table_b b ON a.id = b.id;
+```
+
+| a_id | b_id |
+|-----:|-----:|
+| 2    | 2    |
+| 3    | 3    |
+
 ### LEFT JOIN
 
-Useful to find rows **without** a match.
+**What it does:** Keeps **all** rows from the left table (A). If there is no match in B, the B columns are `NULL`. Useful to find rows **without** a match.
 
 ```sql
 -- Products that have never been sold
@@ -122,11 +146,41 @@ LEFT JOIN sales s ON s.product_id = p.product_id
 WHERE s.sale_id IS NULL;
 ```
 
+**Short example:**
+
+```sql
+SELECT a.id AS a_id, b.id AS b_id
+FROM table_a a
+LEFT JOIN table_b b ON a.id = b.id;
+```
+
+| a_id | b_id |
+|-----:|-----:|
+| 1    | NULL |
+| 2    | 2    |
+| 3    | 3    |
+
 ### RIGHT JOIN
 
-Same as `LEFT JOIN` but the other direction. Most people just swap the tables and use `LEFT JOIN`.
+**What it does:** Keeps **all** rows from the right table (B). If there is no match in A, the A columns are `NULL`. It is the same as `LEFT JOIN` but in the other direction. Most people just swap the tables and use `LEFT JOIN`.
+
+**Short example:**
+
+```sql
+SELECT a.id AS a_id, b.id AS b_id
+FROM table_a a
+RIGHT JOIN table_b b ON a.id = b.id;
+```
+
+| a_id | b_id |
+|-----:|-----:|
+| 2    | 2    |
+| 3    | 3    |
+| NULL | 4    |
 
 ### FULL OUTER JOIN
+
+**What it does:** Keeps **all** rows from **both** tables. Where there is no match, the missing side is `NULL`.
 
 ```sql
 SELECT a.id AS a_id, b.id AS b_id
@@ -134,9 +188,20 @@ FROM table_a a
 FULL OUTER JOIN table_b b ON a.id = b.id;
 ```
 
+**Short example (result of the query above):**
+
+| a_id | b_id |
+|-----:|-----:|
+| 1    | NULL |
+| 2    | 2    |
+| 3    | 3    |
+| NULL | 4    |
+
 > MySQL does not support `FULL OUTER JOIN`. Use `LEFT JOIN` `UNION` `RIGHT JOIN` instead.
 
 ### CROSS JOIN
+
+**What it does:** Combines **every** row of A with **every** row of B. There is no `ON` condition. The result has A rows × B rows.
 
 ```sql
 -- Every size with every color
@@ -145,7 +210,18 @@ FROM sizes s
 CROSS JOIN colors c;
 ```
 
+**Short example** (`sizes` = S, M and `colors` = Red, Blue):
+
+| size | color |
+|------|-------|
+| S    | Red   |
+| S    | Blue  |
+| M    | Red   |
+| M    | Blue  |
+
 ### SELF JOIN
+
+**What it does:** Joins a table with **itself**. Give the table two different aliases so SQL can tell them apart. Useful for hierarchies, like employees and managers.
 
 ```sql
 -- Employees and their managers (same table)
@@ -153,6 +229,13 @@ SELECT e.name AS employee, m.name AS manager
 FROM employees e
 LEFT JOIN employees m ON e.manager_id = m.employee_id;
 ```
+
+**Short example** (Ana has no manager; Ben's manager is Ana):
+
+| employee | manager |
+|----------|---------|
+| Ana      | NULL    |
+| Ben      | Ana     |
 
 ### Common mistake
 
@@ -191,6 +274,20 @@ SELECT COALESCE(SUM(quantity), 0) AS total
 FROM sales
 WHERE product_id = 999;
 ```
+
+**Short example:**
+
+```sql
+SELECT name, COALESCE(phone, 'No phone') AS phone
+FROM customers;
+```
+
+| name | phone    |
+|------|----------|
+| Ana  | 555-1234 |
+| Ben  | No phone |
+
+Ana has a phone, so her value is returned. Ben's phone is `NULL`, so `'No phone'` is returned.
 
 **When to use it:**
 
@@ -909,7 +1006,49 @@ FROM report;
 
 ---
 
-## 16. Quick Vocabulary
+## 16. OVER Clause
+
+**Definition:** `OVER` turns a function into a **window function**. It tells SQL: "do this calculation over a group of rows, but **keep every row** in the result."
+
+```sql
+function(...) OVER (
+    PARTITION BY column   -- optional: split rows into groups
+    ORDER BY column       -- optional: order rows inside each group
+)
+```
+
+| Part              | Meaning                                              |
+|-------------------|------------------------------------------------------|
+| `OVER ()`         | The window is **all rows** of the result             |
+| `PARTITION BY`    | Makes a separate window for each group               |
+| `ORDER BY`        | Sets the row order inside the window                 |
+
+**Short example:** show each sale next to the total of all sales.
+
+```sql
+SELECT sale_id,
+       quantity,
+       SUM(quantity) OVER () AS total_all
+FROM sales;
+```
+
+**Returns:**
+
+| sale_id | quantity | total_all |
+|--------:|---------:|----------:|
+| 1       | 10       | 60        |
+| 2       | 25       | 60        |
+| 3       | 5        | 60        |
+| 4       | 8        | 60        |
+| 5       | 12       | 60        |
+
+Every row is kept, and each one gets the same total (60). With `GROUP BY`, you would get only **one** row.
+
+> See [Window Functions](#10-window-functions) for more functions like `ROW_NUMBER`, `RANK`, and `LAG`.
+
+---
+
+## 17. Quick Vocabulary
 
 | Word            | Simple meaning                                      |
 |-----------------|-----------------------------------------------------|
@@ -927,13 +1066,3 @@ FROM report;
 | Deadlock        | Two transactions waiting for each other forever     |
 | Rollback        | Cancel a transaction and undo its changes           |
 | Commit          | Save a transaction permanently                      |
-
----
-
-### Study Tips
-
-1. **Practice every example** in a real database (PostgreSQL or SQLite are free).
-2. Always ask: *"What is the order of operations here?"*
-3. Use `EXPLAIN` on every slow query.
-4. Practice the classic exercises: second highest per group, symmetric difference, running totals, finding duplicates.
-5. In interviews, **explain your thinking** step by step. Use simple words.
