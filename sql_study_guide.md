@@ -525,7 +525,7 @@ Use `EXPLAIN` to check whether your index is used.
 
 ## 10. Window Functions
 
-**Definition:** SQL window functions allow performing calculations across a set of rows that are related to the current row, without collapsing the result into a single value (unlike `GROUP BY`).
+**Definition:** Window functions allow performing calculations across a set of rows that are related to the current row, without collapsing the result into a single value (unlike `GROUP BY`).
 
 ```sql
 function_name(...) OVER (
