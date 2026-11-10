@@ -211,10 +211,45 @@ table.get_item(Key={"UserId": "u-1"}, ConsistentRead=True)
 
 There is a third option: **transactional reads** (see [Transactions](#21-transactions)).
 
-### Capacity units (to understand cost)
+### Read and Write Capacity Units (RCU and WCU)
 
-- **1 RCU** = one strongly consistent read per second, up to **4 KB**. (Eventually consistent: 2 reads per RCU.)
-- **1 WCU** = one write per second, up to **1 KB**.
+**Read Capacity Units (RCU)** and **Write Capacity Units (WCU)** measure how much reading and writing your table can do **per second**. They are used in **Provisioned mode**, where you reserve the capacity yourself.
+
+#### Read Capacity Unit (RCU)
+
+**1 RCU** = one **strongly consistent** read per second of an item up to **4 KB**.
+
+- **Eventually consistent** read: 1 RCU gives **2 reads** per second (half the cost).
+- **Transactional** read: costs **2 RCU** per read.
+
+#### Write Capacity Unit (WCU)
+
+**1 WCU** = one write per second of an item up to **1 KB**.
+
+- **Transactional** write: costs **2 WCU** per write.
+
+#### Important rule: item size is rounded up
+
+If an item is bigger than the unit size, it uses more units.
+
+| Operation | Item size | Calculation | Units used |
+|---|---|---|---|
+| Strongly consistent read | 6 KB | 6 ÷ 4 = 1.5 → **2** | 2 RCU |
+| Eventually consistent read | 6 KB | 2 RCU ÷ 2 | 1 RCU |
+| Write | 2.5 KB | 2.5 ÷ 1 = 2.5 → **3** | 3 WCU |
+
+#### Full example
+
+You want **10 strongly consistent reads per second** of **8 KB** items:
+
+- Each read: 8 ÷ 4 = **2 RCU**
+- Total: 10 × 2 = **20 RCU**
+
+#### What happens if you go over the limit?
+
+If you use more than your reserved capacity, DynamoDB returns a **throttling** error (`ProvisionedThroughputExceededException`). To avoid it, use **Autoscaling** or **On-Demand mode**, where you reserve nothing and pay per request.
+
+> 📌 **Remember:** RCU = reads of **4 KB**, WCU = writes of **1 KB**.
 
 ---
 
