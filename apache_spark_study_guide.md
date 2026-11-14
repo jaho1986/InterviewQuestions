@@ -43,7 +43,7 @@ A short and simple guide for English learners. Examples use **PySpark** (Spark w
 
 | Part | Role |
 |------|------|
-| **Driver** | The main program. It plans the work and sends tasks. |
+| **Driver** | The main program. It reads the code, makes a plan and schedules work. |
 | **Executors** | Worker processes. They run the tasks and store data. |
 | **Cluster manager** | Gives resources (YARN, Kubernetes, Standalone). |
 
