@@ -47,7 +47,7 @@ A short and simple guide for English learners. Examples use **PySpark** (Spark w
 | **Executors** | Worker processes. They run the tasks and store data. |
 | **Cluster manager** | Gives resources (YARN, Kubernetes, Standalone). |
 
-The **YARN** (Yet Another Resource Negotiator) **is the cluster resource manager** (part of Apache Hadoop). Its primary function is to manage and allocate RAM and CPU cores among the various applications running simultaneously on a cluster of servers.
+The **YARN** (Yet Another Resource Negotiator) **is the cluster resource manager**. Its primary function is to manage and allocate RAM and CPU cores among the various applications running simultaneously on a cluster of servers.
 
 ---
 
