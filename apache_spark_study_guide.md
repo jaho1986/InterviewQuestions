@@ -195,7 +195,7 @@ There are two types:
 ### Wide transformations
 - An output partition needs data from **many input partitions**.
 - **Causes a shuffle.** Slower.
-- Examples: `groupBy`, `reduceByKey`, `join`, `distinct`, `repartition`, `orderBy`.
+- Examples: `groupBy`, `orderBy`, `join`, `distinct`, `repartition`, `reduceByKey`.
 
 ```
 Narrow:  [P1] -> [P1']        Wide:  [P1] \
