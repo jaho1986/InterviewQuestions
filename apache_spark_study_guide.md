@@ -190,7 +190,7 @@ There are two types:
 ### Narrow transformations
 - Each output partition depends on **one input partition**.
 - **No shuffle.** Fast.
-- Examples: `map`, `filter`, `flatMap`, `select`, `union`, `coalesce`.
+- Examples: `map`, `flatMap`, `select`, `filter`, `union`, `coalesce`.
 
 ### Wide transformations
 - An output partition needs data from **many input partitions**.
