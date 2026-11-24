@@ -1,6 +1,16 @@
 
 # Microservices
 
+## Table of Contents
+
+1. [APIs](#apis)
+2. [Microservices Data Management Patterns](#microservices-data-management-patterns)
+3. [Deployment and Infrastructure](#deployment-and-infrastructure)
+4. [Tools and technologies](#tools-and-technologies)
+5. [Step-By-Step Recommendations to convert Monolithic Applications Into Microservices:](#step-by-step-recommendations-to-convert-monolithic-applications-into-microservices)
+
+---
+
 Microservices are a software develpment technique - a variant of the Service-Oriented Architecture (SOA) architectural style - that structures an application as a collection of loosely coupled services. 
 
 They could be seen as small services responsible for one thing, they can be configured to work in the Cloud and they are also easily scalable.
@@ -44,6 +54,9 @@ An anti-pattern is an ineffective solution to a common recurring problem that is
 -   Making the technologies behind the microservices your key focus.
 
   
+
+[⬆️ Back to index](#table-of-contents)
+
 ## APIs
 #### What is a RESTful API?
 
@@ -142,6 +155,8 @@ A JSON Web Token consists of a set of claims, wich refers to information in the 
 JSON Web Tokens are trusted since they are digitally signed using a HMAC (hash-based message authentication code) algorithm or a RSA (Rivest-Shamir-Adleman) signature with SHA-256 (RS256).
 
 ![Security Diagram using JWT](https://github.com/jaho1986/InterviewQuestions/blob/main/jwt.png)
+
+[⬆️ Back to index](#table-of-contents)
 
 ## Microservices Data Management Patterns
 
@@ -327,6 +342,8 @@ See also: [Orchestration vs Choreography, which one should you use? The pros and
 -   Dependencies.
 -   Network and port allocations.
 
+[⬆️ Back to index](#table-of-contents)
+
 ## Deployment and Infrastructure
 
 #### What is a container image?
@@ -348,6 +365,8 @@ Container orchestration refers to the automation of tasks that relates to the sc
 -   Container redundancy and availability.
 -   External exposure services.
 -   Health monitoring of containers and hosts.
+
+[⬆️ Back to index](#table-of-contents)
 
 ## Tools and technologies
 
@@ -415,6 +434,8 @@ Container orchestration refers to the automation of tasks that relates to the sc
 
   
 
+[⬆️ Back to index](#table-of-contents)
+
 ## Step-By-Step Recommendations to convert Monolithic Applications Into Microservices:
 
 -   Start by identifying all the features in your existing monolithic application.
@@ -428,3 +449,5 @@ Container orchestration refers to the automation of tasks that relates to the sc
 -   Implement an event-bus and start by setting up event-driven communication between two of your non-critical microservices.
 -   Identify processes that are executed as part of database transactions, and select a design pattern for Introducing distributed transactions.
 -   Decompose the single database into a database-per-service.
+
+[⬆️ Back to index](#table-of-contents)

@@ -1,3 +1,13 @@
+## Table of Contents
+
+1. [Object Oriented Programming](#object-oriented-programming)
+2. [Generics in Java](#generics-in-java)
+3. [Collections in Java](#collections-in-java)
+4. [Threading](#threading)
+5. [Comparable VS Comparator Java](#comparable-vs-comparator-java)
+
+---
+
 ## Object Oriented Programming 
 Is a methodology or paradigm to design a program using Classes and Objects
 
@@ -73,6 +83,9 @@ Is a feature that allows the parent class and the subclass to have a same method
 - Access modifier of the child class should be less restrictive than the parent class.
 - Local parameters cannot be overridden.
  
+
+[⬆️ Back to index](#table-of-contents)
+
 ## Generics in Java
 Is a term that denotes a set of language features related to the definition and use of Generic types and methods.
 
@@ -91,6 +104,9 @@ We can also write generic functions that can be called with different types of a
 - Individual type casting not required.
 - Implementing non generic algorithms.
  
+
+[⬆️ Back to index](#table-of-contents)
+
 ## Collections in Java
 
 #### ArrayList
@@ -221,6 +237,8 @@ Composition is an object-oriented programming concept, not part of the Java Coll
 - `Collections.disjoint()` — checks whether two collections have no elements in common.
 
 
+[⬆️ Back to index](#table-of-contents)
+
 ## Threading
 
 #### Thread
@@ -310,6 +328,9 @@ We use sincronized when multiples threads work on the same object.
 #### Thread Pool:
 Java Thread Pool manages the pool of worker threads and contains a queue that keep the tasks waiting to be executed.
  
+
+[⬆️ Back to index](#table-of-contents)
+
 ## Comparable VS Comparator Java
 - Comparable is an interface used to compare objects by the comapreTo(Object o) method.
     Example: class nameClass implements Comparable<Object> {...
@@ -328,3 +349,5 @@ Example:
        }
      };
 ```
+
+[⬆️ Back to index](#table-of-contents)

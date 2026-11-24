@@ -2,11 +2,33 @@
 
 This file, will help you to do some basic operations with kubernetes. This commands were run and tested on Google Cloud Platform.
 
+## Table of Contents
+
+1. [Increase and decrease the number of nodes in a cluster](#increase-and-decrease-the-number-of-nodes-in-a-cluster)
+2. [Create a new deployment](#create-a-new-deployment)
+3. [Update a deployment](#update-a-deployment)
+4. [Update a deployment (using a YAML file)](#update-a-deployment-using-a-yaml-file)
+5. [Get information about a deployment](#get-information-about-a-deployment)
+6. [Delete everything related to a deployment](#delete-everything-related-to-a-deployment)
+7. [Aditional commands to get information](#aditional-commands-to-get-information)
+8. [Create a new deployment using Docker-Compose files](#create-a-new-deployment-using-docker-compose-files)
+9. [Centralized configuration with Kubernetes](#centralized-configuration-with-kubernetes)
+10. [Store passwords with Kubernetes](#store-passwords-with-kubernetes)
+11. [Service Discovery in Kubernetes](#service-discovery-in-kubernetes)
+12. [Using Ingress to create services](#using-ingress-to-create-services)
+13. [Use ARBC to allow Ribbon to access Service Discovery APIs:](#use-arbc-to-allow-ribbon-to-access-service-discovery-apis)
+14. [Using Spring Cloud Kubernetes Config to load Configmaps](#using-spring-cloud-kubernetes-config-to-load-configmaps)
+15. [Auto Scaling](#auto-scaling)
+
+---
+
 ## Increase and decrease the number of nodes in a cluster
 
 
     gcloud container clusters get-credentials [cluster_name] --zone [zone_name] --project [project_name] 
     gcloud container clusters resize --zone [zone_name] [cluster_name] --num-nodes=0
+
+[⬆️ Back to index](#table-of-contents)
 
 ## Create a new deployment
 
@@ -20,6 +42,8 @@ Create a deployment:
 Expose the deployment:
 
     kubectl expose deployment [deployment_name] --type=LoadBalancer --port=[number]
+
+[⬆️ Back to index](#table-of-contents)
 
 ## Update a deployment
 
@@ -38,6 +62,8 @@ Check the status of the deployment:
 Check the history of the deployment (if necesary):
 
     kubectl rollout history deployment [deployment_name]
+
+[⬆️ Back to index](#table-of-contents)
 
 ## Update a deployment (using a YAML file)
 We can start by exporting the configuration of the deployment and exporting the configuration of the service and the deployment with the following commands:
@@ -71,6 +97,8 @@ And then, apply all changes by using the following command:
 
     kubectl apply -f filename.yaml
 
+[⬆️ Back to index](#table-of-contents)
+
 ## Get information about a deployment
 
 How to see the logs:
@@ -89,6 +117,8 @@ Geet YAML configuration of a service:
 
     kubectl get service [service_name] -o yaml > service_filename.yaml
 
+[⬆️ Back to index](#table-of-contents)
+
 ## Delete everything related to a deployment
 
     kubectl delte all -l app=[app_name]
@@ -96,6 +126,8 @@ Geet YAML configuration of a service:
 Get all resources:
 
     kubectl get all
+
+[⬆️ Back to index](#table-of-contents)
 
 ## Aditional commands to get information
 
@@ -113,6 +145,8 @@ Get all resources:
     kubectl get pv
     kubectl get pvc
     kubectl logs [pod_name] -f
+
+[⬆️ Back to index](#table-of-contents)
 
 ## Create a new deployment using Docker-Compose files
 Verify if yur docker-compos config is working:
@@ -137,6 +171,8 @@ Verify changes:
 
     kubectl get all
 
+[⬆️ Back to index](#table-of-contents)
+
 ## Centralized configuration with Kubernetes
 Create a configmap:
 
@@ -160,6 +196,8 @@ Get the configuration from a configmap in YAML file:
 
      kubectl edit configmap/[configmap_name]
 
+[⬆️ Back to index](#table-of-contents)
+
 ## Store passwords with Kubernetes
 Create a secret:
 
@@ -180,6 +218,8 @@ Get the configuration from a configmap in YAML file:
         key: [secret_name]
         value: [var1]
 
+[⬆️ Back to index](#table-of-contents)
+
 ## Service Discovery in Kubernetes
 It is used in Feign Clients and we have to add a environment variable in the deployment file like follows:
 ```
@@ -198,6 +238,9 @@ spec:
 And modify the Feign Class like this:
 
     @FeignClient(name = "service_name", url = "${ENV_VAR_NAME:http://localhost}:PORT")
+
+[⬆️ Back to index](#table-of-contents)
+
 ## Using Ingress to create services
 
 Add the following dependencies in our project:
@@ -247,6 +290,8 @@ Apply changes:
 
     kubectl apply -f file1.yaml,file2.yaml,file3.yaml,....
 
+[⬆️ Back to index](#table-of-contents)
+
 ## Use ARBC to allow Ribbon to access Service Discovery APIs:
 Validate the actual service account:
 
@@ -272,6 +317,8 @@ Apply changes:
 
     kubectl apply -f file1.yaml,file2.yaml,file3.yaml,....
 
+[⬆️ Back to index](#table-of-contents)
+
 ## Using Spring Cloud Kubernetes Config to load Configmaps
 Config a configmap:
 
@@ -280,6 +327,8 @@ Config a configmap:
 Verify information:
 
     kubectl describe configmap/[configmap_name]
+
+[⬆️ Back to index](#table-of-contents)
 
 ## Auto Scaling  
   
@@ -324,3 +373,5 @@ Configure Horizontal Pod Auto Scaling:
 Get Horizontal Pod Autoscaler:
 
     kubectl get hpa [service_name] -o yaml > hpa.yaml
+
+[⬆️ Back to index](#table-of-contents)

@@ -4,6 +4,17 @@ SOLID is an acronym for five object-oriented design principles that help develop
 
 ---
 
+## Table of Contents
+
+1. [S — Single Responsibility Principle (SRP)](#s--single-responsibility-principle-srp)
+2. [O — Open/Closed Principle (OCP)](#o--openclosed-principle-ocp)
+3. [L — Liskov Substitution Principle (LSP)](#l--liskov-substitution-principle-lsp)
+4. [I — Interface Segregation Principle (ISP)](#i--interface-segregation-principle-isp)
+5. [D — Dependency Inversion Principle (DIP)](#d--dependency-inversion-principle-dip)
+6. [Summary Table](#summary-table)
+
+---
+
 ## S — Single Responsibility Principle (SRP)
 
 This principle states that "A class should have only one reason to change" which means every class should have a single responsibility or single job or single purpose. In other words, a class should have only one job or purpose within the software system.
@@ -31,6 +42,8 @@ class UserRepository {
     public void save(User user) { /* ... */ }
 }
 ```
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -69,6 +82,8 @@ class DiscountCalculator {
     }
 }
 ```
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -182,6 +197,8 @@ class Penguin implements Bird {
 }
 ```
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## I — Interface Segregation Principle (ISP)
@@ -221,6 +238,8 @@ class Robot implements Workable {
     // No need to implement eat()
 }
 ```
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -271,6 +290,8 @@ Database db = new MySQLDatabase(); // or new MongoDatabase()
 UserService service = new UserService(db);
 ```
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## Summary Table
@@ -282,6 +303,8 @@ UserService service = new UserService(db);
 | **L** | Liskov Substitution | Subclasses must honor parent contracts |
 | **I** | Interface Segregation | Small, focused interfaces |
 | **D** | Dependency Inversion | Depend on abstractions, not concretions |
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
