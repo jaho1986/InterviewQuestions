@@ -53,6 +53,8 @@ Delta Lake = Parquet files + Transaction log
 | Batch + streaming | One table works for both |
 | Updates and deletes | You can change data, not only add it |
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 2. Data Lake vs Data Warehouse vs Lakehouse
@@ -68,6 +70,8 @@ Delta Lake = Parquet files + Transaction log
 | Example | Files on S3 | Snowflake, Redshift | Delta Lake + Spark |
 
 **Key point:** A **Lakehouse** combines the **low cost and flexibility of a data lake** with the **reliability and performance of a data warehouse**. Delta Lake is one of the technologies that makes a lakehouse possible.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -87,6 +91,8 @@ These are the problems that Delta Lake was created to solve.
 | **Slow metadata listing** | Listing millions of files in cloud storage is slow | Metadata in the transaction log |
 
 > **Note:** Delta Lake also has its own challenges (small files, write conflicts). You will study them in sections 17 and 20.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -115,6 +121,8 @@ Delta Lake has **three main layers**:
 | 🥉 Bronze | Raw | Data as it arrives, no changes |
 | 🥈 Silver | Cleaned | Filtered, cleaned, joined data |
 | 🥇 Gold | Business-ready | Aggregated data for reports and ML |
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -171,6 +179,8 @@ stream_df = spark.readStream.format("delta").load("/data/sales")
 
 **Key point:** One Delta table can be a **batch table and a streaming source/sink** at the same time.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 6. Structure of a Delta Table
@@ -200,6 +210,8 @@ A Delta table is a **folder** with data files and a `_delta_log` folder.
 | **Checkpoint files** | A Parquet summary of the table state (saves time) |
 | **`_last_checkpoint`** | Points to the latest checkpoint |
 | **Partition folders** | Optional; used if the table is partitioned |
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -232,6 +244,8 @@ The **transaction log** (also called **DeltaLog**) is an **ordered record of eve
 | Time travel | Each version is a snapshot of the log |
 | Fast metadata | No need to list all files in cloud storage |
 | Concurrency | Writers compete to create the next version file |
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -305,6 +319,8 @@ If a client is too old, it **cannot** use the table.
 
 > Other actions you may see: `commitInfo` (info about the operation) and `txn` (used by streaming for idempotent writes).
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 9. Append vs Overwrite
@@ -343,6 +359,8 @@ Log: `remove` actions (old files) + `add` actions (new files). This happens in *
 ```
 
 > Important: with Delta, `overwrite` is **safe**. The old data is still available with time travel (until `VACUUM`).
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -408,6 +426,8 @@ target = DeltaTable.forPath(spark, "/data/sales")
 
 > Tip: In `MERGE`, the source must have **only one row per key**. Multiple matches cause an error.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 11. Schema Enforcement
@@ -445,6 +465,8 @@ df_new.write.format("delta").mode("append").save("/data/people")
 ALTER TABLE sales ADD CONSTRAINT positive_amount CHECK (amount > 0);
 ```
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 12. mergeSchema
@@ -477,6 +499,8 @@ This is also used in `MERGE INTO` when the source has new columns.
 | Change a column type (e.g., `STRING` → `INT`) | ❌ No |
 | Delete or rename columns | ❌ No |
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 13. overwriteSchema
@@ -506,6 +530,8 @@ Use it when you need to:
 | Risk | Low | High |
 
 > Warning: `overwriteSchema` replaces the table data too. Use with care.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -567,6 +593,8 @@ RESTORE TABLE sales TO VERSION AS OF 5;
 VACUUM sales RETAIN 168 HOURS;  -- 7 days
 ```
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 15. ACID Transactions
@@ -588,6 +616,8 @@ VACUUM sales RETAIN 168 HOURS;  -- 7 days
 | `WriteSerializable` | **Default for writes.** Fewer conflicts; only writes are serialized. |
 
 > Readers always see a **consistent snapshot**. They never see data from a write that is still in progress.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -642,6 +672,8 @@ OPTIMIZE sales ZORDER BY (customer_id);
 
 > Too many partitions → many small files → slow queries (see the next section).
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 17. Small Files Problem
@@ -693,6 +725,8 @@ ALTER TABLE sales SET TBLPROPERTIES (
 
 `OPTIMIZE` creates **new big files** and marks the small ones as `remove`. The small files are physically deleted only after `VACUUM`.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 18. What Happens When a Write Fails?
@@ -729,6 +763,8 @@ Delta Lake writes in **two steps**:
 **Key point:** Thanks to **atomicity**, you never get a "half-written" table. You can safely **retry** the job.
 
 > For streaming, the `checkpointLocation` and the `txn` action help avoid duplicate writes when a job restarts (**idempotent writes**).
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -770,6 +806,8 @@ The storage system must guarantee that **only one writer can create a given log 
 | Concurrency | High | Low |
 | Best when | Conflicts are rare | Conflicts are common |
 | Cost of conflict | Work is lost and must be retried | Writers wait |
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -814,6 +852,8 @@ A conflict happens when two operations **touch the same data** in a way that can
 5. **Retry** failed jobs. Because of atomicity, retry is safe.
 6. Avoid running many jobs that update the same rows.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 21. Quick Review Questions
@@ -835,6 +875,8 @@ A conflict happens when two operations **touch the same data** in a way that can
 15. Name two causes of the small files problem and two solutions.
 16. Why should you avoid partitioning by `user_id`?
 17. How can you reduce write conflicts?
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -864,6 +906,8 @@ A conflict happens when two operations **touch the same data** in a way that can
 | **Orphan file** | Data file that exists in storage but is not in the log |
 | **Lakehouse** | Architecture that mixes data lake and data warehouse features |
 | **Medallion architecture** | Bronze → Silver → Gold data layers |
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 

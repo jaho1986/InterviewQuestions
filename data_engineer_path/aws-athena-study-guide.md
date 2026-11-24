@@ -45,6 +45,8 @@ A **data lake** is a central place where you store **all your data** in its **or
 | Cost | Lower | Higher |
 | Example | S3 | Redshift |
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 2. What is Athena and how does it work?
@@ -75,6 +77,8 @@ WHERE order_date >= DATE '2025-01-01'
 GROUP BY country;
 ```
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 3. When to use Athena
@@ -97,6 +101,8 @@ GROUP BY country;
 | Very complex ETL with big transformations | Glue, EMR, Spark |
 
 **Rule of thumb:** Athena is great for **analytics on S3** when you want **no infrastructure** and **pay-per-query**.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -133,6 +139,8 @@ GROUP BY country;
 ```
 
 Data stays in S3. Compute appears only when you run a query.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -178,6 +186,8 @@ LOCATION 's3://my-bucket/orders/';
 ```
 
 > `EXTERNAL` means: if you drop the table, the **S3 data is not deleted**. Only the metadata is removed.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -228,6 +238,8 @@ WITH (
 SELECT * FROM orders_csv;
 ```
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 7. Compression: Snappy vs GZIP
@@ -269,6 +281,8 @@ Not sure?  → Parquet + Snappy
 ```
 
 > Note: Athena also supports other codecs like **ZSTD**, which offers a good balance between size and speed.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -324,6 +338,8 @@ This is called **partition pruning**.
 - Do not over-partition: aim for partitions that hold **at least ~128 MB** of data.
 - Always **include the partition column in your filter**.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 9. Predicate pushdown
@@ -374,6 +390,8 @@ WHERE year(order_date) = 2025
 ```
 
 > Partition pruning and predicate pushdown are related, but different: **pruning** skips **folders**; **pushdown** skips **data inside files**.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -444,6 +462,8 @@ SELECT * FROM orders;
 
 > Use them **together**: partition by date, bucket by customer ID.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 11. Cost reduction practices
@@ -482,6 +502,8 @@ WHERE year = '2025' AND month = '06' AND day = '15';
 - **Failed queries** are not charged. **DDL** statements (`CREATE`, `ALTER`, `DROP`) are free.
 - There is a **minimum charge** per query (10 MB scanned), so many tiny queries cost more than expected.
 - **S3 request costs** and **Glue Catalog costs** may also add up.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -538,6 +560,8 @@ JOIN small_users u ON e.user_id = u.user_id;
 
 > **Read less data, in fewer and bigger files, in a columnar format.**
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 13. Quick glossary
@@ -560,6 +584,8 @@ JOIN small_users u ON e.user_id = u.user_id;
 | **Schema-on-read** | Applying the structure when reading, not when storing |
 | **Cardinality** | Number of distinct values in a column |
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 14. Self-check questions
@@ -574,6 +600,8 @@ JOIN small_users u ON e.user_id = u.user_id;
 8. Name **five** ways to reduce Athena costs.
 9. A query is slow. What are the first three things you check?
 10. Why can `WHERE year(order_date) = 2025` be worse than a direct date filter?
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 

@@ -49,6 +49,8 @@ We use these tables in many examples.
 | 4       | 4          | 8        | 2026-01-08 |
 | 5       | 5          | 12       | 2026-01-09 |
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 2. WHERE
@@ -85,6 +87,8 @@ WHERE sale_date >= '2026-01-01'   -- filter rows first
 GROUP BY product_id
 HAVING SUM(quantity) > 10;        -- filter groups after
 ```
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -250,6 +254,8 @@ LEFT JOIN sales s
  AND s.sale_date >= '2026-01-01';
 ```
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 4. COALESCE
@@ -294,6 +300,8 @@ Ana has a phone, so her value is returned. Ben's phone is `NULL`, so `'No phone'
 - Show a default value instead of `NULL`.
 - Pick the first available value (e.g., mobile phone, then home phone, then work phone).
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 5. UNION
@@ -318,6 +326,8 @@ SELECT name FROM suppliers;
 3. Column names come from the **first** query.
 
 > Use `UNION ALL` when you know there are no duplicates, or when duplicates are fine. It is faster because it skips the duplicate check.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -344,6 +354,8 @@ SELECT product_id FROM sales;
 flowchart LR
     A["A EXCEPT B = only in A"]
 ```
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -395,6 +407,8 @@ WITH RECURSIVE org AS (
 SELECT * FROM org;
 ```
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 8. Order of Operations
@@ -440,6 +454,8 @@ You **write** a query in this order, but the database **runs** it in a different
 5. **Correct results:** A filter in `WHERE` and a filter in `HAVING` can give **different** results.
 
 > Note: This is the *logical* order. The database optimizer may run things in a different physical order, but the result must be the same.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -520,6 +536,8 @@ WHERE phone = 5551234   -- phone is VARCHAR
 ```
 
 Use `EXPLAIN` to check whether your index is used.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -608,6 +626,8 @@ WHERE rnk = 2;
 
 Choose based on your business rule. Always tell your interviewer which one you chose and why.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 11. Exercise: Symmetric Difference
@@ -663,6 +683,8 @@ WHERE NOT EXISTS (SELECT 1 FROM table_a a WHERE a.id = b.id);
 
 > Avoid `NOT IN` when the subquery can return `NULL`. It can return **no rows** by mistake. `NOT EXISTS` is safer.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 12. Query Optimization Techniques
@@ -716,6 +738,8 @@ WHERE sale_date >= '2026-01-01'
 - **Big difference** between estimated rows and real rows → old statistics.
 - **Sort** or **Hash** steps that use a lot of memory → check your `ORDER BY` and `JOIN`.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 13. Views and Materialized Views
@@ -766,6 +790,8 @@ REFRESH MATERIALIZED VIEW sales_summary;
 | Best for            | Simplicity, security     | Heavy reports, dashboards             |
 
 > Support for materialized views depends on the database. PostgreSQL and Oracle have them. SQL Server has *indexed views*. MySQL does not have them natively.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -877,6 +903,8 @@ WHERE id = 1
 2. Update rows in the **same order** in all code (helps avoid deadlocks).
 3. Prefer **atomic updates**: `SET balance = balance - 100` instead of reading and writing in two steps.
 4. Be ready to **retry** after a deadlock or serialization error.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -1004,6 +1032,8 @@ FROM report;
 
 > `COALESCE(a, b)` is a shorter way to write a `CASE` that checks `NULL`.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 16. OVER Clause
@@ -1046,6 +1076,8 @@ Every row is kept, and each one gets the same total (60). With `GROUP BY`, you w
 
 > See [Window Functions](#10-window-functions) for more functions like `ROW_NUMBER`, `RANK`, and `LAG`.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 17. Quick Vocabulary
@@ -1066,3 +1098,5 @@ Every row is kept, and each one gets the same total (60). With `GROUP BY`, you w
 | Deadlock        | Two transactions waiting for each other forever     |
 | Rollback        | Cancel a transaction and undo its changes           |
 | Commit          | Save a transaction permanently                      |
+
+[⬆️ Back to index](#table-of-contents)

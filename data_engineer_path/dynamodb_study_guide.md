@@ -43,6 +43,8 @@ Topics are ordered from **easiest to most complex**.
 
 > 💡 Think of it as a very big, very fast table where you find data by its **key**.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 2. SQL vs NoSQL
@@ -58,6 +60,8 @@ Topics are ordered from **easiest to most complex**.
 | Examples | MySQL, PostgreSQL, Aurora | DynamoDB, MongoDB, Redis |
 
 **Key idea:** in SQL you design tables first, then write any query you want. In NoSQL (DynamoDB) you design for your **queries first**.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -78,6 +82,8 @@ Topics are ordered from **easiest to most complex**.
 
 **Simple rule:** need JOINs and ad-hoc queries? → **Aurora**. Need huge scale and fast lookups by key? → **DynamoDB**.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 4. When to use DynamoDB
@@ -97,6 +103,8 @@ Topics are ordered from **easiest to most complex**.
 - Ad-hoc analytics and reports (use Athena, Redshift or Aurora)
 - Data that changes its query needs all the time
 - Items larger than 400 KB (store files in S3, save the link in DynamoDB)
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -124,6 +132,8 @@ Important points:
 - Items in the same table **can have different attributes** (no fixed schema).
 - Only the **primary key** attributes are required.
 - Maximum item size: **400 KB**.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -155,6 +165,8 @@ Important points:
 | `M` | Map (key-value) | `{"city": "Toluca"}` |
 
 > 📌 Primary key attributes can only be **String, Number or Binary**.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -189,6 +201,8 @@ DynamoDB passes the PK through a **hash function**. The result decides **which p
 
 - Sort data inside a partition.
 - Use conditions: `=`, `<`, `>`, `BETWEEN`, `begins_with`.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -250,6 +264,8 @@ You want **10 strongly consistent reads per second** of **8 KB** items:
 If you use more than your reserved capacity, DynamoDB returns a **throttling** error (`ProvisionedThroughputExceededException`). To avoid it, use **Autoscaling** or **On-Demand mode**, where you reserve nothing and pay per request.
 
 > 📌 **Remember:** RCU = reads of **4 KB**, WCU = writes of **1 KB**.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -315,6 +331,8 @@ table.delete_item(Key={"CustomerId": "c-1", "OrderDate": "2026-03-01"})
 - `batch_write_item`: up to **25** puts/deletes.
 - `batch_get_item`: up to **100** items.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 10. Query vs Scan
@@ -340,6 +358,8 @@ Important notes:
 
 - Both return a maximum of **1 MB per call**. Use `LastEvaluatedKey` to get the next page.
 - Scan can be made faster with **parallel scan** (more cost).
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -369,6 +389,8 @@ Key points:
 | Applied | **Before** reading | **After** reading |
 | Reduces cost | ✅ Yes | ❌ No |
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 12. Cardinality and Data Distribution
@@ -396,6 +418,8 @@ Good PK (UserId):    [██] [██] [██] [██] [██] [██]      
 - Add a random or calculated suffix (**write sharding**), e.g., `2026-03-01#3`.
 - Use caching (DAX) for very popular reads.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 13. How to Choose the Right Key
@@ -420,6 +444,8 @@ Follow these steps:
 | Game scores | `GameId` | `UserId` |
 
 ❌ Avoid: `Status`, `Date` (alone), `Boolean` fields, or any key with few values.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -447,6 +473,8 @@ Examples:
 | 3 | Get orders by status | `Query` on a **GSI** with PK = `Status` |
 
 > 🔑 In SQL: *data first, queries later*. In DynamoDB: ***queries first, data model later***.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -490,6 +518,8 @@ DynamoDB (denormalized): one item with everything.
 
 Techniques: embed data in the item, store lists/maps, **single-table design**, use Streams to sync copies.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 16. Considerations When Creating Tables
@@ -516,6 +546,8 @@ Techniques: embed data in the item, store lists/maps, **single-table design**, u
 - **Deletion protection:** enable it for production tables.
 - **Attribute names:** short names save storage and cost.
 - **Tags:** use them for cost tracking.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -572,6 +604,8 @@ table.query(
 )
 ```
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 18. Locks
@@ -611,6 +645,8 @@ except ClientError as e:
 - **Transactions:** all-or-nothing changes (see below).
 - **Distributed lock (advanced):** the *DynamoDB Lock Client* library can build locks using conditional writes + TTL.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 19. Autoscaling
@@ -637,6 +673,8 @@ Autoscaling changes **provisioned capacity** (RCU/WCU) automatically when traffi
 
 > ⚠️ Autoscaling is for **provisioned mode only**. On-demand mode scales by itself.
 > Tip: **Burst capacity** helps with short spikes, but do not depend on it.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -674,6 +712,8 @@ DynamoDB Table → Stream → Lambda → (SNS / S3 / OpenSearch)
 ```
 
 > 💡 Similar option: **Kinesis Data Streams for DynamoDB** (longer retention, more consumers).
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -716,6 +756,8 @@ client.transact_write_items(
 
 If account A does not have enough money, **nothing changes** in either account.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 22. Global Tables
@@ -740,6 +782,8 @@ If account A does not have enough money, **nothing changes** in either account.
 ```
 
 > ⚠️ Strongly consistent reads only work in the **same Region where the write happened**.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -804,6 +848,8 @@ Users can only see `UserId`, `Name` and `City` (not `Salary`, for example).
 - Other helpful keys: `dynamodb:ReturnValues`, `dynamodb:EnclosingOperation`.
 - Use **CloudTrail** to audit access.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 24. Quick Review Cheat Sheet
@@ -831,6 +877,8 @@ Users can only see `UserId`, `Name` and `City` (not `Salary`, for example).
 ### Design mantra
 
 > **Know your access patterns → choose your keys → add indexes only when needed → denormalize.**
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 

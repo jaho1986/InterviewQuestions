@@ -43,11 +43,11 @@ A short and simple guide for English learners. Examples use **PySpark** (Spark w
 
 | Part | Role |
 |------|------|
-| **Driver** | The main program. It reads the code, makes a plan (DAG) and schedules work. |
+| **Driver** | The main program. It plans the work and sends tasks. |
 | **Executors** | Worker processes. They run the tasks and store data. |
 | **Cluster manager** | Gives resources (YARN, Kubernetes, Standalone). |
 
-The **YARN** (Yet Another Resource Negotiator) **is the cluster resource manager**. Its primary function is to manage and allocate RAM and CPU cores among the various applications running simultaneously on a cluster of servers.
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -67,6 +67,8 @@ df.filter(df.age > 30).select("name", "age").show()
 
 > **Tip:** Prefer DataFrames over RDDs. Spark can optimize them (see [Catalyst](#15-what-is-catalyst)).
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 3. How is Spark fault tolerant?
@@ -81,6 +83,8 @@ Main mechanisms:
 4. **Persist with replication:** You can store copies on two nodes (`MEMORY_ONLY_2`).
 5. **Checkpointing:** Save data to reliable storage (like HDFS or S3) to cut a long lineage.
 6. **Speculative execution:** If a task is very slow, Spark can start a copy and use the first one that finishes.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -103,6 +107,8 @@ Transformations are lazy. **Actions trigger them.**
 df2 = df.filter(df.age > 30)   # transformation: nothing runs yet
 df2.count()                    # action: Spark runs the job now
 ```
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -129,6 +135,8 @@ print(bad_rows.value)    # read on the driver
 - Updates inside **transformations** (like `map`) may be counted **more than once** if a task is retried.
 - Updates inside **actions** (like `foreach`) are counted **exactly once**.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 6. What is a closure and why is it important?
@@ -151,6 +159,8 @@ print(counter)            # still 0 on the driver!
 - Each executor gets its **own copy** of the variables. Changes do **not** come back to the driver.
 - The closure must be **serializable**. If it has something that cannot be serialized (a file handle, a database connection), the job fails with `Task not serializable`.
 - A **big closure** is sent to every task, which slows the job.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -181,6 +191,8 @@ def save_partition(rows):
 rdd.foreachPartition(save_partition)
 ```
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 8. Types of transformations
@@ -190,18 +202,20 @@ There are two types:
 ### Narrow transformations
 - Each output partition depends on **one input partition**.
 - **No shuffle.** Fast.
-- Examples: `map`, `flatMap`, `select`, `filter`, `union`, `coalesce`.
+- Examples: `map`, `filter`, `flatMap`, `select`, `union`, `coalesce`.
 
 ### Wide transformations
 - An output partition needs data from **many input partitions**.
 - **Causes a shuffle.** Slower.
-- Examples: `groupBy`, `orderBy`, `join`, `distinct`, `repartition`, `reduceByKey`.
+- Examples: `groupBy`, `reduceByKey`, `join`, `distinct`, `repartition`, `orderBy`.
 
 ```
 Narrow:  [P1] -> [P1']        Wide:  [P1] \
          [P2] -> [P2']               [P2] -- shuffle --> [P1'] [P2']
                                      [P3] /
 ```
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -218,6 +232,8 @@ A **shuffle** is the process of **moving data between partitions and machines** 
 - Filter data **before** a join or group.
 - Use `reduceByKey` instead of `groupByKey` (it combines data before sending).
 - Use **broadcast joins** for small tables.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -242,6 +258,8 @@ What to look for:
 - `FileScan` with `PushedFilters` = filters applied while reading files (good!).
 
 You can also use `df.explain("formatted")` for a cleaner output, or the **Spark UI** (SQL tab).
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -274,6 +292,8 @@ df.unpersist()    # free the space when done
 
 > **Note:** In PySpark, data is always stored serialized, so the `_SER` levels are mainly for Scala/Java.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 12. Commutative operations
@@ -299,6 +319,8 @@ rdd.reduce(lambda a, b: a - b)   # WRONG: result changes with partition order
 
 > **Tip:** To compute an average safely, reduce `(sum, count)` pairs, then divide at the end.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 13. What is the SparkContext?
@@ -322,6 +344,8 @@ sc = spark.sparkContext     # the SparkContext
 ```
 
 > There is only **one active SparkContext per JVM**. Stop it with `spark.stop()` when you finish.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -354,6 +378,8 @@ df.groupBy("country").agg({"sales": "sum"}).show()
 
 > `map` = 1 input -> 1 output. `flatMap` = 1 input -> 0, 1, or many outputs.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 15. What is Catalyst?
@@ -371,6 +397,8 @@ Steps:
 4. **Code generation:** creates efficient Java bytecode (Tungsten engine).
 
 > You write *what* you want. Catalyst decides *how* to do it best.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -390,6 +418,8 @@ Some keys have **much more data** than others, so one task works much longer tha
 **Fix:** aim for roughly **100-200 MB per partition**; use `repartition` or `coalesce`.
 
 **Other common causes:** `collect()` on big data, no caching of reused data, slow Python UDFs, not enough memory (spill to disk), reading from a slow source.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -414,6 +444,8 @@ df_small = df.coalesce(5)
 | Partition sizes | Can be uneven | Balanced |
 | Best for | Reducing before writing | Balancing data or increasing parallelism |
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 18. What are partitions for?
@@ -432,6 +464,8 @@ Rules of thumb:
 ```python
 df.rdd.getNumPartitions()   # see how many partitions you have
 ```
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -467,6 +501,8 @@ df.write.option("maxRecordsPerFile", 100000).parquet("output/")
 ```
 
 > **Warning:** `coalesce(1)` puts all data in **one task**. Use it only for small data.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -548,6 +584,8 @@ print(f"'{target}' appears {count} times")
 
 > `reduceByKey` is better than `groupByKey` because it **combines values before the shuffle**, so it moves less data.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 21. Quick Review
@@ -574,6 +612,8 @@ print(f"'{target}' appears {count} times")
 | **coalesce** | Reduce partitions without a full shuffle |
 | **Partitions** | Pieces of data processed in parallel |
 | **Write partitions** | `coalesce`, `repartition`, `partitionBy`, config |
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
