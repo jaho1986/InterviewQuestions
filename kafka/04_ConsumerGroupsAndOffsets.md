@@ -1,5 +1,17 @@
 # Apache Kafka — Consumer Groups & Offsets
 
+## Table of Contents
+
+1. [Consumer Group](#consumer-group)
+2. [Consumer Group — Partition Assignment Example](#consumer-group--partition-assignment-example)
+3. [Consumer Offsets](#consumer-offsets)
+4. [Delivery Semantics](#delivery-semantics)
+5. [Idempotent Processing](#idempotent-processing)
+
+[🏠 Main index](00_index.md)
+
+---
+
 ## Consumer Group
 A named group of consumers that work together to read from a topic. Each consumer
 within the group reads from **exclusive partitions**, so the group reads the topic
@@ -12,6 +24,8 @@ as a whole. Identified by the `group.id` property.
 - You can have **multiple consumer groups on the same topic**, each reading
   independently (e.g., one group per service).
 
+[⬆️ Back to index](#table-of-contents)
+
 ## Consumer Group — Partition Assignment Example
 
 | Scenario | Result |
@@ -21,6 +35,8 @@ as a whole. Identified by the `group.id` property.
 | 4 consumers, 3 partitions | 1 consumer stays inactive |
 | 1 consumer, 3 partitions | That consumer reads all 3 partitions |
 
+[⬆️ Back to index](#table-of-contents)
+
 ## Consumer Offsets
 Kafka stores the offset at which each consumer group has been reading in an
 internal topic called **`__consumer_offsets`**. This allows a consumer to resume
@@ -28,6 +44,8 @@ reading from where it left off after a crash or restart.
 
 > Consumers should **periodically commit their offsets** after successfully
 > processing messages.
+
+[⬆️ Back to index](#table-of-contents)
 
 ## Delivery Semantics
 Defines when offsets are committed and what happens if processing fails.
@@ -48,7 +66,11 @@ Defines when offsets are committed and what happens if processing fails.
   **Kafka Streams API**.
 - For Kafka-to-external-system workflows: use an **idempotent consumer**.
 
+[⬆️ Back to index](#table-of-contents)
+
 ## Idempotent Processing
 A processing logic where re-processing the same message multiple times produces
 the same result without unintended side effects. Required when using
 **At Least Once** delivery semantics to handle potential duplicate messages safely.
+
+[⬆️ Back to index](#table-of-contents)
