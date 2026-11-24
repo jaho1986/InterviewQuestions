@@ -21,6 +21,17 @@ There are 6 structural patterns covered here:
 
 ---
 
+## Table of Contents
+
+1. [Adapter](#1-adapter)
+2. [Bridge](#2-bridge)
+3. [Composite](#3-composite)
+4. [Decorator](#4-decorator)
+5. [Facade](#5-facade)
+6. [Proxy](#6-proxy)
+
+---
+
 ## 1. Adapter
 
 ### What is it?
@@ -74,6 +85,8 @@ public class Main {
 ```
 
 **Key benefit:** Your code only knows about `MediaPlayer`. The adapter handles the translation internally — no changes needed in either the existing class or your main code.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -148,6 +161,8 @@ public class Main {
 ```
 
 **Key benefit:** To add a new color (e.g. `Green`), you only create one new class. To add a new shape (e.g. `Triangle`), you only create one new class. No combinations needed.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -230,6 +245,8 @@ public class Main {
 
 **Key benefit:** The code that calls `print()` does not need to know if it's dealing with a file or a folder. It just calls the same method on both.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 4. Decorator
@@ -309,6 +326,8 @@ public class Main {
 
 **Key benefit:** You can mix and match decorators freely. No need for classes like `CoffeeWithMilkAndSugarAndVanilla`. Just wrap and stack.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 5. Facade
@@ -383,6 +402,8 @@ public class Main {
 ```
 
 **Key benefit:** The client only calls `computer.start()`. It doesn't need to know about `CPU`, `Memory`, or `HardDrive` at all. The complexity is hidden behind the facade.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -468,3 +489,5 @@ public class Main {
 **Key benefit:** The heavy loading operation only happens once, and only when truly needed. The client code doesn't change — it just calls `display()` on the proxy as if it were the real object.
 
 > Structural patterns are about **how you connect and organize the pieces** of your system. The right pattern can save you from messy dependencies, duplicate code, and rigid class hierarchies.
+
+[⬆️ Back to index](#table-of-contents)

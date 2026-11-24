@@ -19,6 +19,16 @@ There are 5 main creational patterns:
 
 ---
 
+## Table of Contents
+
+1. [Factory Method](#1-factory-method)
+2. [Abstract Factory](#2-abstract-factory)
+3. [Builder](#3-builder)
+4. [Prototype](#4-prototype)
+5. [Singleton](#5-singleton)
+
+---
+
 ## 1. Factory Method
 
 ### What is it?
@@ -75,6 +85,8 @@ public class Main {
 ```
 
 **Key benefit:** To add a new animal (e.g. `Bird`), you only change the factory — not every place in your code that creates animals.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -155,6 +167,8 @@ public class Main {
 
 **Key benefit:** To switch from Windows UI to Mac UI, you only change one line (`new WindowsFactory()` to `new MacFactory()`). All objects created will automatically match.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 3. Builder
@@ -234,6 +248,8 @@ public class Main {
 
 **Key benefit:** You can create many variations of a `Pizza` without needing dozens of different constructors. The code reads almost like a sentence.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 4. Prototype
@@ -304,6 +320,8 @@ public class Main {
 
 **Key benefit:** All three characters share the same weapon and health setup. You didn't have to repeat the complex initialization — you just cloned and renamed.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 5. Singleton
@@ -371,3 +389,5 @@ public static synchronized DatabaseConnection getInstance() {
 ```
 
 **Key benefit:** No matter how many times you call `getInstance()`, you always get the same object — one connection, one config, one logger.
+
+[⬆️ Back to index](#table-of-contents)

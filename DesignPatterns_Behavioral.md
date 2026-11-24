@@ -24,6 +24,21 @@ There are 10 behavioral patterns covered here:
 
 ---
 
+## Table of Contents
+
+1. [Chain of Responsibility](#1-chain-of-responsibility)
+2. [Command](#2-command)
+3. [Iterator](#3-iterator)
+4. [Mediator](#4-mediator)
+5. [Memento](#5-memento)
+6. [Observer](#6-observer)
+7. [State](#7-state)
+8. [Strategy](#8-strategy)
+9. [Template Method](#9-template-method)
+10. [Visitor](#10-visitor)
+
+---
+
 ## 1. Chain of Responsibility
 
 ### What is it?
@@ -97,6 +112,8 @@ public class Main {
 ```
 
 **Key benefit:** You can add, remove, or reorder handlers without changing the sender or the other handlers. The chain is flexible and easy to extend.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -187,6 +204,8 @@ public class Main {
 
 **Key benefit:** Every action is an object. You can store a history of commands and undo them one by one — perfect for text editors, games, or any app that needs undo/redo.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 3. Iterator
@@ -251,6 +270,8 @@ public class Main {
 ```
 
 **Key benefit:** The client uses a simple `for-each` loop. If you later change the internal storage from an array to a linked list, the client code does not change at all.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -342,6 +363,8 @@ public class Main {
 
 **Key benefit:** Users don't know about each other — they only talk to the chat room. Adding a new user or removing one does not affect the others at all.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 5. Memento
@@ -424,6 +447,8 @@ public class Main {
 ```
 
 **Key benefit:** The `TextDocument` class never exposes its internal `content` field directly. The Memento stores the snapshot, and the History manages them — clean separation of concerns.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -517,6 +542,8 @@ public class Main {
 
 **Key benefit:** The `WeatherStation` doesn't know anything about `PhoneDisplay` or `ThermostatDisplay`. You can add or remove observers at any time without changing the station's code.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 7. State
@@ -593,6 +620,8 @@ public class Main {
 ```
 
 **Key benefit:** Adding a new state (e.g. `BlinkingYellow`) only requires creating a new class. No `if/else` blocks need to be updated.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -676,6 +705,8 @@ public class Main {
 
 **Key benefit:** You can swap sorting algorithms at runtime with one line of code. Adding a new algorithm only requires a new class — the `Sorter` class never changes.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## 9. Template Method
@@ -745,6 +776,8 @@ public class Main {
 ```
 
 **Key benefit:** The order of the steps (`readData → processData → writeOutput`) is defined once in the base class and cannot be changed. Subclasses only customize the parts that are different.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -832,6 +865,8 @@ public class Main {
 ```
 
 **Key benefit:** To add a new operation (e.g. `DiscountCalculator`), you only create a new visitor class. None of the product classes (`Food`, `Electronics`, `Clothing`) need to be touched.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 

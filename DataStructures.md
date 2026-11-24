@@ -1,11 +1,36 @@
 # Data Structures
 
+## Table of Contents
+
+1. [Why to use data structures?](#why-to-use-data-structures)
+2. [Arrays](#arrays)
+3. [Linked lists](#linked-lists)
+4. [Double Linked lists](#double-linked-lists)
+5. [Linked lists VS Arrays](#linked-lists-vs-arrays)
+6. [Stacks](#stacks)
+7. [Queues](#queues)
+8. [Binary Search Trees](#binary-search-trees)
+9. [AVL trees (balanced trees)](#avl-trees-balanced-trees)
+10. [Red-Black Trees](#red-black-trees)
+11. [Splay trees](#splay-trees)
+12. [Priority Queues](#priority-queues)
+13. [Heapsort](#heapsort)
+14. [Binomial Heaps](#binomial-heaps)
+15. [Fibonacci Heaps](#fibonacci-heaps)
+16. [B-Trees](#b-trees)
+17. [Associative Arrays](#associative-arrays)
+18. [Hashtables](#hashtables)
+
+---
+
 ## Why to use data structures?
 - To store data in an eficient way.
 - Make every calculations as fast as possible.
 - Algorithms can be boosted up by proper data structures.
 - Data structures make sure the running time will be the better.
 - Avoid nested for loops.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -37,6 +62,8 @@ Is a collection of elements / values each identified by an array index.
 - **Remove**
   - Removing last item O(1).
   - Removing f.e. Middle item O(n).
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -72,11 +99,15 @@ Linked list are composed of nodes and references / pointers pointing from one no
 - **Remove item at the beggining of the list:** (very fast) We do not have to serch the item, we just have to update the references accordingly O(1).
 - **Remove item at a given point of the list:** (not very fast) we have to search for the given item wich make take a lot of time if the item is at the end of the list O(n).
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## Double Linked lists
 
 Node class has two references, one pointing to the next node, one pointing to the previous node.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -93,6 +124,8 @@ Node class has two references, one pointing to the next node, one pointing to th
 - ArrayList: removing the first element (at the beginnning takes O(n) complexity. Removing the last item takes O(1).
 - ArrayList: We have to reconstruct the array when removing.
 - LinkedList are better for this operation. Removal only requires change the pointer location wich can be done very fast.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -159,6 +192,8 @@ It's going to return the las item of the stack without removing it O(1).
 - Undo operation in software.
 - Stack memory stores local variables and function calls.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## Queues
@@ -174,6 +209,8 @@ It's going to return the las item of the stack without removing it O(1).
 - Queues are important in CPU scheduling.
 - When a data is transferred asynchronously (data not necessarily received at same rate as sent) between two processes.
 - Graph alcorithms rely heavily on queues: breadth-first search use queue as underlying astract data type.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -219,6 +256,8 @@ We visit the left subtree of the binary tree, then the right subtree and finally
 
 **In-order traversal:**
 We visit the left subtree of the binary tree, then the root node and finally the right subtree.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -271,6 +310,8 @@ Negative balance factors means right heavy situation, so we have to make a left 
 **Right rotation:**
 Positive balance factors means left heavy situation, so we have to make a right rotation to rebalance the tree.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## Red-Black Trees
@@ -317,6 +358,8 @@ Positive balance factors means left heavy situation, so we have to make a right 
   - We have to check the peroperties recursively starting with x up to the root node in O(logN) running time.
 - **The parent of x is a red node and the uncle is red.**
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## Splay trees
@@ -356,6 +399,8 @@ The splaying operation can be acheived by 3 methods (relies heavily on standad s
 - We have to repeat the previous steps (zig-zig and zig-zag cases) over and over again until we get to the root node.
 - Sometimes we endup at situations when just a single (left or right) rotation is needed to make sure node x will become the root node.
 - Here node x is just the child of the root.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -400,6 +445,8 @@ In a min heap the keys of a parent nodes are less than or equal to those of the 
 - This is the same if we want to find an item in a heap.
 - Heaps came to be to find and manipulate the root node (max or min item) in an efficient manner.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## Heapsort
@@ -415,6 +462,8 @@ In a min heap the keys of a parent nodes are less than or equal to those of the 
 - First we have to construct the heap data strucutre from the numbers we want to sort.
 - We have to consider the items one by one in O(N) and we have to insert them into the heap in O(logN) so the total running time will be O(NlogN).
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## Binomial Heaps
@@ -424,6 +473,8 @@ In a min heap the keys of a parent nodes are less than or equal to those of the 
 - Wich is a priority queue basically + supporting merge operation.
 - A binomial heap is implemented as a collection of trees.
 - The O(logN) logaritmic insertion time complexity can be reduced to O(1) constant time complexity with the hwlp of binomial heaps.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -435,6 +486,8 @@ In a min heap the keys of a parent nodes are less than or equal to those of the 
 - Unlike binary heaps it can have several children - the number of children are usually kept low.
 - We can achieve O(1) running time for insertion operation insteado of O(logN) logaritmic running time for insertion operation instead of O(logN) logaritmic running time.
 - Every node has degree at most O(logN) and the size of a subtree rooted in a node of degree K is at least F(sub k+2) where F(k) is the k-th Fibonacci number.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -468,6 +521,8 @@ In a min heap the keys of a parent nodes are less than or equal to those of the 
 **Disadvantages:**
 - There may be several empty cells.
 
+[⬆️ Back to index](#table-of-contents)
+
 ---
 
 ## Associative Arrays
@@ -477,6 +532,8 @@ In a min heap the keys of a parent nodes are less than or equal to those of the 
 - Most of the times we implement associative arrays with hashtables but binary search trees can be used as well.
 - The aim is to reach O(1) time complexity for most of the operations.
 - The key and value pairs unordered - this is why associative arrays do not support sorting as an operation.
+
+[⬆️ Back to index](#table-of-contents)
 
 ---
 
@@ -533,3 +590,5 @@ Performance relies heavily on the load factor. Sometimes it is better to use mem
 - But the problem is that the has values are dependeing on the size of underlying array data structure.
 - So we have to consider all the items in the old hashtable and insert them into the new one with the h(x) hash-function.
 - It takes O(N) linear running time - this fact may take dynamic-sized hash tables inappropiate fore real-time applications.
+
+[⬆️ Back to index](#table-of-contents)
