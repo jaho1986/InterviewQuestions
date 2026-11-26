@@ -451,7 +451,7 @@ Follow these steps:
 
 ## 14. Access Patterns
 
-An **access pattern** is a question your application asks the database.
+An **access pattern** is a specific query or write operation that your application needs to perform on the data.
 
 Examples:
 
